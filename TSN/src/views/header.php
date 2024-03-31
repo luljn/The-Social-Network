@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item text-light mx-2">
-                    <a href="accueil.html" class="nav-link"  data-bs-toggle="tooltip" title="Accueil">
+                    <a href="index.php?action=home" class="nav-link"  data-bs-toggle="tooltip" title="Accueil">
                         <i class="bi bi-house text-light fs-3"></i>
                     </a>
                 </li>
