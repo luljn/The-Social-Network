@@ -26,6 +26,11 @@ try {
 
             (new Home)->getHomePage();
         }
+
+        else{
+
+            throw new Exception("Oups, la page que vous cherchez n'existe pas.");
+        }
     }
     
     else{
@@ -36,5 +41,6 @@ try {
 
 catch(Exception $e) {
 
-    // (new Error)->getError404Page();    
+    $errorMessage = $e->getMessage();
+    (new Error)->getError404Page($errorMessage);    
 }
