@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row vh-100">
             <div class="col-12 col-sm-6 col-md-8 p-0">
-                <img class="img-fluid h-100" src="https://picsum.photos/1920/1080?random=24" alt="Image page de connexion">
+                <img class="img-fluid h-100" src="https://picsum.photos/id/272/1920/1280" alt="Image page de connexion">
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
                 <form action="" class="row gy-4 pb-4 border border-3 rounded-3">
