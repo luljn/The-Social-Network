@@ -44,7 +44,7 @@
                     </div>
                     <p>
                         Vous avez déjà un compte ?
-                        <a href="connexion.html">
+                        <a href="index.php?action=">
                             Connectez-vous Ici
                         </a>
                     </p>
