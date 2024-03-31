@@ -28,7 +28,7 @@
                     </div>
                     <p>
                         Pas encore de compte ?
-                        <a href="inscription.html">
+                        <a href="index.php?action=signup">
                             Inscrivez-vous Ici
                         </a>
                     </p>

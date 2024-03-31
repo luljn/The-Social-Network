@@ -9,11 +9,29 @@ require_once("src/controllers/error404/error404.php");
  require_once("src/controllers/login/login.php");
  use TSN\src\controllers\login\Login as Login;
 
+ require_once("src/controllers/signup/signup.php");
+ use TSN\src\controllers\signup\Signup as Signup;
+
 
 try {
     
-    // (new Home)->getHomePage();
-    (new Login)->getLoginPage();  // The default page of the site.
+    if(isset($_GET['action']) && $_GET['action'] !== ''){
+
+        if($_GET['action'] === 'signup'){
+
+            (new Signup)->getSignUpPage();
+        }
+
+        elseif($_GET['action'] === 'home'){
+
+            (new Home)->getHomePage();
+        }
+    }
+    
+    else{
+
+        (new Login)->getLoginPage();  // The default page of the site.
+    }
 }
 
 catch(Exception $e) {
