@@ -14,7 +14,14 @@
                 <img class="img-fluid h-100" src="https://picsum.photos/1920/1080?random=24" alt="Image page de connexion">
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
-                <form action="" class="row gy-4 pb-4 border border-3 rounded-3 my-5 my-sm-5">
+                <form action="" class="row gy-2 pb-4 border border-3 rounded-3 my-5 my-sm-5">
+                    <p class="text-primary text-center fs-1 fw-bold">
+                        Inscription
+                    </p>
+                    <p class="text-secondary text-center fs-5 fw-bold mx-0">
+                        créez un compte, c'est rapide et facile.
+                    </p>
+                    <hr>
                     <div class="col-6">
                         <label for="nom" class="form-label">Nom</label>
                         <input type="text" class="form-control" name="nom" id="nom">
@@ -44,7 +51,7 @@
                     </div>
                     <p>
                         Vous avez déjà un compte ?
-                        <a href="index.php?action=">
+                        <a href="index.php">
                             Connectez-vous Ici
                         </a>
                     </p>
