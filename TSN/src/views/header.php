@@ -41,10 +41,10 @@
                         <i class="bi bi-person-circle text-light fs-3"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="mapage.html">Ma page</a></li>
-                        <li><a class="dropdown-item" href="connexion.html">Se Déconnecter</a></li>
+                        <li><a class="dropdown-item" href="">Mes follows</a></li>
+                        <li><a class="dropdown-item" href="">Mon compte</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">A propos de TSN</a></li>
+                        <li><a class="dropdown-item" href="">Se Déconnecter</a></li>
                     </ul>
                 </li>
             </ul>
