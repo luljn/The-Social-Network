@@ -4,13 +4,13 @@ require_once("src/controllers/home/home.php");
 use TSN\src\controllers\home\Home as Home;
 
 require_once("src/controllers/error404/error404.php");
- use TSN\src\controllers\error404\Error as Error;
+use TSN\src\controllers\error404\Error as Error;
 
- require_once("src/controllers/login/login.php");
- use TSN\src\controllers\login\Login as Login;
+require_once("src/controllers/login/login.php");
+use TSN\src\controllers\login\Login as Login;
 
- require_once("src/controllers/signup/signup.php");
- use TSN\src\controllers\signup\Signup as Signup;
+require_once("src/controllers/signup/signup.php");
+use TSN\src\controllers\signup\Signup as Signup;
 
 
 try {
@@ -20,6 +20,11 @@ try {
         if($_GET['action'] === 'signup'){
 
             (new Signup)->getSignUpPage();
+        }
+
+        elseif($_GET['action'] === 'login'){
+
+            (new Login)->executeLogin($_POST['email'], $_POST['mdp']);
         }
 
         elseif($_GET['action'] === 'home'){

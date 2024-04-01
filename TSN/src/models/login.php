@@ -3,7 +3,10 @@
 
 namespace TSN\src\models\login;
 
+require_once("lib/database.php");
 use TSN\src\models\lib\DatabaseConnection;
+
+require_once("user.php");
 use TSN\src\models\user\User;
 
 class Login {
@@ -30,7 +33,7 @@ class Login {
         $query_1->closeCursor();
         $query_2->closeCursor();
 
-        if($result_1['email'] === 1 and password_verify($password, $result_2['mdp'])){
+        if($result_1['email'] === 1 and password_verify($password, $result_2['password'])){
 
             header("location: http://localhost:4000/index.php?action=home");
         }
