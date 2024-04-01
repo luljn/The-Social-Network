@@ -14,22 +14,34 @@ use TSN\src\controllers\signup\Signup as Signup;
 
 
 try {
+
+    session_start();
+    $_SESSION['loginFailed'] = false;
     
     if(isset($_GET['action']) && $_GET['action'] !== ''){
 
         if($_GET['action'] === 'signup'){
 
-            (new Signup)->getSignUpPage();
+            (new Signup)->getSignUpPage();         // We return de Sign up page.
         }
 
         elseif($_GET['action'] === 'login'){
 
-            (new Login)->executeLogin($_POST['email'], $_POST['mdp']);
+            if(isset($_POST['email']) && isset($_POST['mdp'])){
+
+                (new Login)->executeLogin($_POST['email'], $_POST['mdp']);   // We try to connect the user to the site.
+            }
+        }
+
+        elseif($_GET['action'] === 'loginError'){
+
+            $_SESSION['loginFailed'] = true;
+            (new Login)->getLoginPage();
         }
 
         elseif($_GET['action'] === 'home'){
 
-            (new Home)->getHomePage();
+            (new Home)->getHomePage();         // We return de Home page.
         }
 
         else{
@@ -40,7 +52,9 @@ try {
     
     else{
 
-        (new Login)->getLoginPage();  // The default page of the site.
+        $_SESSION['loginFailed'] = false;
+        (new Login)->getLoginPage();   // We return de Login page.
+                                       // The default page of the site.
     }
 }
 

@@ -1,4 +1,8 @@
-<?php $title = "TSN - Connexion"; ?>
+<?php 
+    $title = "TSN - Connexion"; 
+    // session_start();
+    $loginFailed = $_SESSION['loginFailed'];
+?>
  
 <?php 
     ob_start();
@@ -28,8 +32,15 @@
                         <input type="password" class="form-control" name="mdp" id="mdp" required>
                     </div>
                     <div class="col-12">
-                      <button type="submit" class="btn btn-primary w-100">Se Connecter</button>
+                        <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Se Connecter
+                        </button>
                     </div>
+                    <?php if($loginFailed){ ?>
+                        <p class="text-danger">
+                            Email ou mot de passe incorrect.
+                        </p>
+                    <?php } ?>    
                     <p>
                         Pas encore de compte ?
                         <a href="index.php?action=signup">
