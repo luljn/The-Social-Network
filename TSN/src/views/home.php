@@ -2,6 +2,8 @@
  
 <?php 
     ob_start();
+    session_start();
+    $_SESSION['isConnected'] = false;
     require('header.php');
     $header = ob_get_clean(); 
 ?>

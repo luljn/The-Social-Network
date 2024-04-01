@@ -1,4 +1,7 @@
-<?php $isConnected = false ?>
+<?php
+    session_start();
+    $isConnected = $_SESSION['isConnected'];
+ ?>
 <nav class="navbar navbar-expand-md fixed-top navbar-primary bg-primary py-1">
     <div class="container">
         <div class="navbar-brand text-uppercase fw-bold text-white fs-5">
