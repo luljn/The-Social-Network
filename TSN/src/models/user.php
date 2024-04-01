@@ -20,5 +20,12 @@ class User {
                                 DateTime $_birthday, string $_address, bool $_admin){
         
         $this->id = $_id;
+        $this->email = $_email;
+        $this->password = $_password;
+        $this->name = $_name;
+        $this->surname = $_surname;
+        $this->birthday = $_birthday;
+        $this->address = $_address;
+        $this->admin = $_admin;
     }
 }
