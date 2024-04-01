@@ -2,16 +2,16 @@
  
 <?php 
     ob_start();
-    session_start();
-    $_SESSION['isConnected'] = false;
+    session_start();                    // We use a session variables to set the connection status of the user.
+    $_SESSION['isConnected'] = false;  // default value is false.
     require('header.php');
     $header = ob_get_clean(); 
 ?>
 
 <?php ob_start(); ?>
 
-    <section class="mt-5">
-        <div class="container mt-5 d-flex flex-row">
+    <section>
+        <div class="container d-flex flex-row">
             <div class="row">
                 <div class="col-2 mt-5">
                     <div class="card position-sticky" style="top: 97px;">
