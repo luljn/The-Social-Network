@@ -17,6 +17,8 @@ try {
 
     session_start();
     $_SESSION['loginFailed'] = false;
+    $_SESSION['isConnected'] = false;
+    // $_SESSION['loginSucceed'] = false;
     
     if(isset($_GET['action']) && $_GET['action'] !== ''){
 
@@ -33,15 +35,16 @@ try {
             }
         }
 
-        elseif($_GET['action'] === 'loginError'){
+        elseif($_GET['action'] === 'loginError'){ // If an error occured during the login(bad credentials).
 
             $_SESSION['loginFailed'] = true;
             (new Login)->getLoginPage();
         }
 
         elseif($_GET['action'] === 'home'){
-
-            (new Home)->getHomePage();         // We return de Home page.
+            
+            $_SESSION['isConnected'] = true;
+            (new Home)->getHomePage();
         }
 
         else{

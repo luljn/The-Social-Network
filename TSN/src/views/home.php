@@ -2,19 +2,19 @@
  
 <?php 
     ob_start();
-    session_start();                    // We use a session variables to set the connection status of the user.
-    $_SESSION['isConnected'] = false;  // default value is false.
+    // session_start();                    // We use a session variables to set the connection status of the user.
+    // $isConnected = $_SESSION['isConnected'];  // default value is false.
     require('header.php');
     $header = ob_get_clean(); 
 ?>
 
 <?php ob_start(); ?>
 
-    <section>
+    <section class="mt-5">
         <div class="container d-flex flex-row">
             <div class="row">
-                <div class="col-2 mt-5">
-                    <div class="card position-sticky" style="top: 97px;">
+                <div class="col-2">
+                    <div class="card mt-5 position-sticky" style="top: 97px;">
                         <img src="https://picsum.photos/1920/1080?random=4" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
