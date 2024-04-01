@@ -28,4 +28,20 @@ class User {
         $this->address = $_address;
         $this->admin = $_admin;
     }
+
+    public function getID(){ return $this->id; }
+    public function getEmail(){ return $this->email; }
+    public function getpassword(){ return $this->password; }
+    public function getName(){ return $this->name; }
+    public function getSurname(){ return $this->surname; }
+    public function getBirthday(){ return $this->birthday; }
+    public function getAddress(){ return $this->address; }
+    public function getAdmin(){ return $this->admin; }
+
+    public function setEmail(string $_email){ $this->email = $_email; }
+    public function setpassword(string $_password){ $this->password = $_password; }
+    public function setName(string $_name){ $this->name = $_name; }
+    public function setSurname(string $_surname){ $this->surname = $_surname; }
+    public function setBirthday(DateTime $_birthday){ $this->birthday = $_birthday; }
+    public function setAddress(string $_address){ $this->address = $_address; }
 }
