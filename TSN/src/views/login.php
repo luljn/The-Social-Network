@@ -21,8 +21,8 @@
                 <img class="img-fluid h-100" src="https://picsum.photos/id/272/1920/1280" alt="Image page de connexion">
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
-                <form action="index.php?action=login" method="POST" class="row gy-4 pb-4 border border-3 rounded-3">
-                    <p class="text-primary text-center fs-1 fw-bold">
+                <form action="index.php?action=login" method="POST" class="row gy-4 pb-4 border border-3 rounded-3 mt-5">
+                    <p class="text-primary text-center fs-1 fw-bold my-0">
                         Connexion
                     </p>
                     <hr>
@@ -40,7 +40,7 @@
                         </button>
                     </div>
                     <?php if($loginFailed){ ?>
-                        <p class="text-danger">
+                        <p class="text-danger fs-6 fw-bold">
                             Email ou mot de passe incorrect.
                         </p>
                     <?php } ?>    
