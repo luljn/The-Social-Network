@@ -12,7 +12,7 @@ use TSN\src\models\user\User;
 
 class Login {
 
-    private User $user;
+    // private User $user;
     private DatabaseConnection $databaseConnection;
 
     public function connectUser($email, $password){
@@ -35,6 +35,17 @@ class Login {
         $query_2->closeCursor();
 
         if($result_1['email'] === 1 and password_verify($password, $result_2['password'])){
+
+            $statement = "SELECT * from utilisateurs WHERE email = '{$email}';";
+            $query = $this->databaseConnection->getConnection()->prepare($statement);
+            $query->execute();
+            $result = $query->fetch();
+            $query->closeCursor();
+
+            $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
+                                   /*$result['date_de_naissance'],*/ $result['adresse'], $result['admin'], ''/*$result['profile_photo']*/);
+
+            $_SESSION["user"] = $user; 
 
             header("location: http://localhost:4000/index.php?action=home");
         }

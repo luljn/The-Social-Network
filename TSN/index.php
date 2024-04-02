@@ -12,6 +12,9 @@ use TSN\src\controllers\login\Login as Login;
 require_once("src/controllers/signup/signup.php");
 use TSN\src\controllers\signup\Signup as Signup;
 
+require_once("src/models/user.php");
+use TSN\src\models\user\User as User;
+
 
 try {
 
@@ -19,6 +22,8 @@ try {
     $_SESSION['loginFailed'] = false;
     $_SESSION['isConnected'] = false;
     // $_SESSION['loginSucceed'] = false;
+
+    // $_SESSION["user"] = new User(0, "", "", "", "", "", "", "");
     
     if(isset($_GET['action']) && $_GET['action'] !== ''){
 

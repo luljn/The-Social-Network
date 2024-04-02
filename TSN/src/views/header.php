@@ -1,6 +1,7 @@
 <?php
-    // session_start();
+    session_start();
     $isConnected = $_SESSION['isConnected'];
+    $user = $_SESSION["user"];
 ?>
 <nav class="navbar navbar-expand-md fixed-top navbar-primary bg-primary py-1">
     <div class="container">
@@ -35,6 +36,7 @@
                             <i class="bi bi-bar-chart  text-light fs-3"></i>
                         </a>
                     </li>
+                    <span>Bienvenue <?= $user->getSurname(); ?></span>
                 <?php }?>
                 <div class="container-fluid fs-3">
                     <form class="d-flex mt-2 ms-5 me-2">

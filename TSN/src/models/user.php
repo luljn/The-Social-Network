@@ -18,14 +18,14 @@ class User {
     private string $photo;
 
     public function __construct(int $_id, string $_email, string $_password, string $_name, string $_surname, 
-                                DateTime $_birthday, string $_address, bool $_admin,  string $_photo){
+                                /*DateTime $_birthday,*/ string $_address, bool $_admin,  string $_photo){
         
         $this->id = $_id;
         $this->email = $_email;
         $this->password = $_password;
         $this->name = $_name;
         $this->surname = $_surname;
-        $this->birthday = $_birthday;
+        // $this->birthday = $_birthday;
         $this->address = $_address;
         $this->admin = $_admin;
         $this->photo = $_photo;
