@@ -15,9 +15,7 @@ use TSN\src\controllers\signup\Signup as Signup;
 
 try {
 
-    session_start();
-    // $_SESSION['loginFailed'] = false;
-    // $_SESSION['isConnected'] = false;
+    session_start(); // We start a new session for the user.
     
     if(isset($_GET['action']) && $_GET['action'] !== ''){
 

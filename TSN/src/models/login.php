@@ -12,7 +12,6 @@ use TSN\src\models\user\User;
 
 class Login {
 
-    // private User $user;
     private DatabaseConnection $databaseConnection;
 
     public function connectUser($email, $password){
