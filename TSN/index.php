@@ -12,18 +12,12 @@ use TSN\src\controllers\login\Login as Login;
 require_once("src/controllers/signup/signup.php");
 use TSN\src\controllers\signup\Signup as Signup;
 
-require_once("src/models/user.php");
-use TSN\src\models\user\User as User;
-
 
 try {
 
     session_start();
-    $_SESSION['loginFailed'] = false;
-    $_SESSION['isConnected'] = false;
-    // $_SESSION['loginSucceed'] = false;
-
-    // $_SESSION["user"] = new User(0, "", "", "", "", "", "", "");
+    // $_SESSION['loginFailed'] = false;
+    // $_SESSION['isConnected'] = false;
     
     if(isset($_GET['action']) && $_GET['action'] !== ''){
 
@@ -48,7 +42,6 @@ try {
 
         elseif($_GET['action'] === 'home'){
             
-            $_SESSION['isConnected'] = true;
             (new Home)->getHomePage();
         }
 
@@ -60,6 +53,7 @@ try {
     
     else{
 
+        $_SESSION['isConnected'] = false;
         $_SESSION['loginFailed'] = false;
         (new Login)->getLoginPage();   // We return de Login page.
                                        // The default page of the site.

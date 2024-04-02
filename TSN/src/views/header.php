@@ -1,7 +1,10 @@
 <?php
     session_start();
-    $isConnected = $_SESSION['isConnected'];
-    $user = $_SESSION["user"];
+    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
+
+        $isConnected = $_SESSION['isConnected'];
+        $user = $_SESSION["user"];
+    }
 ?>
 <nav class="navbar navbar-expand-md fixed-top navbar-primary bg-primary py-1">
     <div class="container">
@@ -15,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <?php if($isConnected) {?>
+                <?php if(isset($isConnected) && $isConnected) {?>
                     <li class="nav-item text-light mx-2">
                         <a href="index.php?action=home" class="nav-link"  data-bs-toggle="tooltip" title="Accueil">
                             <i class="bi bi-house text-light fs-3"></i>
@@ -49,7 +52,7 @@
                         <i class="bi bi-person-circle text-light fs-3"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <?php if($isConnected) {?>
+                        <?php if(isset($isConnected) && $isConnected) {?>
                             <li><a class="dropdown-item" href="">Mes follows</a></li>
                             <li><a class="dropdown-item" href="">Mon compte</a></li>
                             <li><hr class="dropdown-divider"></li>

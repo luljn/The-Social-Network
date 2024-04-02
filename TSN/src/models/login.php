@@ -46,7 +46,7 @@ class Login {
                                    /*$result['date_de_naissance'],*/ $result['adresse'], $result['admin'], ''/*$result['profile_photo']*/);
 
             $_SESSION["user"] = $user; 
-
+            $_SESSION['isConnected'] = true;
             header("location: http://localhost:4000/index.php?action=home");
         }
 
