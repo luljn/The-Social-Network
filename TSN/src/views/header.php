@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];

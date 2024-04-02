@@ -2,8 +2,6 @@
  
 <?php 
     ob_start();
-    // session_start();                    // We use a session variables to set the connection status of the user.
-    // $isConnected = $_SESSION['isConnected'];  // default value is false.
     require('header.php');
     $header = ob_get_clean(); 
 ?>
