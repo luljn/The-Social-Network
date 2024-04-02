@@ -6,7 +6,14 @@
     $header = ob_get_clean(); 
 ?>
 
-<?php ob_start(); ?>
+<?php 
+    ob_start();
+    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
+
+        $isConnected = $_SESSION['isConnected'];
+        $user = $_SESSION["user"];
+    }
+?>
 
     <section class="mt-5">
         <div class="container d-flex flex-row">

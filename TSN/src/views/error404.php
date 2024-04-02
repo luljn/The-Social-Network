@@ -6,7 +6,14 @@
     $header = ob_get_clean(); 
 ?>
 
-<?php ob_start(); ?>
+<?php 
+    ob_start();
+    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
+
+        $isConnected = $_SESSION['isConnected'];
+        $user = $_SESSION["user"];
+    } 
+?>
 
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -17,9 +24,11 @@
     </div>
     <div class="mt-1">
         <p class="text-dark text-center fs-3 fw-bold"><?= $errorMessage ?></p>
-        <p class="text-secondary text-center fs-5 fw-bold">
-            Connectez-vous <a href="index.php">Ici</a>.
-        </p>
+        <?php if(isset($isConnected) && $isConnected == false) {?>
+            <p class="text-secondary text-center fs-5 fw-bold">
+                Connectez-vous <a href="index.php">Ici</a>.
+            </p>
+        <?php } ?>
     </div>
 
 <?php $content = ob_get_clean(); ?>

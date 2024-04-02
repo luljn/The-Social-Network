@@ -1,7 +1,10 @@
 <?php 
-    $title = "TSN - Connexion"; 
-    // session_start();
-    $loginFailed = $_SESSION['loginFailed'];
+    $title = "TSN - Connexion";
+    if(isset($_SESSION['loginFailed'])){
+
+        $loginFailed = $_SESSION['loginFailed'];
+    }  
+    
 ?>
  
 <?php 

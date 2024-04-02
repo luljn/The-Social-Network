@@ -14,37 +14,37 @@
                 <img class="img-fluid h-100" src="https://picsum.photos/id/384/5000/3333" alt="Image page de connexion">
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
-                <form action="" class="row gy-2 pb-4 border border-3 rounded-3 my-5 my-sm-5">
-                    <p class="text-primary text-center fs-1 fw-bold">
+                <form action="" class="row gy-3 pb-4 border border-3 rounded-3 my-5 my-sm-5">
+                    <p class="text-primary text-center fs-1 fw-bold my-0">
                         Inscription
                     </p>
-                    <p class="text-secondary text-center fs-5 fw-bold mx-0">
+                    <p class="text-secondary text-center fs-5 fw-bold my-0">
                         créez un compte, c'est rapide et facile.
                     </p>
                     <hr>
                     <div class="col-6">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="nom">
+                        <input type="text" class="form-control" name="nom" id="nom" required>
                     </div>
                     <div class="col-6">
                         <label for="prenom" class="form-label">Prénom</label>
-                        <input type="text" class="form-control" name="prenom" id="prenom">
+                        <input type="text" class="form-control" name="prenom" id="prenom" required>
                     </div>
                     <div class="col-12">
                         <label for="birthdate" class="form-label">Date de naissance</label>
-                        <input type="date" class="form-control" name="birthdate" id="birthdate">
+                        <input type="date" class="form-control" name="birthdate" id="birthdate" required>
                     </div>
                     <div class="col-12">
                         <label for="email" class="form-label">Adresse Mail</label>
-                        <input type="text" class="form-control" name="email" id="email">
+                        <input type="text" class="form-control" name="email" id="email" required>
                     </div>
                     <div class="col-12">
                         <label for="address" class="form-label">Adresse</label>
-                        <input type="text" class="form-control" name="address" id="address">
+                        <input type="text" class="form-control" name="address" id="address" required>
                     </div>
                     <div class="col-12">
                         <label for="mdp" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="mdp" id="mdp">
+                        <input type="password" class="form-control" name="mdp" id="mdp" required>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
