@@ -20,4 +20,11 @@ class Login {
         $this->login = new ModelLogin;
         $this->login->connectUser($email, $password);
     }
+
+    public function disconnectUser(){
+
+        session_unset();
+        session_destroy();
+        header("location: http://localhost:4000/index.php");
+    }
 }

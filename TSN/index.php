@@ -22,7 +22,12 @@ try {
 
         if($_GET['action'] === 'signup'){
 
-            (new Signup)->getSignUpPage();         // We return de Sign up page.
+            (new Signup)->getSignUpPage();         // We return the Sign up page.
+        }
+
+        elseif($_GET['action'] === 'signout'){
+
+            (new Login)->disconnectUser();         // We disconnect the current user and return the Login page.
         }
 
         elseif($_GET['action'] === 'login'){
