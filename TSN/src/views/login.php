@@ -34,6 +34,11 @@
                         <label for="mdp" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" name="mdp" id="mdp" required>
                     </div>
+                    <div class="col-10">
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye"></i><span> Afficher le mot de passe</span>
+                        </button>
+                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Se Connecter
