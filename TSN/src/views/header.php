@@ -38,7 +38,6 @@
                             <i class="bi bi-bar-chart  text-light fs-3"></i>
                         </a>
                     </li>
-                    <span>Bienvenue <?= $user->getSurname(); ?></span>
                 <?php }?>
                 <div class="container-fluid fs-3">
                     <form class="d-flex mt-2 ms-5 me-2">

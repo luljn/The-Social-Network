@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-12">
                         <label for="mdp" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="mdp" id="mdp" required>
+                        <input type="text" class="form-control" name="mdp" id="mdp" required>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary w-100">S'inscrire</button>

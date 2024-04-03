@@ -3,7 +3,7 @@
 <?php 
     ob_start();
     require('header.php');
-    $header = ob_get_clean(); 
+    $header = ob_get_clean();
 ?>
 
 <?php 
@@ -18,16 +18,27 @@
     <section class="mt-5">
         <div class="container d-flex flex-row">
             <div class="row">
-                <div class="col-2">
-                    <div class="card mt-5 position-sticky" style="top: 97px;">
-                        <img src="https://picsum.photos/1920/1080?random=4" class="card-img-top" alt="...">
+                <?php if(isset($_SESSION['isConnected']) && $isConnected){ ?>
+                    <div class="col-2">
+                        <div class="card mt-5 position-sticky" style="top: 97px;">
+                            <?php if($user->getPhoto() == ''){ ?>
+                                    <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
+                            <?php 
+                                  } 
+                                  else {
+                            ?>
+                                    <img src=<?= $user->getPhoto()?> class="card-img-top img-fluid" alt="photo de profile">
+                            <?php } ?>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-primary">Mon profil</a>
+                                </div>
                             </div>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
                 <div class="col-8 mt-5">
                     <div class="card mb-5">
                         <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
@@ -75,32 +86,38 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="5000">
                                 <div class="card d-block w-100">
-                                    <img src="https://picsum.photos/1920/1080?random=11" class="card-img-top" alt="...">
+                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <h5 class="card-title fs-5 text-center">John DOE</h5>
+                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <div class="text-center">
+                                            <a href="#" class="btn btn-primary">Follow</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="5000">
                                 <div class="card d-block w-100">
-                                    <img src="https://picsum.photos/1920/1080?random=12" class="card-img-top" alt="...">
+                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        <h5 class="card-title fs-5 text-center">Jane DOE</h5>
+                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <div class="text-center">
+                                            <a href="#" class="btn btn-primary">Follow</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="5000">
                                 <div class="card d-block w-100">
-                                <img src="https://picsum.photos/1920/1080?random=13" class="card-img-top" alt="...">
+                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
+                                        <h5 class="card-title fs-5 text-center">Marc DOE</h5>
+                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <div class="text-center">
+                                            <a href="#" class="btn btn-primary">Follow</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
