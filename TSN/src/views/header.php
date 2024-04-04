@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php if(isset($isConnected) && $isConnected) {?>
                             <li><a class="dropdown-item" href="">Mes follows</a></li>
-                            <li><a class="dropdown-item" href="">Mon compte</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=myAccount">Mon compte</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="index.php?action=signout">Se Déconnecter</a></li>
                         <?php }
