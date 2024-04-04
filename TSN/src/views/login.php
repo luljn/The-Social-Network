@@ -26,6 +26,11 @@
                         Connexion
                     </p>
                     <hr>
+                    <?php if($loginFailed){ ?>
+                        <p class="text-danger fs-5 fw-bold">
+                            Email ou mot de passe incorrect.
+                        </p>
+                    <?php } ?>
                     <div class="col-12">
                         <label for="email" class="form-label">Adresse Mail</label>
                         <input type="text" class="form-control" name="email" id="email" required>
@@ -43,12 +48,7 @@
                         <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Se Connecter
                         </button>
-                    </div>
-                    <?php if($loginFailed){ ?>
-                        <p class="text-danger fs-6 fw-bold">
-                            Email ou mot de passe incorrect.
-                        </p>
-                    <?php } ?>    
+                    </div>    
                     <p>
                         Pas encore de compte ?
                         <a href="index.php?action=signup">
