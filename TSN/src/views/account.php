@@ -88,9 +88,9 @@
                                 <div class="card d-block w-100">
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">John DOE</h5>
-                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <span class="text-center">Followed</span>
+                                        <h5 class="card-title fs-5 text-center">Jackson Follay</h5>
+                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                        <p class="text-center text-primary fw-bold">Followed</p>
                                     </div>
                                 </div>
                             </div>
@@ -98,11 +98,9 @@
                                 <div class="card d-block w-100">
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">Jane DOE</h5>
-                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <div class="text-center">
-                                            <a href="#" class="btn btn-primary">Follow</a>
-                                        </div>
+                                        <h5 class="card-title fs-5 text-center">Abram Sanders</h5>
+                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                        <p class="text-center text-primary fw-bold">Followed</p>
                                     </div>
                                 </div>
                             </div>
@@ -110,11 +108,9 @@
                                 <div class="card d-block w-100">
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">Marc DOE</h5>
-                                        <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <div class="text-center">
-                                            <a href="#" class="btn btn-primary">Follow</a>
-                                        </div>
+                                        <h5 class="card-title fs-5 text-center">Jessica Monroe</h5>
+                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                        <p class="text-center text-primary fw-bold">Followed</p>
                                     </div>
                                 </div>
                             </div>
