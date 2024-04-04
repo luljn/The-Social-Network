@@ -18,8 +18,8 @@
     <section class="mt-5">
         <div class="container mt-5 d-flex flex-row">
             <div class="row">
-            <?php if(isset($_SESSION['isConnected']) && $isConnected){ ?>
-                    <div class="col-2">
+                <?php if(isset($_SESSION['isConnected']) && $isConnected){ ?>
+                    <div class="col-4 mt-5">
                         <div class="card mt-5 position-sticky" style="top: 97px;">
                             <?php if($user->getPhoto() == ''){ ?>
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
@@ -32,21 +32,19 @@
                             <div class="card-body">
                                 <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
                                 <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
-                                <div class="text-center">
-                                    <a href="#" class="btn btn-primary">Mon profil</a>
-                                </div>
                             </div>
                         </div>
                     </div>
-                <?php } ?>
-                <div class="col-7 mt-5">
-                    <div class="d-flex flex-column my-5">
-                        <button type="button" class="btn btn-primary my-5">Changer mes informations personelles</button>
-                        <button type="button" class="btn btn-primary my-5">Changer ma photo de profil</button>
-                        <button type="button" class="btn btn-primary my-5">Gérer mes followers</button>
-                        <button type="button" class="btn btn-primary my-5">Gérer mes followings</button>
+                
+                    <div class="col-8 mt-5">
+                        <div class="d-flex flex-column my-5">
+                            <button type="button" class="btn btn-primary my-5">Changer mes informations personelles</button>
+                            <button type="button" class="btn btn-primary my-5">Changer ma photo de profil</button>
+                            <button type="button" class="btn btn-primary my-5">Gérer mes followers</button>
+                            <button type="button" class="btn btn-primary my-5">Gérer mes followings</button>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>                      
         </div>
     </section>
