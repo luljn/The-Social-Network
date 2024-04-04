@@ -15,6 +15,8 @@ use TSN\src\controllers\signup\Signup as Signup;
 require_once("src/controllers/account/account.php");
 use TSN\src\controllers\account\Account as Account;
 
+require_once("src/controllers/profile/profile.php");
+use TSN\src\controllers\profile\Profile as Profile;
 
 try {
 
@@ -49,12 +51,17 @@ try {
 
         elseif($_GET['action'] === 'home'){
             
-            (new Home)->getHomePage();
+            (new Home)->getHomePage();  // Home Page.
         }
 
         elseif($_GET['action'] === 'myAccount'){
             
-            (new Account)->getUserAccount();
+            (new Account)->getUserAccount();  // User account page.
+        }
+
+        elseif($_GET['action'] === 'myProfile'){
+            
+            (new Profile)->getUserProfile();  // User profile page.
         }
 
         else{
