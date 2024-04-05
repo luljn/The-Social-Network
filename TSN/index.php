@@ -34,6 +34,11 @@ try {
 
             (new Login)->disconnectUser();         // We disconnect the current user and return the Login page.
         }
+        
+        elseif($_GET['action'] === 'newAccountCreated'){
+
+            
+        }
 
         elseif($_GET['action'] === 'login'){
 
