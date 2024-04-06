@@ -12,20 +12,20 @@ class User {
     private string $password;
     private string $name;
     private string $surname;
-    private DateTime $birthday;
+    private string $birthday;
     private string $address;
     private bool $admin;
     private string $photo;
 
     public function __construct(int $_id, string $_email, string $_password, string $_name, string $_surname, 
-                                /*DateTime $_birthday,*/ string $_address, bool $_admin,  string $_photo){
+                                string $_birthday, string $_address, bool $_admin,  string $_photo){
         
         $this->id = $_id;
         $this->email = $_email;
         $this->password = $_password;
         $this->name = $_name;
         $this->surname = $_surname;
-        // $this->birthday = $_birthday;
+        $this->birthday = $_birthday;
         $this->address = $_address;
         $this->admin = $_admin;
         $this->photo = $_photo;
@@ -45,7 +45,7 @@ class User {
     public function setpassword(string $_password){ $this->password = $_password; }
     public function setName(string $_name){ $this->name = $_name; }
     public function setSurname(string $_surname){ $this->surname = $_surname; }
-    public function setBirthday(DateTime $_birthday){ $this->birthday = $_birthday; }
+    public function setBirthday(string $_birthday){ $this->birthday = $_birthday; }
     public function setAddress(string $_address){ $this->address = $_address; }
     public function setPhoto(string $_photo){ $this->photo = $_photo; }
 }

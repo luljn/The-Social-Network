@@ -10,6 +10,7 @@ document.getElementById('togglePassword').addEventListener('click', function(){
     } 
     
     else {
+      
       passwordField.setAttribute('type', 'password');
       this.innerHTML = '<i class="bi bi-eye"></i><span> Afficher le mot de passe</span>';
     }

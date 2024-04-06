@@ -42,7 +42,7 @@ class Login {
             $query->closeCursor();
 
             $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
-                                   /*$result['date_de_naissance'],*/ $result['adresse'], $result['admin'], ''/*$result['profile_photo']*/);
+                                   date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], ''/*$result['profile_photo']*/);
 
             $_SESSION["user"] = $user; 
             $_SESSION['isConnected'] = true;

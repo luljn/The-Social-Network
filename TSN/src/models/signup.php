@@ -13,4 +13,8 @@ use TSN\src\models\user\User;
 class Signup {
 
     private DatabaseConnection $databaseConnection;
+
+    public function addUser($email, $password, $name, $surname, $birthday, $address, $admin, $photo){
+
+    }
 }
