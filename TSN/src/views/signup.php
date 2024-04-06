@@ -1,4 +1,10 @@
-<?php $title = "TSN - Inscription"; ?>
+<?php 
+    $title = "TSN - Inscription";
+    if(isset($_SESSION['signupFailed'])){
+
+        $signupFailed = $_SESSION['signupFailed'];
+    }  
+?>
  
 <?php 
     ob_start();
@@ -14,7 +20,7 @@
                 <img class="img-fluid h-100" src="https://picsum.photos/id/384/5000/3333" alt="Image page de connexion">
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
-                <form action="" class="row gy-3 pb-4 border border-3 rounded-3 my-5 my-sm-5">
+                <form action="index.php?action=createNewAccount" method="POST" class="row gy-3 pb-4 border border-3 rounded-3 my-5 my-sm-5">
                     <p class="text-primary text-center fs-1 fw-bold my-0">
                         Inscription
                     </p>
@@ -22,6 +28,11 @@
                         créez un compte, c'est rapide et facile.
                     </p>
                     <hr>
+                    <?php if($signupFailed){ ?>
+                        <p class="text-danger fs-5 fw-bold">
+                            Cette adresse mail est déjà liée à un compte.
+                        </p>
+                    <?php } ?>
                     <div class="col-6">
                         <label for="nom" class="form-label">Nom</label>
                         <input type="text" class="form-control" name="nom" id="nom" required>

@@ -35,9 +35,19 @@ try {
             (new Login)->disconnectUser();         // We disconnect the current user and return the Login page.
         }
         
-        elseif($_GET['action'] === 'newAccountCreated'){
+        elseif($_GET['action'] === 'createNewAccount'){
 
-            
+            if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) 
+               && isset($_POST['birthdate']) && isset($_POST['address'])){
+
+                (new Signup)->executeSignup($_POST['email'], $_POST['mdp'], $_POST['nom'], $_POST['prenom'], $_POST['birthdate'], $_POST['address'], 0, "");
+            }
+        }
+
+        elseif($_GET['action'] === 'signupError'){  // If an error occured during the inscription(the email already exists).
+
+            $_SESSION['signupFailed'] = true;
+            (new Signup)->getSignUpPage();
         }
 
         elseif($_GET['action'] === 'login'){
@@ -79,6 +89,7 @@ try {
 
         $_SESSION['isConnected'] = false;
         $_SESSION['loginFailed'] = false;
+        $_SESSION['signupFailed'] = false;
         (new Login)->getLoginPage();   // We return de Login page.
                                        // The default page of the site.
     }
