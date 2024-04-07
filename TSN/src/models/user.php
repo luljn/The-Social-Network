@@ -41,6 +41,7 @@ class User {
     public function getAdmin(){ return $this->admin; }
     public function getPhoto(){ return $this->photo; }
 
+    public function setID(int $_id){ return $this->id = $_id; }
     public function setEmail(string $_email){ $this->email = $_email; }
     public function setpassword(string $_password){ $this->password = $_password; }
     public function setName(string $_name){ $this->name = $_name; }
