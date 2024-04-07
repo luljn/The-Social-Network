@@ -14,4 +14,7 @@ CREATE TABLE utilisateurs (
 );
 
 INSERT INTO utilisateurs (email, mdp, nom, prenom, date_de_naissance, adresse, admin)
-VALUES ('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1);
+VALUES 
+('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1),
+('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0)
+;
