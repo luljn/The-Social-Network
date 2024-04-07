@@ -6,6 +6,9 @@ namespace TSN\src\controllers\signup;
 require_once("./src/models/signup.php");
 use TSN\src\models\signup\Signup as ModelSignup;
 
+require_once("src/controllers/login/login.php");
+use TSN\src\controllers\login\Login as Login;
+
 
 class Signup {
 
@@ -16,9 +19,11 @@ class Signup {
         require("./src/views/signup.php");
     }
 
-    public function executeSignup($email, $password, $name, $surname, $birthday, $address, $admin, $photo){
+    public function executeSignup($email, $password, $name, $surname, $birthday, $address, $admin){
 
         $this->signup = new ModelSignup();
-        $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin, $photo);
+        $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin);
+
+        (new Login)->executeLogin($email, $password);
     }
 }

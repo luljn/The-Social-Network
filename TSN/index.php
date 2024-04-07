@@ -27,6 +27,7 @@ try {
 
         if($_GET['action'] === 'signup'){
 
+            $_SESSION['signupFailed'] = false;
             (new Signup)->getSignUpPage();         // We return the Sign up page.
         }
 
@@ -38,9 +39,11 @@ try {
         elseif($_GET['action'] === 'createNewAccount'){
 
             if(isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['nom']) && isset($_POST['prenom']) 
-               && isset($_POST['birthdate']) && isset($_POST['address'])){
+               && isset($_POST['birthday']) && isset($_POST['address'])){
 
-                (new Signup)->executeSignup($_POST['email'], $_POST['mdp'], $_POST['nom'], $_POST['prenom'], $_POST['birthdate'], $_POST['address'], 0, "");
+
+                (new Signup)->executeSignup($_POST['email'], $_POST['mdp'], $_POST['nom'], 
+                                            $_POST['prenom'], $_POST['birthday'], $_POST['address'], 0);
             }
         }
 

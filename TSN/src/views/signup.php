@@ -42,8 +42,8 @@
                         <input type="text" class="form-control" name="prenom" id="prenom" required>
                     </div>
                     <div class="col-12">
-                        <label for="birthdate" class="form-label">Date de naissance</label>
-                        <input type="date" class="form-control" name="birthdate" id="birthdate" required>
+                        <label for="birthday" class="form-label">Date de naissance</label>
+                        <input type="date" class="form-control" name="birthday" id="birthday" required>
                     </div>
                     <div class="col-12">
                         <label for="email" class="form-label">Adresse Mail</label>
