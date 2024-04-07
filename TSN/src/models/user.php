@@ -3,9 +3,12 @@
 
 namespace TSN\src\models\user;
 
-use DateTime;
+require_once("lib/database.php");
+use TSN\src\models\lib\DatabaseConnection;
 
 class User {
+
+    private DatabaseConnection $databaseConnection;
 
     private int $id;
     private string $email;
