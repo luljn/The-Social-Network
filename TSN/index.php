@@ -74,7 +74,15 @@ try {
 
         elseif($_GET['action'] === 'myAccount'){
             
-            (new Account)->getUserAccount();  // User account page.
+            if(isset($_GET['userId']) && $_GET['userId'] > 0){
+
+                (new Account)->getUserAccount($_GET['userId']);  // User account page.
+            }
+
+            else{
+
+                throw new Exception("Oups, l'utilisateur que vous cherchez n'existe pas.");
+            }
         }
 
         elseif($_GET['action'] === 'myProfile'){
