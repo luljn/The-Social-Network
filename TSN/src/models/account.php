@@ -11,9 +11,6 @@ use TSN\src\models\lib\DatabaseConnection;
 require_once("user.php");
 use TSN\src\models\user\User;
 
-require_once("./src/controllers/error404/error404.php");
-use TSN\src\controllers\error404\Error as Error;
-
 
 class Account {
 

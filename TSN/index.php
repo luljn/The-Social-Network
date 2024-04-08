@@ -50,7 +50,7 @@ try {
         elseif($_GET['action'] === 'signupError'){  // If an error occured during the inscription(the email already exists).
 
             $_SESSION['signupFailed'] = true;
-            (new Signup)->getSignUpPage();
+            (new Signup)->getSignUpPage();       // We return the Sign up page.
         }
 
         elseif($_GET['action'] === 'login'){
@@ -64,19 +64,24 @@ try {
         elseif($_GET['action'] === 'loginError'){ // If an error occured during the login(bad credentials).
 
             $_SESSION['loginFailed'] = true;
-            (new Login)->getLoginPage();
+            (new Login)->getLoginPage();          // We return de Login page.
+        }
+
+        elseif($_GET['action'] === 'loginRequired'){ // If the login is required to have an access to a page.
+
+            throw new Exception("Oups, vous devez être connecté pour avoir accès à cette page.");
         }
 
         elseif($_GET['action'] === 'home'){
             
-            (new Home)->getHomePage();  // Home Page.
+            (new Home)->getHomePage();  // We return the Home Page.
         }
 
         elseif($_GET['action'] === 'myAccount'){
             
             if(isset($_GET['userId']) && $_GET['userId'] > 0){
 
-                (new Account)->getUserAccount($_GET['userId']);  // User account page.
+                (new Account)->getUserAccount($_GET['userId']);  // We return the User account page.
             }
 
             else{
@@ -92,7 +97,7 @@ try {
 
         elseif($_GET['action'] === 'myProfile'){
             
-            (new Profile)->getUserProfile();  // User profile page.
+            (new Profile)->getUserProfile();  // We return the User profile page.
         }
 
         else{

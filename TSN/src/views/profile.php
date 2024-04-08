@@ -44,7 +44,12 @@
                             <button type="button" class="btn btn-primary my-5">Gérer mes followings</button>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }
+                    else{  // The case in which the user is not connected (he does not have access to this page).
+
+                        header("location: http://localhost:4000/index.php?action=loginRequired");
+                    }
+                ?>
             </div>                      
         </div>
     </section>
