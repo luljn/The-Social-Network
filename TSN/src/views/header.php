@@ -61,8 +61,8 @@
                         ?>
                             <li><a class="dropdown-item" href="index.php">Se Connecter</a></li>
                             <li><a class="dropdown-item" href="index.php?action=signup">S'inscrire</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="">À propos de TSN</a></li>
+                            <!-- <li><hr class="dropdown-divider"></li> -->
+                            <!-- <li><a class="dropdown-item" href="">À propos de TSN</a></li> -->
                         <?php } ?>
                     </ul>
                 </li>
