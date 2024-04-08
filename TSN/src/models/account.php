@@ -45,7 +45,7 @@ class Account {
         catch(Exception $e) {
 
             $errorMessage = $e->getMessage();
-            (new Error)->getError404Page($errorMessage);    
+            header("location: http://localhost:4000/index.php");
         }
     }
 }

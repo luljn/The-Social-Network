@@ -34,24 +34,24 @@
                             <div class="card-body">
                                 <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
                                 <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
-                                <?php if(isset($_SESSION['isConnected']) && $isConnected && $_GET['userId'] == $connectedUser->getID()){ ?>
-                                <div class="text-center">
-                                    <a href="index.php?action=myProfile" class="btn btn-primary">Mon profil</a>
-                                </div>
+                                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] && $_GET['userId'] == $connectedUser->getID()){ ?>
+                                    <div class="text-center">
+                                        <a href="index.php?action=myProfile" class="btn btn-primary">Mon profil</a>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
-                <?php } 
+                <?php }
                       else{  
                 ?>
                 <div class="col-2">
                     <div class="card mt-5 position-sticky" style="top: 97px;">
-                        <?php if($user->getPhoto() == ''){ ?>
+                        <?php if(isset($user) && $user->getPhoto() == ''){ ?>
                             <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
                         <?php 
                               } 
-                              else {
+                              elseif(isset($user) && $user->getPhoto() != ''){
                         ?>
                             <img src=<?= $user->getPhoto() ?> class="card-img-top img-fluid" alt="photo de profile">
                         <?php } ?>
