@@ -44,8 +44,8 @@ class Account {
 
         catch(Exception $e) {
 
-            $errorMessage = $e->getMessage();
-            header("location: http://localhost:4000/index.php");
+            $e->getMessage();
+            header("location: http://localhost:4000/index.php?action=accountNotFound");
         }
     }
 }

@@ -85,6 +85,11 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'accountNotFound'){  // If the user account does not exists.
+            
+            throw new Exception("Oups, l'utilisateur que vous cherchez n'existe pas.");
+        }
+
         elseif($_GET['action'] === 'myProfile'){
             
             (new Profile)->getUserProfile();  // User profile page.
