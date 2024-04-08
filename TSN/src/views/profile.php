@@ -18,7 +18,7 @@
     <section class="mt-5">
         <div class="container mt-5 d-flex flex-row">
             <div class="row">
-                <?php if(isset($_SESSION['isConnected']) && $isConnected){ ?>
+                <?php if(isset($isConnected) && $isConnected){ ?>
                     <div class="col-4 mt-5">
                         <div class="card mt-5 position-sticky" style="top: 97px;">
                             <?php if($user->getPhoto() == ''){ ?>
