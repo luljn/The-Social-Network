@@ -15,7 +15,7 @@ class Account {
 
         $this->account = new ModelAccount;
         $user = $this->account->getUser($userId);
-        $_SESSION['otherUser'] = $user;
+        $_SESSION['otherUser'] = $user;  // We define a new user, to make a difference with the current connected user.
         require('./src/views/account.php');
     }
 }

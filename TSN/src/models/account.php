@@ -3,11 +3,16 @@
 
 namespace TSN\src\models\account;
 
+use Exception;
+
 require_once("lib/database.php");
 use TSN\src\models\lib\DatabaseConnection;
 
 require_once("user.php");
 use TSN\src\models\user\User;
+
+require_once("./src/controllers/error404/error404.php");
+use TSN\src\controllers\error404\Error as Error;
 
 
 class Account {
@@ -18,15 +23,29 @@ class Account {
 
         $this->databaseConnection = new DatabaseConnection;
 
-        $statement = "SELECT * from utilisateurs WHERE id = '{$userId}';";
-        $query = $this->databaseConnection->getConnection()->prepare($statement);
-        $query->execute();
-        $result = $query->fetch();
-        $query->closeCursor();
+        try {
 
-        $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
-        date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], '');
+            $statement = "SELECT * from utilisateurs WHERE id = '{$userId}';";
+            $query = $this->databaseConnection->getConnection()->prepare($statement);
+            $query->execute();
+            $result = $query->fetch();
+            $query->closeCursor();
 
-        return $user;
+            if($result == NULL){  // If the user id doesn't exists in the database.
+
+                throw new Exception("Oups, l'utilisateur que vous cherchez n'existe pas.");
+            }
+
+            $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
+            date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], '');
+
+            return $user;
+        }
+
+        catch(Exception $e) {
+
+            $errorMessage = $e->getMessage();
+            (new Error)->getError404Page($errorMessage);    
+        }
     }
 }

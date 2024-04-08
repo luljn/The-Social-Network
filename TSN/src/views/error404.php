@@ -24,7 +24,7 @@
     </div>
     <div class="mt-1">
         <p class="text-dark text-center fs-3 fw-bold"><?= $errorMessage ?></p>
-        <?php if(isset($isConnected) && $isConnected == false) {?>
+        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == false) {?>
             <p class="text-secondary text-center fs-5 fw-bold">
                 Connectez-vous <a href="index.php">Ici</a>.
             </p>

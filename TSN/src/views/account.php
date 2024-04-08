@@ -19,28 +19,29 @@
     <section class="mt-5">
         <div class="container d-flex flex-row">
             <div class="row">
-                <?php if(isset($_SESSION['isConnected']) && $isConnected && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user ?>
-                <div class="col-2">
-                    <div class="card mt-5 position-sticky" style="top: 97px;">
-                        <?php if($connectedUser->getPhoto() == ''){ ?>
-                            <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
-                        <?php 
-                              } 
-                              else {
-                        ?>
-                            <img src=<?= $connectedUser->getPhoto()?> class="card-img-top img-fluid" alt="photo de profile">
-                        <?php } ?>
-                        <div class="card-body">
-                            <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
-                            <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
-                            <?php if(isset($_SESSION['isConnected']) && $isConnected && $_GET['userId'] == $connectedUser->getID()){ ?>
-                            <div class="text-center">
-                                <a href="index.php?action=myProfile" class="btn btn-primary">Mon profil</a>
-                            </div>
+                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
+                         && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user ?>
+                    <div class="col-2">
+                        <div class="card mt-5 position-sticky" style="top: 97px;">
+                            <?php if($connectedUser->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
+                            <?php 
+                                } 
+                                else {
+                            ?>
+                                <img src=<?= $connectedUser->getPhoto()?> class="card-img-top img-fluid" alt="photo de profile">
                             <?php } ?>
+                            <div class="card-body">
+                                <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
+                                <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
+                                <?php if(isset($_SESSION['isConnected']) && $isConnected && $_GET['userId'] == $connectedUser->getID()){ ?>
+                                <div class="text-center">
+                                    <a href="index.php?action=myProfile" class="btn btn-primary">Mon profil</a>
+                                </div>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php } 
                       else{  
                 ?>
