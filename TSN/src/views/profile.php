@@ -40,7 +40,7 @@
                                     <div class="col-6"> 
                                         <div class="container mt-5">
                                             <div class="row gy-2">
-                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifier mes infos personelles</button>
+                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userInfosModal">Modifier mes infos personelles</button>
                                                 <button type="button" class="btn btn-primary col-12">Modifier mon mot de passe</button>
                                                 <button type="button" class="btn btn-primary col-12">Modifier ma photo de profil</button>
                                                 <button type="button" class="btn btn-primary col-12">Gérer mes followers</button>
@@ -53,20 +53,41 @@
                         </div>
                     </div>
                 
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- User informations form modal -->
+                    <div class="modal fade" id="userInfosModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Infos personnelles</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="nom" class="form-label">Nom</label>
+                                            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user->getName(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="prenom" class="form-label">Prénom</label>
+                                            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="birthday" class="form-label">Date de naissance</label>
+                                            <input type="date" class="form-control" name="birthday" id="birthday" value="<?= $user->getBirthday(); ?>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Adresse Mail</label>
+                                            <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Adresse</label>
+                                            <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-primary">Enregistrer</button>
                                 </div>
                             </div>
                         </div>
