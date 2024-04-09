@@ -42,7 +42,7 @@
                                             <div class="row gy-2">
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userInfosModal">Modifier mes infos personelles</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPasswordModal">Modifier mon mot de passe</button>
-                                                <button type="button" class="btn btn-primary col-12">Modifier ma photo de profil</button>
+                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPhotoModal">Modifier ma photo de profil</button>
                                                 <button type="button" class="btn btn-primary col-12">Gérer mes followers</button>
                                                 <button type="button" class="btn btn-primary col-12">Gérer mes followings</button>
                                             </div>
@@ -110,6 +110,30 @@
                                         <div class="mb-3">
                                             <label for="nouveauMdp" class="form-label">Nouveau mot de passe</label>
                                             <input type="text" class="form-control" name="nouveauMdp" id="nouveauMdp" required>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User profile photo update modal -->
+                    <div class="modal fade" id="userPhotoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Photo de profil</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="profilePhoto" class="form-label">Nouvelle photo de profil</label>
+                                            <input type="text" class="form-control" name="profilePhoto" id="profilePhoto" required>
                                         </div>
                                     </form>
                                 </div>
