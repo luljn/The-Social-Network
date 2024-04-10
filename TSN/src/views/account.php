@@ -22,7 +22,7 @@
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                          && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user ?>
                     <div class="col-2">
-                        <div class="card mt-5 position-sticky" style="top: 97px;">
+                        <div class="card mt-5 position-sticky d-flex flex-column" style="top: 97px;">
                             <?php if($connectedUser->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
                             <?php 
@@ -41,8 +41,8 @@
                                 <?php } ?>
                             </div>
                         </div>
-                        <div class="mt-2 position-sticky" style="top: 520px;">
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
+                        <div class="mt-2 position-fixed text-center">
+                            <button type="button" class="btn btn-primary btn-block justify-content-center" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
                                 <i class="bi bi-plus-circle"></i>
                                 Nouveau post 
                             </button>
