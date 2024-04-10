@@ -46,7 +46,8 @@ class Login {
 
             $_SESSION["user"] = $user; 
             $_SESSION['isConnected'] = true;
-            header("location: http://localhost:4000/index.php?action=home");
+            $userIdUrl = urldecode($user->getID());
+            header("location: http://localhost:4000/index.php?action=myAccount&userId={$userIdUrl}");
         }
 
         else{
