@@ -29,7 +29,7 @@
                                 } 
                                 else {
                             ?>
-                                <img src=<?= $connectedUser->getPhoto()?> class="card-img-top img-fluid" alt="photo de profile">
+                                <img src="<?= $connectedUser->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                             <?php } ?>
                             <div class="card-body">
                                 <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
@@ -58,12 +58,12 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="newPost" class="form-label"></label>
+                                                <label for="newPost" class="form-label">Contenu de votre post</label>
                                                 <textarea name="newPost" id="newPost" cols="50" rows="10" required></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="image">Voulez-vous ajouter une image ?</label><br>
-                                                <input type="file" id="image" name="image" accept="image/*"><br>
+                                                <label for="image" class="form-label">Voulez-vous ajouter une image ?</label>
+                                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

@@ -30,7 +30,7 @@
                                             } 
                                             else {
                                         ?>
-                                            <img src=<?= $user->getPhoto()?> class="card-img-top img-fluid" alt="photo de profile">
+                                            <img src="<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                                         <?php } ?>
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
@@ -56,92 +56,103 @@
                     <!-- User informations form modal -->
                     <div class="modal fade" id="userInfosModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Infos personnelles</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <form method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Infos personnelles</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                            <div class="mb-3">
+                                                <label for="nom" class="form-label">Nom</label>
+                                                <input type="text" class="form-control" name="nom" id="nom" value="<?= $user->getName(); ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="prenom" class="form-label">Prénom</label>
+                                                <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="birthday" class="form-label">Date de naissance : </label>
+                                                <!-- <input type="date" class="form-control" name="birthday" id="birthday" value=""> -->
+                                                <span><?= $user->getBirthday(); ?></span>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Adresse Mail</label>
+                                                <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">Adresse</label>
+                                                <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="nom" class="form-label">Nom</label>
-                                            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user->getName(); ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="prenom" class="form-label">Prénom</label>
-                                            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="birthday" class="form-label">Date de naissance</label>
-                                            <input type="date" class="form-control" name="birthday" id="birthday" value="<?= $user->getBirthday(); ?>">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Adresse Mail</label>
-                                            <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Adresse</label>
-                                            <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary">Enregistrer</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
                     <!-- User password form modal -->
                     <div class="modal fade" id="userPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mot de passe</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <form method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Mot de passe</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                            <div class="mb-3">
+                                                <label for="mdp" class="form-label">Mot de passe actuel</label>
+                                                <input type="text" class="form-control" name="mdp" id="mdp" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nouveauMdp1" class="form-label">Nouveau mot de passe</label>
+                                                <input type="text" class="form-control" name="nouveauMdp1" id="nouveauMdp1" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="nouveauMdp2" class="form-label">Confirmer le nouveau mot de passe</label>
+                                                <input type="text" class="form-control" name="nouveauMdp2" id="nouveauMdp2" required>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="mdp" class="form-label">Mot de passe actuel</label>
-                                            <input type="text" class="form-control" name="mdp" id="mdp" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="nouveauMdp" class="form-label">Nouveau mot de passe</label>
-                                            <input type="text" class="form-control" name="nouveauMdp" id="nouveauMdp" required>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary">Enregistrer</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
                     <!-- User profile photo update modal -->
                     <div class="modal fade" id="userPhotoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Photo de profil</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Photo de profil</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                            <div class="mb-3">
+                                                <label for="profilePhoto" class="form-label">Nouvelle photo de profil</label>
+                                                <input type="file" class="form-control" name="profilePhoto" id="profilePhoto" accept="image/*" required>
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="profilePhoto" class="form-label">Nouvelle photo de profil</label>
-                                            <input type="text" class="form-control" name="profilePhoto" id="profilePhoto" required>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary">Enregistrer</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -158,7 +169,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    <!-- <button type="button" class="btn btn-primary">Enregistrer</button> -->
                                 </div>
                             </div>
                         </div>
@@ -177,7 +187,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    <!-- <button type="button" class="btn btn-primary">Enregistrer</button> -->
                                 </div>
                             </div>
                         </div>
