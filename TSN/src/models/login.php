@@ -41,8 +41,17 @@ class Login {
             $result = $query->fetch();
             $query->closeCursor();
 
-            $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
-                                   date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], ''/*$result['profile_photo']*/);
+            if($result['profile_photo'] == NULL){
+
+                $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
+                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], '');
+            }
+
+            else{
+
+                $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
+                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], $result['profile_photo']);
+            }
 
             $_SESSION["user"] = $user; 
             $_SESSION['isConnected'] = true;
