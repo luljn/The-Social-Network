@@ -41,6 +41,35 @@
                                 <?php } ?>
                             </div>
                         </div>
+                        <div class="mt-2 position-sticky" style="top: 520px;">
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
+                                <i class="bi bi-plus-circle"></i>
+                                Nouveau post 
+                            </button>
+                        </div>
+                        <!-- User new post form modal -->
+                        <div class="modal fade" id="userNewPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau post</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="newPost" class="form-label"></label>
+                                                <textarea name="newPost" id="newPost" cols="50" rows="10" required></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-primary">Poster</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 <?php }
                       else{  
@@ -64,6 +93,7 @@
                 <?php } ?>
         
                 <div class="col-8 mt-5">
+                    
                     <div class="card mb-5">
                         <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
                         <div class="card-body">
