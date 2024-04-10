@@ -8,8 +8,6 @@ use TSN\src\models\lib\DatabaseConnection;
 
 class User {
 
-    private DatabaseConnection $databaseConnection;
-
     private int $id;
     private string $email;
     private string $password;
@@ -52,4 +50,24 @@ class User {
     public function setBirthday(string $_birthday){ $this->birthday = $_birthday; }
     public function setAddress(string $_address){ $this->address = $_address; }
     public function setPhoto(string $_photo){ $this->photo = $_photo; }
+}
+
+
+class UserModification {  // This class is used to modify the user informations in the database.
+
+    private DatabaseConnection $databaseConnection;
+
+    public function updatePersonnalInformations(string $email, string $name, string $surname, string $address){
+
+    }
+
+    public function updatePassword(string $password){
+
+
+    }
+
+    public function updateProfilePhoto(string $photo){
+
+        
+    }
 }
