@@ -50,24 +50,28 @@
                         <!-- User new post form modal -->
                         <div class="modal fade" id="userNewPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau post</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
+                                <form method="POST" enctype="multipart/form-data">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau post</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="newPost" class="form-label"></label>
                                                 <textarea name="newPost" id="newPost" cols="50" rows="10" required></textarea>
                                             </div>
-                                        </form>
+                                            <div class="mb-3">
+                                                <label for="image">Voulez-vous ajouter une image ?</label><br>
+                                                <input type="file" id="image" name="image" accept="image/*"><br>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">Poster</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                        <button type="button" class="btn btn-primary">Poster</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
