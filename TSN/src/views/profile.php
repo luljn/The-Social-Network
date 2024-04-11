@@ -41,6 +41,7 @@
                                         <div class="container mt-5">
                                             <div class="row gy-2">
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userInfosModal">Modifier mes infos personelles</button>
+                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userBirthdayModal">Modifier ma date de naissance</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPasswordModal">Modifier mon mot de passe</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPhotoModal">Modifier ma photo de profil</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userFollowersModal">Gérer mes followers</button>
@@ -53,7 +54,7 @@
                         </div>
                     </div>
                 
-                    <!-- User informations form modal -->
+                    <!-- User informations form modals -->
                     <div class="modal fade" id="userInfosModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <form method="POST">
@@ -74,8 +75,8 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="birthday" class="form-label">Date de naissance : </label>
-                                                <!-- <input type="date" class="form-control" name="birthday" id="birthday" value=""> -->
                                                 <span><?= $user->getBirthday(); ?></span>
+                                                <!-- <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userBirthdayModal">Modifier ma date de naissance</button> -->
                                             </div>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Adresse Mail</label>
@@ -85,6 +86,31 @@
                                                 <label for="address" class="form-label">Adresse</label>
                                                 <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
                                             </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="userBirthdayModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Date de naissance</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                        <div class="mb-3">
+                                            <label for="birthday" class="form-label">Date de naissance : </label>
+                                            <input type="date" class="form-control" name="birthday" id="birthday" required>
+                                        </div>
                                         
                                     </div>
                                     <div class="modal-footer">
