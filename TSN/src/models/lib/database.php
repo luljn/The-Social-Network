@@ -12,7 +12,7 @@ class DatabaseConnection {
 
         if($this->database === null){
 
-            $this->database = new \PDO("mysql:host=localhost;dbname=mbeck--selatchom--database;charset=utf8", "root", "");
+            $this->database = new \PDO("mysql:host=localhost;dbname=mbeck_selatchom_database;charset=utf8", "root", "");
         }
 
         return $this->database;
