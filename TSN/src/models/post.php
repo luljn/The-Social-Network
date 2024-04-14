@@ -35,3 +35,24 @@ class Post {
     public function setIdUser(int $_idUser){ $this->idUser = $_idUser; }
     public function setImage(string $_image){ $this->image = $_image; }
 }
+
+class PostManagment {
+
+    private DatabaseConnection $databaseConnection;
+
+    public function getPost(int $id){
+
+        $this->databaseConnection = new DatabaseConnection;
+    }
+
+    public function getPostsByUser(int $idUser){
+
+        $this->databaseConnection = new DatabaseConnection;
+    }
+
+
+    public function getRandomPosts(){
+
+        $this->databaseConnection = new DatabaseConnection;
+    }
+}
