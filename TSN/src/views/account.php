@@ -100,14 +100,19 @@
                     
                     <div class="card mb-5">
                         <div class="d-flex flex-row mx-2 mt-2">
-                                <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
-                                <h5 class="mx-1 mt-2"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                            <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
+                            <h5 class="mx-1 mt-2"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
                         </div>
                         <hr>
                         <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row mx-2 mb-2">
+                            <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i>
+                            <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
                         </div>
                     </div>
                     <!-- <div class="card mb-5">
