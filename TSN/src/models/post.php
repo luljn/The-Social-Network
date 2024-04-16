@@ -48,6 +48,24 @@ class PostManagment {
     public function getPostsByUser(int $idUser){
 
         $this->databaseConnection = new DatabaseConnection;
+        $statement = "SELECT * from post WHERE id_utilisateur = '{$idUser}';";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        $Posts = [];
+
+        if($result !== NULL){
+
+            for ($i = 0; $i < count($result); $i++) {
+                $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $result[$i]['id_utilisateur'], '');
+                $Posts[] = $userPost;
+            }
+        }
+
+        $_SESSION['userPosts'] = $Posts;
+        // return $Posts;
     }
 
 

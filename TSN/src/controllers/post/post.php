@@ -4,13 +4,13 @@
 namespace TSN\src\controllers\post;
 
 require_once("./src/models/post.php");
-use TSN\src\models\post\Post as ModelPost;
+use TSN\src\models\post\PostManagment as ModelPostManagment;
 
-$user = $_SESSION["user"];
+// $user = $_SESSION["user"];
 
 class Post {
 
-    private ModelPost $post;
+    private ModelPostManagment $postManagment;
 
     public function getPost(int $id){
 
@@ -18,6 +18,8 @@ class Post {
 
     public function getUserPosts(int $idUser){
 
+        $this->postManagment = new ModelPostManagment();
+        $this->postManagment->getPostsByUser($idUser);
     }
 
     public function getPosts(){

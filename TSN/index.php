@@ -18,6 +18,9 @@ use TSN\src\controllers\account\Account as Account;
 require_once("src/controllers/profile/profile.php");
 use TSN\src\controllers\profile\Profile as Profile;
 
+require_once("src/controllers/post/post.php");
+use TSN\src\controllers\post\Post as Post;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -82,6 +85,7 @@ try {
             if(isset($_GET['userId']) && $_GET['userId'] > 0){
 
                 (new Account)->getUserAccount($_GET['userId']);  // We return the User account page.
+                // (new Post)->getUserPosts($_GET['userId']);  // We retrieve the post of the user.
             }
 
             else{

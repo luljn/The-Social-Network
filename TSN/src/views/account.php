@@ -8,7 +8,8 @@
 
 <?php 
     ob_start();
-    $user = $_SESSION['otherUser'];
+    $user = $_SESSION['otherUser'];      // This it is used if the user is not connected, or if he is connected and it is not his account.
+    $posts = $_SESSION['userPosts'];     // All the posts of the user.
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];
@@ -97,24 +98,29 @@
                 <?php } ?>
         
                 <div class="col-8 mt-5">
-                    
-                    <div class="card mb-5">
-                        <div class="d-flex flex-row mx-2 mt-2">
-                            <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
-                            <h5 class="mx-1 mt-2"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                    <?php foreach($posts as $post){ 
+                            // if($post->getIdUser() === $connectedUser->getID()){
+                    ?>
+                        <div class="card mb-5">
+                            <div class="d-flex flex-row mx-2 mt-2">
+                                <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
+                                <h5 class="mx-1 mt-2"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                            </div>
+                            <hr>
+                            <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text"><?= $post->getContent(); ?></p>
+                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-row mx-2 mb-2">
+                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
+                                <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                            </div>
                         </div>
-                        <hr>
-                        <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                        </div>
-                        <hr>
-                        <div class="d-flex flex-row mx-2 mb-2">
-                            <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
-                            <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
-                        </div>
-                    </div>
+                    <?php   }
+                        // } 
+                    ?>
                     <!-- <div class="card mb-5">
                         <img src="https://picsum.photos/1920/1080?random=8" class="card-img-top" alt="...">
                         <div class="card-body">
