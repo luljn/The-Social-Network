@@ -104,7 +104,7 @@
                         <div class="card mb-5">
                             <div class="d-flex flex-row mx-2 mt-2">
                                 <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
-                                <h5 class="mx-1 mt-2"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>
                             <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
