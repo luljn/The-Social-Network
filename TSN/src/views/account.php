@@ -98,8 +98,8 @@
                 <?php } ?>
         
                 <div class="col-8 mt-5">
-                    <?php foreach($posts as $post){ 
-                            // if($post->getIdUser() === $connectedUser->getID()){
+                    <?php 
+                        foreach($posts as $post){ 
                     ?>
                         <div class="card mb-5">
                             <div class="d-flex flex-row mx-2 mt-2">
@@ -118,41 +118,9 @@
                                 <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
                             </div>
                         </div>
-                    <?php   }
-                        // } 
+                    <?php   
+                            }
                     ?>
-                    <!-- <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=8" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div> -->
-                    <!-- <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=17" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div> -->
-                    <!-- <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=56" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div> -->
-                    <!-- <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=67" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col-2 mt-5">
                     <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">

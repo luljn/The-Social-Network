@@ -18,8 +18,8 @@ class Account {
 
         $this->account = new ModelAccount;
         $user = $this->account->getUser($userId);
-        (new Post)->getUserPosts($userId);
-        $_SESSION['otherUser'] = $user;  // We define a new user, to make a difference with the current connected user.
+        (new Post)->getUserPosts($userId);  // We retrieve all the posts associated to the user account.
+        $_SESSION['otherUser'] = $user;    // We define a new user, to make a difference with the current connected user.
         require('./src/views/account.php');
     }
 }
