@@ -59,7 +59,17 @@ class PostManagment {
         if($result !== NULL){
 
             for ($i = 0; $i < count($result); $i++) {
-                $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $result[$i]['id_utilisateur'], '');
+
+                if($result['image'] == NULL){
+
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $result[$i]['id_utilisateur'], '');
+                }
+
+                else{
+
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $result[$i]['id_utilisateur'], $result[$i]['image']);
+                }
+
                 $Posts[] = $userPost;
             }
         }
