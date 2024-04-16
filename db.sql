@@ -89,5 +89,6 @@ VALUES
 
 INSERT INTO post (id_utilisateur, contenu, date_creation)
 VALUES
-(1, 'Ceci est mon premier post', '2024-04-12')
+(1, 'Ceci est mon premier post', '2024-04-12'),
+(2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16')
 ;
