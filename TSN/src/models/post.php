@@ -14,9 +14,8 @@ class Post {
     private int $id;
     private string $content;
     private string $creationDate;
-    // private int $idUser;
     private string $image;
-    private User $user;
+    private User $user;    // The user who made the post.
 
     public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image){
         
@@ -49,7 +48,7 @@ class PostManagment {
         $this->databaseConnection = new DatabaseConnection;
     }
 
-    public function getPostsByUser(int $idUser){
+    public function getPostsByUser(int $idUser){    // To retrieve all the posts made by a user.
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "SELECT * from post WHERE id_utilisateur = '{$idUser}';";
