@@ -39,6 +39,12 @@
                             </div>
                         </div>
                     </div>
+                <?php } 
+                      else {
+                ?>
+                    <div class="col-1 offset-1">
+                        <div class="card"></div>
+                    </div>        
                 <?php } ?>
                 <div class="col-8 mt-5">
                     <?php 
@@ -53,7 +59,6 @@
                             <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><?= $post->getContent(); ?></p>
-                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                             <hr>
                             <div class="d-flex flex-row mx-2 mb-2">
