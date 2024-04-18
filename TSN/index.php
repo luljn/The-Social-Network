@@ -43,7 +43,7 @@ try {
 
 
                 (new Signup)->executeSignup($_POST['email'], $_POST['mdp'], $_POST['nom'], 
-                                            $_POST['prenom'], $_POST['birthday'], $_POST['address'], 0);
+                                            $_POST['prenom'], $_POST['birthday'], $_POST['address'], 0, 0);
             }
         }
 

@@ -14,7 +14,7 @@ class Signup {
 
     private DatabaseConnection $databaseConnection;
 
-    public function addUser($email, $password, $name, $surname, $birthday, $address, $admin){
+    public function addUser($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement){
 
         $this->databaseConnection = new DatabaseConnection;
 
@@ -24,12 +24,14 @@ class Signup {
         $result_1 = $query_1->fetch();
         $query_1->closeCursor();
 
+        $wasAlreadyUser = 0;   // This variable is used to determine if the email used for the registration is already link to an account.
+
         if($result_1['email'] === 0){
 
             $mdp = password_hash($password, PASSWORD_DEFAULT);
 
-            $statement_2 = "INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin)
-                            VALUES ('{$email}', '{$mdp}', '{$name}', '{$surname}', '{$birthday}', '{$address}', '{$admin}');";
+            $statement_2 = "INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement)
+                            VALUES ('{$email}', '{$mdp}', '{$name}', '{$surname}', '{$birthday}', '{$address}', '{$admin}', '{$statutBannissement}');";
 
             $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
             $query_2->execute();
@@ -38,7 +40,9 @@ class Signup {
 
         elseif($result_1['email'] === 1){
 
-            header("location: http://localhost:4000/index.php?action=signupError");
+            $wasAlreadyUser = 1;
         }
+
+        return $wasAlreadyUser;
     }
 }

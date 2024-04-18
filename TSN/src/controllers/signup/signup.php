@@ -19,11 +19,19 @@ class Signup {
         require("./src/views/signup.php");
     }
 
-    public function executeSignup($email, $password, $name, $surname, $birthday, $address, $admin){
+    public function executeSignup($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement){
 
         $this->signup = new ModelSignup();
-        $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin);
+        $wasAlreadyUser = $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement);
 
-        (new Login)->executeLogin($email, $password);
+        if($wasAlreadyUser === 0){
+
+            (new Login)->executeLogin($email, $password);
+        }
+        
+        else{
+            
+            header("location: http://localhost:4000/index.php?action=signupError");
+        }
     }
 }

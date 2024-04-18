@@ -107,7 +107,7 @@
                                 <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>
-                            <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
+                            <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text"><?= $post->getContent(); ?></p>
                                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
@@ -122,50 +122,53 @@
                             }
                     ?>
                 </div>
-                <div class="col-2 mt-5">
-                    <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="5000">
-                                <div class="card d-block w-100">
+
+                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
+                    <div class="col-2 mt-5">
+                        <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="5000">
+                                    <div class="card d-block w-100">
+                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-5 text-center">Jackson Follay</h5>
+                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <div class="card d-block w-100">
+                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-5 text-center">Abram Sanders</h5>
+                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="5000">
+                                    <div class="card d-block w-100">
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">Jackson Follay</h5>
-                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                        <p class="text-center text-primary fw-bold">Followed</p>
+                                            <h5 class="card-title fs-5 text-center">Jessica Monroe</h5>
+                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
+                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                                <div class="card d-block w-100">
-                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">Abram Sanders</h5>
-                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                        <p class="text-center text-primary fw-bold">Followed</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item" data-bs-interval="5000">
-                                <div class="card d-block w-100">
-                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                        <h5 class="card-title fs-5 text-center">Jessica Monroe</h5>
-                                        <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                        <p class="text-center text-primary fw-bold">Followed</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
-                </div>
+                <?php } ?>
             </div>                      
         </div>
     </section>
