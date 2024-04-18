@@ -6,7 +6,6 @@ namespace TSN\src\controllers\post;
 require_once("./src/models/post.php");
 use TSN\src\models\post\PostManagment as ModelPostManagment;
 
-// $user = $_SESSION["user"];
 
 class Post {
 
