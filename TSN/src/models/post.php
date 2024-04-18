@@ -99,12 +99,58 @@ class PostManagment {
         }
 
         $_SESSION['userPosts'] = $Posts;
-        // return $Posts;
     }
 
 
-    public function getRandomPosts(){
+    public function getRandomPosts(){   // To get random post, to display on the home screen.
 
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "SELECT * from post LIMIT 5;";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        $RandomPosts = [];  // The list of random posts retrieved.
+        $Users = [];       // The users who made the posts.
+
+        for ($i = 0; $i < count($result); $i++){  // To retrieve all the authors of posts.
+
+            $idUser = $result[$i]['id_utilisateur'];
+            $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+            $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
+            $query_1->execute();
+            $result_1 = $query_1->fetch();
+            $query_1->closeCursor();
+
+            $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '');
+
+            $Users[] = $user;   // We add the user to the list.
+        }
         
+
+        for ($i = 0; $i < count($result); $i++){     // To associate a post tho his author.
+
+            foreach($Users as $ramdomUser){
+
+                if($result[$i]['id_utilisateur'] === $ramdomUser->getID()){
+
+                    if($result[$i]['image'] == NULL){
+
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '');
+                    }
+    
+                    else{
+    
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image']);
+                    }
+                    
+                    $RandomPosts[] = $userPost;
+                }
+            }
+        }
+
+        $_SESSION['ramdomPosts'] = $RandomPosts;
     }
 }

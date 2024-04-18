@@ -8,6 +8,7 @@
 
 <?php 
     ob_start();
+    $randomPosts = $_SESSION['ramdomPosts'];
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];
@@ -40,46 +41,29 @@
                     </div>
                 <?php } ?>
                 <div class="col-8 mt-5">
-                    <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <?php 
+                        foreach($randomPosts as $post){ 
+                    ?>
+                        <div class="card mb-5">
+                            <div class="d-flex flex-row mx-2 mt-2">
+                                <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
+                                <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                            </div>
+                            <hr>
+                            <img src="https://picsum.photos/1920/1080?random=2" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text"><?= $post->getContent(); ?></p>
+                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            </div>
+                            <hr>
+                            <div class="d-flex flex-row mx-2 mb-2">
+                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
+                                <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=8" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=17" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=56" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card mb-5">
-                        <img src="https://picsum.photos/1920/1080?random=67" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+                    <?php   
+                            }
+                    ?>
                 </div>
                 <div class="col-2 mt-5">
                     <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">

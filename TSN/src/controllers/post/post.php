@@ -24,5 +24,7 @@ class Post {
 
     public function getPosts(){
         
+        $this->postManagment = new ModelPostManagment();
+        $this->postManagment->getRandomPosts();
     }
 }
