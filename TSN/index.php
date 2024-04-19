@@ -18,6 +18,9 @@ use TSN\src\controllers\account\Account as Account;
 require_once("src/controllers/profile/profile.php");
 use TSN\src\controllers\profile\Profile as Profile;
 
+require_once("src/controllers/user/user.php");
+use TSN\src\controllers\user\User as User;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -98,6 +101,15 @@ try {
         elseif($_GET['action'] === 'myProfile'){
             
             (new Profile)->getUserProfile();  // We return the User profile page.
+        }
+
+        elseif($_GET['action'] === 'updatePersonnalInformations'){    // To update the personnal informations of the user.
+            
+            if(isset($_POST['email']) && isset($_POST['nom']) && isset($_POST['prenom']) 
+               && isset($_POST['address'])){
+            
+                (new User)->updateUserInformations($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['address']);     
+            }
         }
 
         else{

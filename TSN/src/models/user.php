@@ -55,18 +55,54 @@ class User {
 
 class UserModification {  // This class is used to modify the user informations in the database.
 
-    private DatabaseConnection $databaseConnection;
+    private DatabaseConnection $databaseConnection; 
 
-    public function updatePersonnalInformations(string $email, string $name, string $surname, string $address){
+    public function updatePersonnalInformations($email, $name, $surname, $address){
+
+        $this->databaseConnection = new DatabaseConnection;
+        $user = $_SESSION['user'];
+        $idUser = $user->getID();            // The Id of the connected user.
+        $statement = "UPDATE utilisateur 
+                      SET email = '{$email}', nom = '{$name}', 
+                      prenom = '{$surname}', adresse = '{$address}'
+                      WHERE id = '{$idUser}';";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+
+        // We update the user informations to display it on the UI.
+        $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+        $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
+        $query_1->execute();
+        $result_1 = $query_1->fetch();
+        $query_1->closeCursor();
+
+        if($result_1['profile_photo'] == NULL){
+
+            $userUpdated = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '');
+        }
+
+        else{
+
+            $userUpdated = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo']);
+        }
+
+        $_SESSION['user'] = $userUpdated;
+    }
+
+    public function updateBirthday($birthday){
+
 
     }
 
-    public function updatePassword(string $password){
+    public function updatePassword($password){
 
 
     }
 
-    public function updateProfilePhoto(string $photo){
+    public function updateProfilePhoto($photo){
 
         
     }
