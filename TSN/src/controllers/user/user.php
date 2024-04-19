@@ -21,4 +21,12 @@ class User {
 
         header("location: http://localhost:4000/index.php?action=myProfile");
     }
+
+    public function updateUserBirthday($birthday){
+
+        $this->userModification = new ModelUserModification;
+        $this->userModification->updateBirthday($birthday);
+
+        header("location: http://localhost:4000/index.php?action=myProfile");
+    }
 }

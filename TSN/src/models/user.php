@@ -76,7 +76,18 @@ class UserModification {  // This class is used to modify the user informations 
 
     public function updateBirthday($birthday){
 
+        $this->databaseConnection = new DatabaseConnection;
+        $user = $_SESSION['user'];
+        $idUser = $user->getID();            // The Id of the connected user.
+        $statement = "UPDATE utilisateur 
+                      SET date_de_naissance = '{$birthday}'
+                      WHERE id = '{$idUser}';";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
 
+        // We update the user informations to display it on the UI.
+        $_SESSION['user'] = $this->updateUser($idUser);
     }
 
     public function updatePassword($password){

@@ -112,6 +112,14 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'updateBirthday'){    // To update the birthday of the user.
+            
+            if(isset($_POST['birthday'])){
+            
+                (new User)->updateUserBirthday($_POST['birthday']);     
+            }
+        }
+
         else{
 
             throw new Exception("Oups, la page que vous cherchez n'existe pas.");

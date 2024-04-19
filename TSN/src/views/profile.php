@@ -99,7 +99,7 @@
 
                     <div class="modal fade" id="userBirthdayModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form method="POST">
+                            <form action="index.php?action=updateBirthday" method="POST">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Date de naissance</h1>
