@@ -71,25 +71,7 @@ class UserModification {  // This class is used to modify the user informations 
         $query->closeCursor();
 
         // We update the user informations to display it on the UI.
-        $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
-        $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
-        $query_1->execute();
-        $result_1 = $query_1->fetch();
-        $query_1->closeCursor();
-
-        if($result_1['profile_photo'] == NULL){
-
-            $userUpdated = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
-                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '');
-        }
-
-        else{
-
-            $userUpdated = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
-                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo']);
-        }
-
-        $_SESSION['user'] = $userUpdated;
+        $_SESSION['user'] = $this->updateUser($idUser);
     }
 
     public function updateBirthday($birthday){
@@ -105,5 +87,29 @@ class UserModification {  // This class is used to modify the user informations 
     public function updateProfilePhoto($photo){
 
         
+    }
+
+    public function updateUser($idUser){          // To update the informations about the user in the application.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+        $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
+        $query_1->execute();
+        $result_1 = $query_1->fetch();
+        $query_1->closeCursor();
+
+        if($result_1['profile_photo'] == NULL){
+
+            $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '');
+        }
+
+        else{
+
+            $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo']);
+        }
+
+        return $user;
     }
 }
