@@ -34,10 +34,10 @@
                             <?php } ?>
                             <div class="card-body">
                                 <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
-                                <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
+                                <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
                                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] && $_GET['userId'] == $connectedUser->getID()){ ?>
                                     <div class="text-center">
-                                        <a href="index.php?action=myProfile" class="btn btn-primary">Mon profil</a>
+                                        <a href="index.php?action=myProfile" class="btn btn-primary mt-5">Mon profil</a>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -91,7 +91,7 @@
                         <?php } ?>
                         <div class="card-body">
                             <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
-                            <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p>
+                            <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
                         </div>
                     </div>
                 </div>
@@ -136,8 +136,8 @@
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">Jackson Follay</h5>
-                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
+                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
                                         </div>
                                     </div>
                                 </div>
@@ -146,8 +146,8 @@
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">Abram Sanders</h5>
-                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
+                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
                                         </div>
                                     </div>
                                 </div>
@@ -156,8 +156,8 @@
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">Jessica Monroe</h5>
-                                            <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p>
-                                            <p class="text-center text-primary fw-bold">Followed</p>
+                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
+                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
                                         </div>
                                     </div>
                                 </div>
