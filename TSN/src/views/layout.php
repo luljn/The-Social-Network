@@ -39,6 +39,7 @@
         </script>
         <script src="../../dynamic/tooltip.js"></script>
         <script src="../../dynamic/togglePassword.js"></script>
+        <script src="../../dynamic/newPasswordCheck.js"></script>
 
     </body>
 

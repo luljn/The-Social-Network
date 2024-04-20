@@ -90,9 +90,31 @@ class UserModification {  // This class is used to modify the user informations 
         $_SESSION['user'] = $this->updateUser($idUser);
     }
 
-    public function updatePassword($password){
+    public function updatePassword($previousPassword, $password){
 
+        $this->databaseConnection = new DatabaseConnection;
+        $user = $_SESSION['user'];
+        $idUser = $user->getID();            // The Id of the connected user.
 
+        $statement_1 = "SELECT mdp AS password from utilisateur WHERE id = '{$idUser}';";
+        $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
+        $query_1->execute();
+        $result_1 = $query_1->fetch();
+        $query_1->closeCursor();
+
+        if(password_verify($previousPassword, $result_1['password'])){
+
+            $mdp = password_hash($password, PASSWORD_DEFAULT);
+            $statement = "UPDATE utilisateur 
+                          SET mdp = '{$mdp}'
+                          WHERE id = '{$idUser}';";
+            $query = $this->databaseConnection->getConnection()->prepare($statement);
+            $query->execute();
+            $query->closeCursor();
+
+            // We update the user informations to display it on the UI.
+            $_SESSION['user'] = $this->updateUser($idUser);
+        }
     }
 
     public function updateProfilePhoto($photo){

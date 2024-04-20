@@ -125,7 +125,7 @@
                     <!-- User password form modal -->
                     <div class="modal fade" id="userPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form method="POST">
+                            <form action="index.php?action=updatePassword" method="POST">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Mot de passe</h1>
@@ -133,6 +133,7 @@
                                     </div>
                                     <div class="modal-body">
                                         
+                                            <div class="mb-3 fs-5 fw-bold text-danger" id="messageMdp"></div>
                                             <div class="mb-3">
                                                 <label for="mdp" class="form-label">Mot de passe actuel</label>
                                                 <input type="text" class="form-control" name="mdp" id="mdp" required>
@@ -145,6 +146,11 @@
                                                 <label for="nouveauMdp2" class="form-label">Confirmer le nouveau mot de passe</label>
                                                 <input type="text" class="form-control" name="nouveauMdp2" id="nouveauMdp2" required>
                                             </div>
+                                            <!-- <div class="mb-3">
+                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                    <i class="bi bi-eye"></i><span> Afficher le mot de passe</span>
+                                                </button>
+                                            </div> -->
                                         
                                     </div>
                                     <div class="modal-footer">

@@ -120,6 +120,14 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'updatePassword'){    // To update the password of the user.
+            
+            if(isset($_POST['nouveauMdp1'])){
+            
+                (new User)->updateUserPassword($_POST['mdp'], $_POST['nouveauMdp1']);     
+            }
+        }
+
         else{
 
             throw new Exception("Oups, la page que vous cherchez n'existe pas.");

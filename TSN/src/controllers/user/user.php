@@ -29,4 +29,12 @@ class User {
 
         header("location: http://localhost:4000/index.php?action=myProfile");
     }
+
+    public function updateUserPassword($previousPassword, $password){
+
+        $this->userModification = new ModelUserModification;
+        $this->userModification->updatePassword($previousPassword, $password);
+
+        header("location: http://localhost:4000/index.php?action=myProfile");
+    }
 }
