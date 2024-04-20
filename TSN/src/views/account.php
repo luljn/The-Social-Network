@@ -103,10 +103,10 @@
                     ?>
                         <div class="card mb-5">
                             <div class="d-flex flex-row mx-2 mt-2">
-                            <?php if($user->getPhoto() == ''){ ?>
-                                <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
+                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
                             <?php } else {?>
-                                <img src="../../img/users/<?= $user->getPhoto()?>" width="50" height="50">
+                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
                             <?php } ?>
                                 <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
