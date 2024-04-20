@@ -115,6 +115,8 @@ class UserModification {  // This class is used to modify the user informations 
             // We update the user informations to display it on the UI.
             $_SESSION['user'] = $this->updateUser($idUser);
         }
+
+        // Currently, we don't manage the case in which the user enter an incorrect current password.
     }
 
     public function updateProfilePhoto($photo){
