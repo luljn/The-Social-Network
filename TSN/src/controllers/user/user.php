@@ -37,4 +37,12 @@ class User {
 
         header("location: http://localhost:4000/index.php?action=myProfile");
     }
+
+    public function updateUserProfilePhoto($profile_photo){
+
+        $this->userModification = new ModelUserModification;
+        $this->userModification->updateProfilePhoto($profile_photo);
+
+        header("location: http://localhost:4000/index.php?action=myProfile");
+    }
 }

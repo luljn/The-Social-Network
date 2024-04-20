@@ -119,9 +119,20 @@ class UserModification {  // This class is used to modify the user informations 
         // Currently, we don't manage the case in which the user enter an incorrect current password.
     }
 
-    public function updateProfilePhoto($photo){
+    public function updateProfilePhoto($profile_photo){
 
-        
+        $this->databaseConnection = new DatabaseConnection;
+        $user = $_SESSION['user'];
+        $idUser = $user->getID();            // The Id of the connected user.
+        $statement = "UPDATE utilisateur 
+                      SET profile_photo = '{$profile_photo}'
+                      WHERE id = '{$idUser}';";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+
+        // We update the user informations to display it on the UI.
+        $_SESSION['user'] = $this->updateUser($idUser);
     }
 
     public function updateUser($idUser){          // To update the informations about the user in the application.

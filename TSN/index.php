@@ -128,6 +128,22 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'updateProfilePhoto'){    // To update the profile photo of the user.
+            
+            if(isset($_FILES['profilePhoto'])){
+
+                $file = $_FILES['profilePhoto'];
+                $tempName = $file["tmp_name"];
+                $fileName = basename($file['name']);            // We get the file name.
+                $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);   // We get the file extension.
+                $uploadDir = "img/users/";                // The images directory.
+
+                move_uploaded_file($tempName, $uploadDir . $fileName);
+            
+                (new User)->updateUserProfilePhoto($fileName);     
+            }
+        }
+
         else{
 
             throw new Exception("Oups, la page que vous cherchez n'existe pas.");

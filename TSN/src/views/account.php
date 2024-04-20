@@ -30,7 +30,7 @@
                                 } 
                                 else {
                             ?>
-                                <img src="<?= $connectedUser->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
+                                <img src="../../img/users/<?= $connectedUser->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                             <?php } ?>
                             <div class="card-body">
                                 <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
@@ -87,7 +87,7 @@
                               } 
                               elseif(isset($user) && $user->getPhoto() != ''){
                         ?>
-                            <img src=<?= $user->getPhoto() ?> class="card-img-top img-fluid" alt="photo de profile">
+                            <img src=../../img/users/<?= $user->getPhoto() ?> class="card-img-top img-fluid" alt="photo de profile">
                         <?php } ?>
                         <div class="card-body">
                             <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
@@ -103,7 +103,11 @@
                     ?>
                         <div class="card mb-5">
                             <div class="d-flex flex-row mx-2 mt-2">
+                            <?php if($user->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" alt=""  width="50" height="50">
+                            <?php } else {?>
+                                <img src="../../img/users/<?= $user->getPhoto()?>" width="50" height="50">
+                            <?php } ?>
                                 <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>

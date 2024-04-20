@@ -30,7 +30,7 @@
                                             } 
                                             else {
                                         ?>
-                                            <img src="<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
+                                            <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                                         <?php } ?>
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
@@ -165,7 +165,7 @@
                     <!-- User profile photo update modal -->
                     <div class="modal fade" id="userPhotoModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <form method="POST" enctype="multipart/form-data">
+                            <form action="index.php?action=updateProfilePhoto" method="POST" enctype="multipart/form-data">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Photo de profil</h1>
