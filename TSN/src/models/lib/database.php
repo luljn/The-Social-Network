@@ -7,13 +7,23 @@ class DatabaseConnection {
 
     public ?\PDO $database = null;
     private $localDatabaseAccess = ["mysql:host=localhost;dbname=mbeck_selatchom_database;charset=utf8", "root", ""];
-    private $onlineDatabaseAccess = [];
+    private $onlineDatabaseAccess = ["", "", ""];
+
+    private $useLocalDatabase = True;    // This variable is used to specify which database we use(the local one or the online one).
 
     public function getConnection(): \PDO {
 
         if($this->database === null){
 
-            $this->database = new \PDO($this->localDatabaseAccess[0], $this->localDatabaseAccess[1], $this->localDatabaseAccess[2]);
+            if($this->useLocalDatabase){    // If the site is hosted localy.
+
+                $this->database = new \PDO($this->localDatabaseAccess[0], $this->localDatabaseAccess[1], $this->localDatabaseAccess[2]);
+            }
+
+            else{  // If the site is deployed on internet.
+
+                $this->database = new \PDO($this->onlineDatabaseAccess[0], $this->onlineDatabaseAccess[1], $this->onlineDatabaseAccess[2]);
+            } 
         }
 
         return $this->database;
