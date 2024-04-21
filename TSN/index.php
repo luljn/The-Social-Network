@@ -118,7 +118,7 @@ try {
                 (new Post)->addPostWithImage($idUser, $_POST['newPost'], date('Y-m-d'), $fileName);
             }
 
-            elseif(isset($_POST['newPost'])){       // To add a post without an image.
+            elseif(isset($_POST['newPost']) && (!isset($_FILES['image']))){       // To add a post without an image.
 
                 (new Post)->addPost($idUser, $_POST['newPost'], date('Y-m-d'));
             }

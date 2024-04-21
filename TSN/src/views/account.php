@@ -96,9 +96,41 @@
                     </div>
                 </div>
                 <?php } ?>
-        
+
                 <div class="col-8 mt-5">
-                    <?php 
+
+                    <?php if(empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
+                            && $_GET['userId'] == $connectedUser->getID()){ 
+                    ?>
+                        <div class="card mb-5">
+                            <div class="card-body">
+                                <p class="card-text fs-5">
+                                    Vous n'avez encore fait aucun post 😓, mais vous pouvez en faire un grâce au bouton nouveau post 😉.
+                                </p>
+                            </div>
+                        </div>
+                        
+                    <?php } elseif(empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === false
+                                   || empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === True && $connectedUser->getID() !== $_GET["userId"])
+                    { ?>
+                                
+                                    <div class="card mb-5">
+                                        <div class="card-body">
+                                            <p class="card-text fs-5">
+                                                Cet utilisateur(trice) n'a encore fait aucun post 😓, cette page est donc vide 😭. Y'a rien à voir pour le moment 😥.
+                                            </p>
+                                        </div>
+                                    </div>
+                            
+                    <?php } ?>
+
+
+
+
+
+
+
+                    <?php
                         foreach($posts as $post){ 
                     ?>
                         <div class="card mb-5">

@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS post;
 CREATE TABLE post(
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INTEGER NOT NULL,
-    contenu VARCHAR(255) NOT NULL,
+    contenu LONGTEXT NOT NULL,
     date_creation DATE NOT NULL,
     image VARCHAR(255) NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id)
@@ -35,7 +35,7 @@ CREATE TABLE commentaire(
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INTEGER NOT NULL,
     id_post INTEGER NOT NULL,
-    contenu VARCHAR(255) NOT NULL,
+    contenu LONGTEXT NOT NULL,
     date_creation DATE NOT NULL,
     image VARCHAR(255) NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),

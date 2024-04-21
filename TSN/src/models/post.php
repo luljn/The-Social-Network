@@ -47,7 +47,7 @@ class PostManagment {
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation) 
-                      VALUES ('{$idUser}', '{$content}', '{$date}');";
+                      VALUES ('{$idUser}', \"{$content}\", '{$date}');";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -57,7 +57,7 @@ class PostManagment {
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
-                      VALUES ('{$idUser}', '{$content}', '{$date}', '{$image}');";
+                      VALUES ('{$idUser}', \"{$content}\", '{$date}', \"{$image}\");";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
