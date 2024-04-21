@@ -81,17 +81,19 @@ CREATE TABLE Follow(
 
 -- Data insertion.
 
-INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement)
+INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement, profile_photo)
 VALUES 
-('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0),
-('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0),
-('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0)
+('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0, "Luljn_User_Picture.jpg"),
+('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0, "8-bit City_1920x1080.jpg"),
+('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0, NULL)
 ;
 
-INSERT INTO post (id_utilisateur, contenu, date_creation)
+INSERT INTO post (id_utilisateur, contenu, date_creation, image)
 VALUES
-(1, 'Ceci est mon premier post', '2024-04-12'),
-(2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16')
+(1, 'Ceci est mon premier post', '2024-04-12', NULL),
+(2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16', NULL),
+(3, "Je suis un énorme fan de Hunter X Hunter, et j'espère que l'animé aura une suite très bientôt.", "2024-04-21", "hunter_x_hunter_v2__meruem_e_komugi____icon_folder_by_ubagutobr_d80func.ico"),
+(3, "Je suis un grand fan de mangas et d'animés.", '2024-04-21', NULL)
 ;
 
 INSERT INTO Follow (id_follower, id_following, date_creation)

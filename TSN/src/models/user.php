@@ -63,9 +63,9 @@ class UserModification {  // This class is used to modify the user informations 
         $user = $_SESSION['user'];
         $idUser = $user->getID();            // The Id of the connected user.
         $statement = "UPDATE utilisateur 
-                      SET email = '{$email}', nom = '{$name}', 
-                      prenom = '{$surname}', adresse = '{$address}'
-                      WHERE id = '{$idUser}';";
+                      SET email = \"{$email}\", nom = \"{$name}\", 
+                      prenom = \"{$surname}\", adresse = \"{$address}\"
+                      WHERE id = \"{$idUser}\";";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -80,7 +80,7 @@ class UserModification {  // This class is used to modify the user informations 
         $user = $_SESSION['user'];
         $idUser = $user->getID();            // The Id of the connected user.
         $statement = "UPDATE utilisateur 
-                      SET date_de_naissance = '{$birthday}'
+                      SET date_de_naissance = \"{$birthday}\"
                       WHERE id = '{$idUser}';";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
@@ -96,7 +96,7 @@ class UserModification {  // This class is used to modify the user informations 
         $user = $_SESSION['user'];
         $idUser = $user->getID();            // The Id of the connected user.
 
-        $statement_1 = "SELECT mdp AS password from utilisateur WHERE id = '{$idUser}';";
+        $statement_1 = "SELECT mdp AS password from utilisateur WHERE id = \"{$idUser}\";";
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
         $query_1->execute();
         $result_1 = $query_1->fetch();
@@ -106,8 +106,8 @@ class UserModification {  // This class is used to modify the user informations 
 
             $mdp = password_hash($password, PASSWORD_DEFAULT);
             $statement = "UPDATE utilisateur 
-                          SET mdp = '{$mdp}'
-                          WHERE id = '{$idUser}';";
+                          SET mdp = \"{$mdp}\"
+                          WHERE id = \"{$idUser}\";";
             $query = $this->databaseConnection->getConnection()->prepare($statement);
             $query->execute();
             $query->closeCursor();
@@ -125,8 +125,8 @@ class UserModification {  // This class is used to modify the user informations 
         $user = $_SESSION['user'];
         $idUser = $user->getID();            // The Id of the connected user.
         $statement = "UPDATE utilisateur 
-                      SET profile_photo = '{$profile_photo}'
-                      WHERE id = '{$idUser}';";
+                      SET profile_photo = \"{$profile_photo}\"
+                      WHERE id = \"{$idUser}\";";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -138,7 +138,7 @@ class UserModification {  // This class is used to modify the user informations 
     public function updateUser($idUser){          // To update the informations about the user in the application.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+        $statement_1 = "SELECT * from utilisateur WHERE id = \"{$idUser}\";";
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
         $query_1->execute();
         $result_1 = $query_1->fetch();

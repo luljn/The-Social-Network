@@ -18,7 +18,7 @@ class Signup {
 
         $this->databaseConnection = new DatabaseConnection;
 
-        $statement_1 = "SELECT COUNT(email) AS email from utilisateur WHERE email = '{$email}';";
+        $statement_1 = "SELECT COUNT(email) AS email from utilisateur WHERE email = \"{$email}\";";
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
         $query_1->execute();
         $result_1 = $query_1->fetch();
@@ -31,7 +31,7 @@ class Signup {
             $mdp = password_hash($password, PASSWORD_DEFAULT);
 
             $statement_2 = "INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement)
-                            VALUES ('{$email}', '{$mdp}', '{$name}', '{$surname}', '{$birthday}', '{$address}', '{$admin}', '{$statutBannissement}');";
+                            VALUES (\"{$email}\", \"{$mdp}\", \"{$name}\", \"{$surname}\", \"{$birthday}\", \"{$address}\", \"{$admin}\", \"{$statutBannissement}\");";
 
             $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
             $query_2->execute();

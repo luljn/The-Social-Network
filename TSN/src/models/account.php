@@ -22,7 +22,7 @@ class Account {
 
         try {
 
-            $statement = "SELECT * from utilisateur WHERE id = '{$userId}';";
+            $statement = "SELECT * from utilisateur WHERE id = \"{$userId}\";";
             $query = $this->databaseConnection->getConnection()->prepare($statement);
             $query->execute();
             $result = $query->fetch();

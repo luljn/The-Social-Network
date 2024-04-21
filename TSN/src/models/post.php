@@ -47,7 +47,7 @@ class PostManagment {
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation) 
-                      VALUES ('{$idUser}', \"{$content}\", '{$date}');";
+                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\");";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -57,7 +57,7 @@ class PostManagment {
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
-                      VALUES ('{$idUser}', \"{$content}\", '{$date}', \"{$image}\");";
+                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", \"{$image}\");";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -120,7 +120,7 @@ class PostManagment {
     public function getRandomPosts(){   // To get random post, to display on the home screen.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post LIMIT 3;";
+        $statement = "SELECT * from post LIMIT 4;";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $result = $query->fetchAll();
@@ -150,7 +150,10 @@ class PostManagment {
                                 date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo']);
             }
 
-            $Users[] = $user;   // We add the user to the list.
+            if(!in_array($user, $Users)){
+
+                $Users[] = $user;   // We add the user to the list.
+            }
         }
         
 
@@ -170,7 +173,10 @@ class PostManagment {
                         $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image']);
                     }
                     
-                    $RandomPosts[] = $userPost;
+                    if(!in_array($userPost, $RandomPosts)){
+
+                        $RandomPosts[] = $userPost;
+                    }
                 }
             }
         }

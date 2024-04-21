@@ -18,8 +18,8 @@ class Login {
         
         $this->databaseConnection = new DatabaseConnection;
 
-        $statement_1 = "SELECT COUNT(email) AS email from utilisateur WHERE email = '{$email}';";
-        $statement_2 = "SELECT mdp AS password from utilisateur WHERE email = '{$email}';";
+        $statement_1 = "SELECT COUNT(email) AS email from utilisateur WHERE email = \"{$email}\";";
+        $statement_2 = "SELECT mdp AS password from utilisateur WHERE email = \"{$email}\";";
 
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
         $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
@@ -35,7 +35,7 @@ class Login {
 
         if($result_1['email'] === 1 and password_verify($password, $result_2['password'])){
 
-            $statement = "SELECT * from utilisateur WHERE email = '{$email}';";
+            $statement = "SELECT * from utilisateur WHERE email = \"{$email}\";";
             $query = $this->databaseConnection->getConnection()->prepare($statement);
             $query->execute();
             $result = $query->fetch();
