@@ -21,6 +21,9 @@ use TSN\src\controllers\profile\Profile as Profile;
 require_once("src/controllers/user/user.php");
 use TSN\src\controllers\user\User as User;
 
+require_once("src/controllers/post/post.php");
+use TSN\src\controllers\post\Post as Post;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -98,6 +101,29 @@ try {
             throw new Exception("Oups, l'utilisateur que vous cherchez n'existe pas.");
         }
 
+        elseif($_GET['action'] === 'addPost'){            // If the user wants to add a post.
+
+            $user = $_SESSION['user'];
+            $idUser = $user->getID();
+            
+            if(isset($_FILES['image']) && isset($_POST['newPost'])){    // To add a post with an image.
+
+                $file = $_FILES['image'];
+                $tempName = $file["tmp_name"];
+                $fileName = basename($file['name']);            // We get the file name.
+                $uploadDir = "img/posts/";                // The images directory.
+
+                
+                move_uploaded_file($tempName, $uploadDir . $fileName);
+                (new Post)->addPostWithImage($idUser, $_POST['newPost'], date('Y-m-d'), $fileName);
+            }
+
+            elseif(isset($_POST['newPost'])){       // To add a post without an image.
+
+                (new Post)->addPost($idUser, $_POST['newPost'], date('Y-m-d'));
+            }
+        }
+
         elseif($_GET['action'] === 'myProfile'){
             
             (new Profile)->getUserProfile();  // We return the User profile page.
@@ -135,7 +161,6 @@ try {
                 $file = $_FILES['profilePhoto'];
                 $tempName = $file["tmp_name"];
                 $fileName = basename($file['name']);            // We get the file name.
-                $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);   // We get the file extension.
                 $uploadDir = "img/users/";                // The images directory.
 
                 move_uploaded_file($tempName, $uploadDir . $fileName);

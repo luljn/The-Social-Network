@@ -51,7 +51,7 @@
                         <!-- User new post form modal -->
                         <div class="modal fade" id="userNewPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <form method="POST" enctype="multipart/form-data">
+                                <form action="index.php?action=addPost" method="POST" enctype="multipart/form-data">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Nouveau post</h1>
@@ -111,7 +111,11 @@
                                 <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>
-                            <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="...">
+                            <?php if($post->getImage() == ''){ ?>
+                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                            <?php } else {?>
+                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top" alt="...">
+                            <?php } ?>
                             <div class="card-body">
                                 <p class="card-text"><?= $post->getContent(); ?></p>
                                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->

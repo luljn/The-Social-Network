@@ -43,9 +43,24 @@ class PostManagment {
 
     private DatabaseConnection $databaseConnection;
 
-    public function getPost(int $id){
+    public function addPost($idUser, $content, $date){            // To add a post without an image.
 
         $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation) 
+                      VALUES ('{$idUser}', '{$content}', '{$date}');";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
+    public function addPostWithImage($idUser, $content, $date, $image){    // To add a post with an image.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
+                      VALUES ('{$idUser}', '{$content}', '{$date}', '{$image}');";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
     }
 
     public function getPostsByUser(int $idUser){    // To retrieve all the posts made by a user.
@@ -105,7 +120,7 @@ class PostManagment {
     public function getRandomPosts(){   // To get random post, to display on the home screen.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post LIMIT 5;";
+        $statement = "SELECT * from post LIMIT 3;";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $result = $query->fetchAll();

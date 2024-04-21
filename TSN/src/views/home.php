@@ -60,7 +60,11 @@
                                 <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>
-                            <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="...">
+                            <?php if($post->getImage() == ''){ ?>
+                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                            <?php } else {?>
+                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top" alt="...">
+                            <?php } ?>
                             <div class="card-body">
                                 <p class="card-text"><?= $post->getContent(); ?></p>
                             </div>
