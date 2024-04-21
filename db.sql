@@ -84,11 +84,18 @@ CREATE TABLE Follow(
 INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement)
 VALUES 
 ('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0),
-('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0)
+('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0),
+('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0)
 ;
 
 INSERT INTO post (id_utilisateur, contenu, date_creation)
 VALUES
 (1, 'Ceci est mon premier post', '2024-04-12'),
 (2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16')
+;
+
+INSERT INTO Follow (id_follower, id_following, date_creation)
+VALUES
+(1, 2, '2024-04-21'),
+(1, 3, '2024-04-21')
 ;
