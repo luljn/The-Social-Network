@@ -31,7 +31,9 @@
                                     <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                             <?php } ?>
                             <div class="card-body">
-                                <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">
+                                    <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                </a>
                                 <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
                                 <div class="text-center">
                                     <a href="index.php?action=myProfile" class="btn btn-primary mt-5">Mon profil</a>
@@ -57,7 +59,9 @@
                             <?php } else {?>
                                 <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
                             <?php } ?>
-                                <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
+                                    <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                </a>
                             </div>
                             <hr>
                             <?php if($post->getImage() == ''){ ?>
@@ -66,7 +70,7 @@
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top" alt="...">
                             <?php } ?>
                             <div class="card-body">
-                                <p class="card-text"><?= $post->getContent(); ?></p>
+                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
                             </div>
                             <hr>
                             <div class="d-flex flex-row mx-2 mb-2">

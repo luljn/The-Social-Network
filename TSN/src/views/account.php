@@ -33,7 +33,7 @@
                                 <img src="../../img/users/<?= $connectedUser->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
                             <?php } ?>
                             <div class="card-body">
-                                <h5 class="card-title fs-5 text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
+                                <h5 class="card-title fs-5 fw-bold text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
                                 <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
                                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] && $_GET['userId'] == $connectedUser->getID()){ ?>
                                     <div class="text-center">
@@ -90,7 +90,7 @@
                             <img src=../../img/users/<?= $user->getPhoto() ?> class="card-img-top img-fluid" alt="photo de profile">
                         <?php } ?>
                         <div class="card-body">
-                            <h5 class="card-title fs-5 text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                            <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
                             <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                             <?php } else {?>
                                 <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
                             <?php } ?>
-                                <h5 class="mx-1 mt-2"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
                             <hr>
                             <?php if($post->getImage() == ''){ ?>
@@ -117,7 +117,7 @@
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top" alt="...">
                             <?php } ?>
                             <div class="card-body">
-                                <p class="card-text"><?= $post->getContent(); ?></p>
+                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
                                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                             <hr>
