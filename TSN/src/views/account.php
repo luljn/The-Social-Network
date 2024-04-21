@@ -87,7 +87,7 @@
                               } 
                               elseif(isset($user) && $user->getPhoto() != ''){
                         ?>
-                            <img src=../../img/users/<?= $user->getPhoto() ?> class="card-img-top img-fluid" alt="photo de profile">
+                            <img src="../../img/users/<?= $user->getPhoto() ?>" class="card-img-top img-fluid" alt="photo de profile">
                         <?php } ?>
                         <div class="card-body">
                             <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
