@@ -67,16 +67,18 @@
                             <?php if($post->getImage() == ''){ ?>
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
-                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top" alt="...">
+                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
                             </div>
-                            <hr>
-                            <div class="d-flex flex-row mx-2 mb-2">
-                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
-                                <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
-                            </div>
+                            <?php if(isset($isConnected) && $isConnected){ ?>
+                                <hr>
+                                <div class="d-flex flex-row mx-2 mb-2">
+                                    <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
+                                    <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                                </div>
+                            <?php } ?>
                         </div>
                     <?php   
                             }
