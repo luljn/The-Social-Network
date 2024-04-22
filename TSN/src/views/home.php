@@ -21,7 +21,7 @@
             <div class="row">
                 <?php if(isset($isConnected) && $isConnected){ ?>
                     <div class="col-2">
-                        <div class="card mt-5 position-sticky" style="top: 97px;">
+                        <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if($user->getPhoto() == ''){ ?>
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
                             <?php 
@@ -52,7 +52,7 @@
                     <?php 
                         foreach($randomPosts as $post){ 
                     ?>
-                        <div class="card mb-5">
+                        <div class="card mb-5 border border-2 border-primary">
                             <div class="d-flex flex-row mx-2 mt-2">
                             <?php if($post->getUser()->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" width="50" height="50">
@@ -63,7 +63,7 @@
                                     <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                                 </a>
                             </div>
-                            <hr>
+                            <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
@@ -73,7 +73,7 @@
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
                             </div>
                             <?php if(isset($isConnected) && $isConnected){ ?>
-                                <hr>
+                                <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
                                     <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
                                     <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
@@ -86,10 +86,11 @@
                 </div>
                 <?php if(isset($isConnected) && $isConnected){ ?>
                     <div class="col-2 mt-5">
-                        <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">
+                        <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Connaissez-vous ?</h5>
+                        <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
+                                    <div class="card d-block w-100 border-2 border-secondary">
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">John DOE</h5>
@@ -101,7 +102,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
+                                    <div class="card d-block w-100 border-2 border-secondary">
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">Jane DOE</h5>
@@ -113,7 +114,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
+                                    <div class="card d-block w-100 border-2 border-secondary">
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                     <div class="card-body">
                                             <h5 class="card-title fs-5 text-center">Marc DOE</h5>

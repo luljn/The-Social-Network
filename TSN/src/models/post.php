@@ -120,7 +120,7 @@ class PostManagment {
     public function getRandomPosts(){   // To get random post, to display on the home screen.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post LIMIT 4;";
+        $statement = "SELECT * from post;";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $result = $query->fetchAll();

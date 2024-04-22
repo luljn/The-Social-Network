@@ -31,7 +31,7 @@
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                          && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user ?>
                     <div class="col-2">
-                        <div class="card mt-5 position-sticky d-flex flex-column" style="top: 97px;">
+                        <div class="card mt-5 border border-2 border-secondary position-sticky d-flex flex-column" style="top: 150px;">
                             <?php if($connectedUser->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
                             <?php 
@@ -50,8 +50,8 @@
                                 <?php } ?>
                             </div>
                         </div>
-                        <div class="mt-2 position-fixed text-center">
-                            <button type="button" class="btn btn-primary btn-block justify-content-center" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
+                        <div class="mt-5 position-fixed text-center">
+                            <button type="button" class="btn btn-primary btn-block justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
                                 <i class="bi bi-plus-circle"></i>
                                 Nouveau post 
                             </button>
@@ -88,7 +88,7 @@
                       else{  
                 ?>
                 <div class="col-2">
-                    <div class="card mt-5 position-sticky" style="top: 97px;">
+                    <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                         <?php if(isset($user) && $user->getPhoto() == ''){ ?>
                             <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
                         <?php 
@@ -110,7 +110,7 @@
                     <?php if(empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                             && $_GET['userId'] == $connectedUser->getID()){ 
                     ?>
-                        <div class="card mb-5">
+                        <div class="card mb-5 border-2 border-secondary">
                             <div class="card-body">
                                 <p class="card-text fs-5">
                                     Vous n'avez encore fait aucun post 😓, mais vous pouvez en faire un grâce au bouton nouveau post 😉.
@@ -122,20 +122,20 @@
                                    || empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === True && $connectedUser->getID() !== $_GET["userId"])
                     { ?>
                                 
-                                    <div class="card mb-5">
-                                        <div class="card-body">
-                                            <p class="card-text fs-5">
-                                                Cet utilisateur(trice) n'a encore fait aucun post 😓, cette page est donc vide 😭. Y'a rien à voir pour le moment 😥.
-                                            </p>
-                                        </div>
-                                    </div>
+                        <div class="card mb-5 border-2 border-secondary">
+                            <div class="card-body">
+                                <p class="card-text fs-5">
+                                    Cet utilisateur(trice) n'a encore fait aucun post 😓, cette page est donc vide 😭. Y'a rien à voir pour le moment 😥.
+                                </p>
+                            </div>
+                        </div>
                             
                     <?php } ?>
 
                     <?php
                         foreach($posts as $post){ 
                     ?>
-                        <div class="card mb-5">
+                        <div class="card mb-5 border border-2 border-primary">
                             <div class="d-flex flex-row mx-2 mt-2">
                             <?php if($post->getUser()->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" width="50" height="50">
@@ -144,7 +144,7 @@
                             <?php } ?>
                                 <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                             </div>
-                            <hr>
+                            <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
@@ -155,7 +155,7 @@
                                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
-                                <hr>
+                                <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
                                     <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
                                     <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
@@ -169,39 +169,68 @@
 
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                     <div class="col-2 mt-5">
-                        <?php if(!empty($followings)){ ?>
-                        <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
-                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
-                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                        <?php if(!empty($followings)){ // If the user has at least one following. ?>
+                            <?php if($connectedUser->getID() == $_GET["userId"]){ ?>
+                                <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px">Vos followings</h5>
+                            <?php } else { ?>
+                                <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px">followings</h5>
+                            <?php } ?>
+                            <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="5000">
+                                        <div class="card d-block w-100 border-2 border-secondary">
+                                            <?php if($firstFollowing->getUser()->getPhoto() == ''){ ?>
+                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                            <?php } else { ?>
+                                                <img src="../../img/users/<?= $firstFollowing->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
+                                            <?php } ?>
+                                            <div class="card-body">
+                                                <h5 class="card-title fs-5 text-center"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
+                                                <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php foreach($followings as $following) { ?>
-                                <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
-                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
-                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                                    <?php foreach($followings as $following) { ?>
+                                        <div class="carousel-item" data-bs-interval="5000">
+                                            <div class="card d-block w-100 border-2 border-secondary">
+                                            <?php if($following->getUser()->getPhoto() == ''){ ?>
+                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                            <?php } else { ?>
+                                                <img src="../../img/users/<?= $following->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
+                                            <?php } ?>
+                                                <div class="card-body">
+                                                    <h5 class="card-title fs-5 text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
+                                                    <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
-                                <?php } ?>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                        <?php } else if($_GET['userId'] == $connectedUser->getID()) { ?> 
+                            <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
+                                <div class="card-body">
+                                    <p class="text-center text-dark fs-5 mt-5">
+                                        Vous n'avez encore aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
+                                    </p>
+                                </div>
+                            </div>
+                        <?php } else { ?>
+                            <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
+                                <div class="card-body">
+                                    <p class="text-center text-dark fs-5 mt-5">
+                                        Cet utilisateur(trice) n'a encore aucun following 😓.
+                                    </p>
+                                </div>
+                            </div>        
                         <?php } ?>
                     </div>
                 <?php } ?>
