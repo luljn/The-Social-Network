@@ -93,7 +93,9 @@ VALUES
 (1, 'Ceci est mon premier post', '2024-04-12', NULL),
 (2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16', NULL),
 (3, "Je suis un énorme fan de Hunter X Hunter, et j'espère que l'animé aura une suite très bientôt.", "2024-04-21", "hunter_x_hunter_v2__meruem_e_komugi____icon_folder_by_ubagutobr_d80func.ico"),
-(3, "Je suis un grand fan de mangas et d'animés.", '2024-04-21', NULL)
+(3, "Je suis un grand fan de mangas et d'animés.", '2024-04-21', NULL),
+(1, "Je suis un grand fan de cet animé, j'attends sa suite avec impatience.", '2024-04-22', "hunter_x_hunter_folder_icon_by_walad7ekaya_d7k1sz1(1).ico"),
+(2, "Cet animé est juste fantastique", '2024-04-22', "hunter_x_hunter_v3__hisoka____icon_folder_by_ubagutobr_d80jtem.ico")
 ;
 
 INSERT INTO Follow (id_follower, id_following, date_creation)
