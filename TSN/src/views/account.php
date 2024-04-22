@@ -10,6 +10,14 @@
     ob_start();
     $user = $_SESSION['otherUser'];      // This it is used if the user is not connected, or if he is connected and it is not his account.
     $posts = $_SESSION['userPosts'];     // All the posts of the user.
+    $followings = $_SESSION['userFollowings'];   // All the followings of the user.
+
+    if(!empty($followings)){
+
+        $firstFollowing = $followings[0];           // The first followings in the list.
+    }
+
+    array_shift($followings); 
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];
@@ -124,12 +132,6 @@
                             
                     <?php } ?>
 
-
-
-
-
-
-
                     <?php
                         foreach($posts as $post){ 
                     ?>
@@ -167,38 +169,29 @@
 
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                     <div class="col-2 mt-5">
+                        <?php if(!empty($followings)){ ?>
                         <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 97px;">
                             <div class="carousel-inner">
                                 <div class="carousel-item active" data-bs-interval="5000">
                                     <div class="card d-block w-100">
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">Jackson Follay</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
+                                            <h5 class="card-title fs-5 text-center"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
                                             <p class="text-center text-primary fw-bold mt-5">Followed</p>
                                         </div>
                                     </div>
                                 </div>
+                                <?php foreach($followings as $following) { ?>
                                 <div class="carousel-item" data-bs-interval="5000">
                                     <div class="card d-block w-100">
                                         <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">Abram Sanders</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
+                                            <h5 class="card-title fs-5 text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
                                             <p class="text-center text-primary fw-bold mt-5">Followed</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100">
-                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">Jessica Monroe</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Petite description à propos de l'utilisateur.</p> -->
-                                            <p class="text-center text-primary fw-bold mt-5">Followed</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -209,6 +202,7 @@
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
+                        <?php } ?>
                     </div>
                 <?php } ?>
             </div>                      

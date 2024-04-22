@@ -66,8 +66,8 @@ class PostManagment {
     public function getPostsByUser(int $idUser){    // To retrieve all the posts made by a user.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post WHERE id_utilisateur = '{$idUser}';";
-        $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+        $statement = "SELECT * from post WHERE id_utilisateur = \"{$idUser}\";";
+        $statement_1 = "SELECT * from utilisateur WHERE id = \"{$idUser}\";";
 
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
@@ -132,7 +132,7 @@ class PostManagment {
         for ($i = 0; $i < count($result); $i++){  // To retrieve all the authors of posts.
 
             $idUser = $result[$i]['id_utilisateur'];
-            $statement_1 = "SELECT * from utilisateur WHERE id = '{$idUser}';";
+            $statement_1 = "SELECT * from utilisateur WHERE id = \"{$idUser}\";";
             $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
             $query_1->execute();
             $result_1 = $query_1->fetch();

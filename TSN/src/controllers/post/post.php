@@ -29,13 +29,13 @@ class Post {
 
     public function getUserPosts(int $idUser){
 
-        $this->postManagment = new ModelPostManagment();
+        $this->postManagment = new ModelPostManagment;
         $this->postManagment->getPostsByUser($idUser);
     }
 
     public function getPosts(){
         
-        $this->postManagment = new ModelPostManagment();
+        $this->postManagment = new ModelPostManagment;
         $this->postManagment->getRandomPosts();
     }
 }
