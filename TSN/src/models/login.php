@@ -3,7 +3,11 @@
 
 namespace TSN\src\models\login;
 
+include("config/config.php");
+
 require_once("lib/database.php");
+
+use Config;
 use TSN\src\models\lib\DatabaseConnection;
 
 require_once("user.php");
@@ -13,8 +17,12 @@ use TSN\src\models\user\User;
 class Login {
 
     private DatabaseConnection $databaseConnection;
+    private Config $config;
 
     public function connectUser($email, $password){
+
+        $this->config = new Config;
+        $startingUrl = $this->config->getStartingUrl();
         
         $this->databaseConnection = new DatabaseConnection;
 
@@ -56,12 +64,12 @@ class Login {
             $_SESSION["user"] = $user; 
             $_SESSION['isConnected'] = true;
             $userIdUrl = urldecode($user->getID());
-            header("location: http://localhost:4000/index.php?action=myAccount&userId={$userIdUrl}");
+            header("location: {$startingUrl}/index.php?action=myAccount&userId={$userIdUrl}");
         }
 
         else{
             
-            header("location: http://localhost:4000/index.php?action=loginError");
+            header("location: {$startingUrl}/index.php?action=loginError");
         }
     }
 }
