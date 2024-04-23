@@ -8,6 +8,7 @@
 
 <?php 
     ob_start();
+    $followings = $_SESSION['userFollowings'];   // All the followings of the user.
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];
@@ -46,7 +47,7 @@
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userBirthdayModal">Modifier ma date de naissance</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPasswordModal">Modifier mon mot de passe</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userPhotoModal">Modifier ma photo de profil</button>
-                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userFollowersModal">Gérer mes followers</button>
+                                                <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userDescriptionModal">Modifier ma description</button>
                                                 <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userFollowingsModal">Gérer mes followings</button>
                                             </div>
                                         </div>
@@ -67,27 +68,26 @@
                                     </div>
                                     <div class="modal-body">
                                         
-                                            <div class="mb-3">
-                                                <label for="nom" class="form-label">Nom</label>
-                                                <input type="text" class="form-control" name="nom" id="nom" value="<?= $user->getName(); ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="prenom" class="form-label">Prénom</label>
-                                                <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="birthday" class="form-label">Date de naissance : </label>
-                                                <span><?= $user->getBirthday(); ?></span>
-                                                <!-- <button type="button" class="btn btn-primary col-12" data-bs-toggle="modal" data-bs-target="#userBirthdayModal">Modifier ma date de naissance</button> -->
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">Adresse Mail</label>
-                                                <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="address" class="form-label">Adresse</label>
-                                                <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="nom" class="form-label">Nom</label>
+                                            <input type="text" class="form-control" name="nom" id="nom" value="<?= $user->getName(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="prenom" class="form-label">Prénom</label>
+                                            <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="birthday" class="form-label">Date de naissance : </label>
+                                            <span><?= $user->getBirthday(); ?></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Adresse Mail</label>
+                                            <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Adresse</label>
+                                            <input type="text" class="form-control" name="address" id="address" value="<?= $user->getAddress(); ?>"required>
+                                        </div>
                                         
                                     </div>
                                     <div class="modal-footer">
@@ -135,24 +135,24 @@
                                     </div>
                                     <div class="modal-body">
                                         
-                                            <div class="mb-3 fs-5 fw-bold text-danger" id="messageMdp"></div>
-                                            <div class="mb-3">
-                                                <label for="mdp" class="form-label">Mot de passe actuel</label>
-                                                <input type="text" class="form-control" name="mdp" id="mdp" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="nouveauMdp1" class="form-label">Nouveau mot de passe</label>
-                                                <input type="text" class="form-control" name="nouveauMdp1" id="nouveauMdp1" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="nouveauMdp2" class="form-label">Confirmer le nouveau mot de passe</label>
-                                                <input type="text" class="form-control" name="nouveauMdp2" id="nouveauMdp2" required>
-                                            </div>
-                                            <!-- <div class="mb-3">
-                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                                    <i class="bi bi-eye"></i><span> Afficher le mot de passe</span>
-                                                </button>
-                                            </div> -->
+                                        <div class="mb-3 fs-5 fw-bold text-danger" id="messageMdp"></div>
+                                        <div class="mb-3">
+                                            <label for="mdp" class="form-label">Mot de passe actuel</label>
+                                            <input type="text" class="form-control" name="mdp" id="mdp" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="nouveauMdp1" class="form-label">Nouveau mot de passe</label>
+                                            <input type="text" class="form-control" name="nouveauMdp1" id="nouveauMdp1" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="nouveauMdp2" class="form-label">Confirmer le nouveau mot de passe</label>
+                                            <input type="text" class="form-control" name="nouveauMdp2" id="nouveauMdp2" required>
+                                        </div>
+                                        <!-- <div class="mb-3">
+                                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                <i class="bi bi-eye"></i><span> Afficher le mot de passe</span>
+                                            </button>
+                                        </div> -->
                                         
                                     </div>
                                     <div class="modal-footer">
@@ -175,10 +175,10 @@
                                     </div>
                                     <div class="modal-body">
                                         
-                                            <div class="mb-3">
-                                                <label for="profilePhoto" class="form-label">Nouvelle photo de profil</label>
-                                                <input type="file" class="form-control" name="profilePhoto" id="profilePhoto" accept="image/*" required>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label for="profilePhoto" class="form-label">Nouvelle photo de profil</label>
+                                            <input type="file" class="form-control" name="profilePhoto" id="profilePhoto" accept="image/*" required>
+                                        </div>
                                         
                                     </div>
                                     <div class="modal-footer">
@@ -190,21 +190,27 @@
                         </div>
                     </div>
 
-                    <!-- User followers managment modal -->
-                    <div class="modal fade" id="userFollowersModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <!-- User description update modal -->
+                    <div class="modal fade" id="userDescriptionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Mes followers</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <form action="" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ma description</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="description" class="form-label">Description</label>
+                                            <textarea name="description" id="description" cols="50" rows="10" required><?= $user->getDescription(); ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -216,9 +222,24 @@
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Mes followings</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
+                                <?php if(!empty($followings)){ ?>
+                                    <div class="modal-body">
+                                        <?php foreach($followings as $following){ ?>
+                                            <form action="" method="POST">
+                                                <div class="mb-3 d-flex flex-row justify-content-between">
+                                                    <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($following->getUser()->getID()) ?>">
+                                                        <h5 class="fs-5 fw-bold"><?= $following->getUser()->getSurname() .  " " . $following->getUser()->getName() ?></h5>
+                                                    </a>
+                                                    <button type="submit" class="btn btn-primary">Unfollow</button>
+                                                </div>
+                                            </form>
+                                        <?php } ?>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="modal-body fs-5">
+                                        Vous n'avez encore aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
+                                    </div>
+                                <?php } ?>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                 </div>
