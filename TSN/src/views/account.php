@@ -189,7 +189,7 @@
                                                     <h5 class="card-title fs-5 text-center fw-bold"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
                                                 </a>
                                                 <p class="card-text fs-5 text-center mt-3"><?= $firstFollowing->getUser()->getDescription(); ?></p>
-                                                <p class="text-center text-primary fw-bold mt-3">Followed</p>
+                                                <p class="text-center text-primary fs-5 fw-bold mt-3">Followed</p>
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                                                         <h5 class="card-title fs-5 fw-bold text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
                                                     </a>
                                                     <p class="card-text fs-5 text-center mt-3"><?= $following->getUser()->getDescription(); ?></p>
-                                                    <p class="text-center text-primary fw-bold mt-3">Followed</p>
+                                                    <p class="text-center text-primary fs-5 fw-bold mt-3">Followed</p>
                                                 </div>
                                             </div>
                                         </div>

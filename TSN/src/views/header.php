@@ -3,6 +3,7 @@
 
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
+        $followings = $_SESSION['userFollowings'];   // All the followings of the user.
     }
 ?>
 <nav class="navbar navbar-expand-md fixed-top navbar-primary bg-primary py-1">
@@ -28,11 +29,11 @@
                             <i class="bi bi-bell  text-light fs-3"></i>
                         </a>
                     </li>
-                    <li class="nav-item text-light mx-2">
+                    <!-- <li class="nav-item text-light mx-2">
                         <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Messages">
                             <i class="bi bi-chat-left  text-light fs-3"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item text-light mx-2">
                         <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Statistiques">
                             <i class="bi bi-bar-chart  text-light fs-3"></i>
@@ -51,7 +52,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php if(isset($isConnected) && $isConnected) {?>
-                            <li><a class="dropdown-item" href="">Mes follows</a></li>
+                            <!-- <li><a class="dropdown-item" href="">Mes follows</a></li> -->
                             <li><a class="dropdown-item" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">Mon compte</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="index.php?action=myProfile"><?= $user->getSurname(); ?></a></li>
