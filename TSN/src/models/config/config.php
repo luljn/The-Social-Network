@@ -1,5 +1,6 @@
 <?php
 
+namespace TSN\src\models\config;
 
 class Config {
 

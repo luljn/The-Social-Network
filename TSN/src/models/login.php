@@ -3,11 +3,10 @@
 
 namespace TSN\src\models\login;
 
-include("config/config.php");
+require_once("config/config.php");
+use TSN\src\models\config\Config;
 
 require_once("lib/database.php");
-
-use Config;
 use TSN\src\models\lib\DatabaseConnection;
 
 require_once("user.php");
