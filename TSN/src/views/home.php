@@ -34,9 +34,9 @@
                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">
                                     <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
                                 </a>
-                                <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
+                                <p class="card-text fs-5 text-center mt-3"><?= $user->getDescription(); ?></p>
                                 <div class="text-center">
-                                    <a href="index.php?action=myProfile" class="btn btn-primary mt-5">Mon profil</a>
+                                    <a href="index.php?action=myProfile" class="btn btn-primary mt-3">Mon profil</a>
                                 </div>
                             </div>
                         </div>

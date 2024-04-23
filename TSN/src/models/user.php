@@ -17,9 +17,10 @@ class User {
     private string $address;
     private bool $admin;
     private string $photo;
+    private string $description;
 
     public function __construct(int $_id, string $_email, string $_password, string $_name, string $_surname, 
-                                string $_birthday, string $_address, bool $_admin,  string $_photo){
+                                string $_birthday, string $_address, bool $_admin,  string $_photo, string $_description){
         
         $this->id = $_id;
         $this->email = $_email;
@@ -30,6 +31,7 @@ class User {
         $this->address = $_address;
         $this->admin = $_admin;
         $this->photo = $_photo;
+        $this->description = $_description;
     }
 
     public function getID(){ return $this->id; }
@@ -41,6 +43,7 @@ class User {
     public function getAddress(){ return $this->address; }
     public function getAdmin(){ return $this->admin; }
     public function getPhoto(){ return $this->photo; }
+    public function getDescription(){ return $this->description; }
 
     public function setID(int $_id){ $this->id = $_id; }
     public function setEmail(string $_email){ $this->email = $_email; }
@@ -50,6 +53,7 @@ class User {
     public function setBirthday(string $_birthday){ $this->birthday = $_birthday; }
     public function setAddress(string $_address){ $this->address = $_address; }
     public function setPhoto(string $_photo){ $this->photo = $_photo; }
+    public function setDescription(string $_description){ $this->description = $_description; }
 }
 
 
@@ -147,13 +151,13 @@ class UserModification {  // This class is used to modify the user informations 
         if($result_1['profile_photo'] == NULL){
 
             $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
-                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '');
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '', $result_1['description']);
         }
 
         else{
 
             $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
-                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo']);
+                            date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo'], $result_1['description']);
         }
 
         return $user;

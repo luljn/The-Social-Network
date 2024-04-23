@@ -42,10 +42,10 @@
                             <?php } ?>
                             <div class="card-body">
                                 <h5 class="card-title fs-5 fw-bold text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
-                                <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
+                                <p class="card-text fs-5 text-center mt-3"><?= $connectedUser->getDescription(); ?></p>
                                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] && $_GET['userId'] == $connectedUser->getID()){ ?>
                                     <div class="text-center">
-                                        <a href="index.php?action=myProfile" class="btn btn-primary mt-5">Mon profil</a>
+                                        <a href="index.php?action=myProfile" class="btn btn-primary mt-3">Mon profil</a>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -99,7 +99,7 @@
                         <?php } ?>
                         <div class="card-body">
                             <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
-                            <!-- <p class="card-text fs-6 text-center">Une petite description à propos de l'utilisateur.</p> -->
+                            <p class="card-text fs-5 text-center mt-3"><?= $user->getDescription(); ?></p>
                         </div>
                     </div>
                 </div>
@@ -185,8 +185,11 @@
                                                 <img src="../../img/users/<?= $firstFollowing->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
                                             <?php } ?>
                                             <div class="card-body">
-                                                <h5 class="card-title fs-5 text-center"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
-                                                <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($firstFollowing->getUser()->getID()) ?>">
+                                                    <h5 class="card-title fs-5 text-center fw-bold"><?= $firstFollowing->getUser()->getSurname() . " " . $firstFollowing->getUser()->getName(); ?></h5>
+                                                </a>
+                                                <p class="card-text fs-5 text-center mt-3"><?= $firstFollowing->getUser()->getDescription(); ?></p>
+                                                <p class="text-center text-primary fw-bold mt-3">Followed</p>
                                             </div>
                                         </div>
                                     </div>
@@ -199,8 +202,11 @@
                                                 <img src="../../img/users/<?= $following->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
                                             <?php } ?>
                                                 <div class="card-body">
-                                                    <h5 class="card-title fs-5 text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
-                                                    <p class="text-center text-primary fw-bold mt-5">Followed</p>
+                                                    <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($following->getUser()->getID()) ?>">
+                                                        <h5 class="card-title fs-5 fw-bold text-center"><?= $following->getUser()->getSurname() . " " . $following->getUser()->getName(); ?></h5>
+                                                    </a>
+                                                    <p class="card-text fs-5 text-center mt-3"><?= $following->getUser()->getDescription(); ?></p>
+                                                    <p class="text-center text-primary fw-bold mt-3">Followed</p>
                                                 </div>
                                             </div>
                                         </div>

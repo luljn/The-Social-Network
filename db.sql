@@ -17,7 +17,8 @@ CREATE TABLE utilisateur (
     adresse VARCHAR(255) NOT NULL,
     admin BOOLEAN NOT NULL,
     statut_bannissement BOOLEAN NOT NULL,
-    profile_photo VARCHAR(255) NULL
+    profile_photo VARCHAR(255) NULL,
+    description LONGTEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS post;
@@ -81,11 +82,11 @@ CREATE TABLE Follow(
 
 -- Data insertion.
 
-INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement, profile_photo)
+INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement, profile_photo, description)
 VALUES 
-('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0, "Luljn_User_Picture.jpg"),
-('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0, "8-bit City_1920x1080.jpg"),
-('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0, NULL)
+('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0, "Luljn_User_Picture.jpg", "Salut je suis un(e) utilisateur(trice) de TSN"),
+('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0, "8-bit City_1920x1080.jpg", "Salut je suis un(e) utilisateur(trice) de TSN"),
+('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0, NULL, "Salut je suis un(e) utilisateur(trice) de TSN")
 ;
 
 INSERT INTO post (id_utilisateur, contenu, date_creation, image)

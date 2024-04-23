@@ -30,8 +30,9 @@ class Signup {
 
             $mdp = password_hash($password, PASSWORD_DEFAULT);
 
-            $statement_2 = "INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement)
-                            VALUES (\"{$email}\", \"{$mdp}\", \"{$name}\", \"{$surname}\", \"{$birthday}\", \"{$address}\", \"{$admin}\", \"{$statutBannissement}\");";
+            $statement_2 = "INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement, profile_photo, description)
+                            VALUES (\"{$email}\", \"{$mdp}\", \"{$name}\", \"{$surname}\", \"{$birthday}\", \"{$address}\", \"{$admin}\", \"{$statutBannissement}\", NULL,
+                            \"Salut je suis un(e) utilisateur(trice) de TSN\");";
 
             $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
             $query_2->execute();

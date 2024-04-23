@@ -6,7 +6,11 @@ namespace TSN\src\models\lib;
 class DatabaseConnection {
 
     public ?\PDO $database = null;
+
+    // The local database connection informations.
     private $localDatabaseAccess = ["mysql:host=localhost;dbname=mbeck_selatchom_database;charset=utf8", "root", ""];
+
+    // The online database connection informations.
     private $onlineDatabaseAccess = ["", "", ""];
 
     private $useLocalDatabase = True;    // This variable is used to specify which database we use(the local one or the online one).

@@ -51,13 +51,13 @@ class Login {
             if($result['profile_photo'] == NULL){
 
                 $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
-                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], '');
+                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], '', $result['description']);
             }
 
             else{
 
                 $user = new User($result['id'], $result['email'], $result['mdp'], $result['nom'], $result['prenom'],
-                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], $result['profile_photo']);
+                                date("d-m-Y", strtotime($result['date_de_naissance'])), $result['adresse'], $result['admin'], $result['profile_photo'], $result['description']);
             }
 
             $_SESSION["user"] = $user; 
