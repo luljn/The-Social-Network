@@ -86,6 +86,84 @@ class FollowManagment {
         $_SESSION['userFollowings'] = $Followings;
     }
 
+    public function getPeopleToFollow($idUser){  // To get people that the user could follow.
+
+        $Users = [];       // The list of all the persons that the user could follow.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "SELECT * from follow WHERE id_follower <> \"{$idUser}\" AND id_following <> \"{$idUser}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        for ($i = 0; $i < count($result); $i++){
+
+            $idUserNotFollowed = $result[$i]['id_following'];
+            $statement_1 = "SELECT * from utilisateur WHERE id = \"{$idUserNotFollowed}\";";
+            $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
+            $query_1->execute();
+            $result_1 = $query_1->fetch();
+            $query_1->closeCursor();
+
+            if($result_1['profile_photo'] == NULL){
+
+                $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                                date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], '', $result_1['description']);
+            }
+    
+            else{
+    
+                $user = new User($result_1['id'], $result_1['email'], $result_1['mdp'], $result_1['nom'], $result_1['prenom'],
+                                date("d-m-Y", strtotime($result_1['date_de_naissance'])), $result_1['adresse'], $result_1['admin'], $result_1['profile_photo'], $result_1['description']);
+            }
+
+            if(!in_array($user, $Users)){
+
+                $Users[] = $user;   // We add the user who is not followed to the list.
+            }
+        }
+
+        // This query is to retrieve all the users who don't have any follower.
+        $statement_2 = "SELECT * 
+                        FROM utilisateur 
+                        LEFT JOIN follow ON utilisateur.id = follow.id_following 
+                        WHERE utilisateur.id <> follow.id_following OR follow.id_following IS NULL;";
+        $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
+        $query_2->execute();
+        $result_2 = $query_2->fetchAll();
+        $query_2->closeCursor();
+
+        for ($i = 0; $i < count($result_2); $i++){
+
+            $userName = $result_2[$i]['nom'];
+            $statement_3 = "SELECT id FROM utilisateur WHERE nom = \"{$userName}\";";
+            $query_3 = $this->databaseConnection->getConnection()->prepare($statement_3);
+            $query_3->execute();
+            $result_3 = $query_3->fetch();
+            $query_3->closeCursor();
+
+            if($result_2[$i]['profile_photo'] == NULL){
+
+                $user = new User($result_3['id'], $result_2[$i]['email'], $result_2[$i]['mdp'], $result_2[$i]['nom'], $result_2[$i]['prenom'],
+                                date("d-m-Y", strtotime($result_2[$i]['date_de_naissance'])), $result_2[$i]['adresse'], $result_2[$i]['admin'], '', $result_2[$i]['description']);
+            }
+    
+            else{
+    
+                $user = new User($result_3['id'], $result_2[$i]['email'], $result_2[$i]['mdp'], $result_2[$i]['nom'], $result_2[$i]['prenom'],
+                                date("d-m-Y", strtotime($result_2[$i]['date_de_naissance'])), $result_2[$i]['adresse'], $result_2[$i]['admin'], $result_2[$i]['profile_photo'], $result_2[$i]['description']);
+            }
+
+            if(!in_array($user, $Users) && $user->getID() != $idUser){
+
+                $Users[] = $user;   // We add the user who is not followed to the list.
+            }
+        }
+
+        $_SESSION['usersNotFollowed'] = $Users;
+    }
+
     public function getFollowersOfUser($idUser){   // To retrieve all the persons who followed the user.
 
         $this->databaseConnection = new DatabaseConnection;

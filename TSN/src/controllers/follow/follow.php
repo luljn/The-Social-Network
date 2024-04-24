@@ -8,17 +8,23 @@ use TSN\src\models\follow\FollowManagment as ModelFollowManagment;
 
 class Follow {
 
-    private ModelFollowManagment $follow;
+    private ModelFollowManagment $followManagment;
 
     public function getUserFollowings($idUser){  // To retrieve all the persons that the user follows.
 
-        $this->follow = new ModelFollowManagment;
-        $this->follow->getFollowingsOfUser($idUser);
+        $this->followManagment = new ModelFollowManagment;
+        $this->followManagment->getFollowingsOfUser($idUser);
+    }
+
+    public function getPeopleToFollowForTheUser($idUser){
+
+        $this->followManagment = new ModelFollowManagment;
+        $this->followManagment->getPeopleToFollow($idUser);
     }
 
     public function getUserFollowers($idUser){   // To retrieve all the persons who followed the user.
         
-        $this->follow = new ModelFollowManagment;
-        $this->follow->getFollowersOfUser($idUser);
+        $this->followManagment = new ModelFollowManagment;
+        $this->followManagment->getFollowersOfUser($idUser);
     }
 }

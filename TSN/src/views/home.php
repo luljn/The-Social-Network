@@ -13,6 +13,16 @@
 
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
+        $usersNotFollowed = $_SESSION['usersNotFollowed'];
+        if(!empty($usersNotFollowed)){
+
+            $firstUserNotFollowed = $usersNotFollowed[0];           // The first user not followed in the list.
+        }
+
+        if(count($usersNotFollowed) != 1){
+
+            array_shift($usersNotFollowed);
+        }
     }
 ?>
 
@@ -86,56 +96,64 @@
                 </div>
                 <?php if(isset($isConnected) && $isConnected){ ?>
                     <div class="col-2 mt-5">
-                        <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Connaissez-vous ?</h5>
-                        <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-bs-interval="5000">
-                                    <div class="card d-block w-100 border-2 border-secondary">
-                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">John DOE</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                                            <div class="text-center">
-                                                <a href="#" class="btn btn-primary mt-5">Follow</a>
+                        <?php if(!empty($usersNotFollowed)){ ?>
+                                <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Connaissez-vous ?</h5>
+                            <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="5000">
+                                        <div class="card d-block w-100 border-2 border-secondary">
+                                            <?php if($firstUserNotFollowed->getPhoto() == ''){ ?>
+                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                            <?php } else { ?>
+                                                <img src="../../img/users/<?= $firstUserNotFollowed->getPhoto() ?>" class="card-img-top" alt="...">
+                                            <?php } ?>
+                                            <div class="card-body">
+                                                <h5 class="card-title fs-5 fw-bold text-center"><?= $firstUserNotFollowed->getSurname() . " " . $firstUserNotFollowed->getName(); ?></h5>
+                                                <p class="card-text fs-5 text-center mt-3"><?= $firstUserNotFollowed->getDescription() ?></p>
+                                                <div class="text-center">
+                                                    <a href="#" class="btn btn-primary mt-3">Follow</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100 border-2 border-secondary">
-                                        <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">Jane DOE</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                                            <div class="text-center">
-                                                <a href="#" class="btn btn-primary mt-5">Follow</a>
+                                    <?php foreach($usersNotFollowed as $userToFollow){ ?>
+                                        <div class="carousel-item" data-bs-interval="5000">
+                                            <div class="card d-block w-100 border-2 border-secondary">
+                                                <?php if($userToFollow->getPhoto() == ''){ ?>
+                                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                                <?php } else { ?>
+                                                    <img src="../../img/users/<?= $userToFollow->getPhoto() ?>" class="card-img-top" alt="...">
+                                                <?php } ?>
+                                                <div class="card-body">
+                                                    <h5 class="card-title fs-5 fw-bold text-center"><?= $userToFollow->getSurname() . " " . $userToFollow->getName(); ?></h5>
+                                                    <p class="card-text fs-5 text-center mt-3"><?= $userToFollow->getDescription() ?></p>
+                                                    <div class="text-center">
+                                                        <a href="#" class="btn btn-primary mt-3">Follow</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    <?php } ?>
                                     </div>
-                                </div>
-                                <div class="carousel-item" data-bs-interval="5000">
-                                    <div class="card d-block w-100 border-2 border-secondary">
-                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                            <h5 class="card-title fs-5 text-center">Marc DOE</h5>
-                                            <!-- <p class="card-text fs-6 text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                                            <div class="text-center">
-                                                <a href="#" class="btn btn-primary mt-5">Follow</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
+                    <?php } else { ?>
+                        <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
+                                <div class="card-body">
+                                    <p class="text-center text-dark fs-5 mt-5">
+                                        Vous avez déjà follow tous les autres utilisateurs de cette plateforme 😄.
+                                    </p>
+                                </div>
+                            </div>
+                    <?php } ?>
                 <?php } ?>
             </div>                      
         </div>
