@@ -58,4 +58,15 @@ class User {
 
         header("location: {$startingUrl}/index.php?action=myProfile");
     }
+
+    public function updateUserDescription($description){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->userModification = new ModelUserModification;
+        $this->userModification->updateDescription($description);
+
+        header("location: {$startingUrl}/index.php?action=myProfile");
+    }
 }
