@@ -108,7 +108,9 @@
                                                 <img src="../../img/users/<?= $firstUserNotFollowed->getPhoto() ?>" class="card-img-top" alt="...">
                                             <?php } ?>
                                             <div class="card-body">
-                                                <h5 class="card-title fs-5 fw-bold text-center"><?= $firstUserNotFollowed->getSurname() . " " . $firstUserNotFollowed->getName(); ?></h5>
+                                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($firstUserNotFollowed->getID()) ?>">
+                                                    <h5 class="card-title fs-5 fw-bold text-center"><?= $firstUserNotFollowed->getSurname() . " " . $firstUserNotFollowed->getName(); ?></h5>
+                                                </a>
                                                 <p class="card-text fs-5 text-center mt-3"><?= $firstUserNotFollowed->getDescription() ?></p>
                                                 <div class="text-center">
                                                     <a href="#" class="btn btn-primary mt-3">Follow</a>
@@ -125,7 +127,9 @@
                                                     <img src="../../img/users/<?= $userToFollow->getPhoto() ?>" class="card-img-top" alt="...">
                                                 <?php } ?>
                                                 <div class="card-body">
-                                                    <h5 class="card-title fs-5 fw-bold text-center"><?= $userToFollow->getSurname() . " " . $userToFollow->getName(); ?></h5>
+                                                    <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($userToFollow->getID()) ?>">
+                                                        <h5 class="card-title fs-5 fw-bold text-center"><?= $userToFollow->getSurname() . " " . $userToFollow->getName(); ?></h5>
+                                                    </a>
                                                     <p class="card-text fs-5 text-center mt-3"><?= $userToFollow->getDescription() ?></p>
                                                     <div class="text-center">
                                                         <a href="#" class="btn btn-primary mt-3">Follow</a>
