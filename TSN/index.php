@@ -24,6 +24,9 @@ use TSN\src\controllers\user\User as User;
 require_once("src/controllers/post/post.php");
 use TSN\src\controllers\post\Post as Post;
 
+require_once("src/controllers/follow/follow.php");
+use TSN\src\controllers\follow\Follow as Follow;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -174,6 +177,15 @@ try {
             if(isset($_POST['description'])){
             
                 (new User)->updateUserDescription($_POST['description']);     
+            }
+        }
+
+        elseif($_GET['action'] === 'newFollow'){    // To make a new follow between two users.
+            
+            if(isset($_POST['idUserToFollow'])){
+            
+                $user = $_SESSION["user"];
+                (new Follow)->newFollow($user->getID(), $_POST['idUserToFollow'], date("Y-m-d"));
             }
         }
 

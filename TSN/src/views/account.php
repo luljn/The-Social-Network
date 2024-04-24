@@ -17,7 +17,11 @@
         $firstFollowing = $followings[0];           // The first followings in the list.
     }
 
-    array_shift($followings); 
+    if(count($followings) != 1){
+
+        array_shift($followings);
+    }
+     
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
         $isConnected = $_SESSION['isConnected'];
@@ -84,9 +88,7 @@
                             </div>
                         </div>
                     </div>
-                <?php }
-                      else{  
-                ?>
+                <?php } else { ?>
                 <div class="col-2">
                     <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                         <?php if(isset($user) && $user->getPhoto() == ''){ ?>

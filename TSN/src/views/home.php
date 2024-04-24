@@ -113,7 +113,10 @@
                                                 </a>
                                                 <p class="card-text fs-5 text-center mt-3"><?= $firstUserNotFollowed->getDescription() ?></p>
                                                 <div class="text-center">
-                                                    <a href="#" class="btn btn-primary mt-3">Follow</a>
+                                                    <form action="index.php?action=newFollow" method="POST">
+                                                        <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $firstUserNotFollowed->getID() ?>">
+                                                        <button class="btn btn-primary mt-3">Follow</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +135,10 @@
                                                     </a>
                                                     <p class="card-text fs-5 text-center mt-3"><?= $userToFollow->getDescription() ?></p>
                                                     <div class="text-center">
-                                                        <a href="#" class="btn btn-primary mt-3">Follow</a>
+                                                        <form action="index.php?action=newFollow" method="POST">
+                                                            <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $userToFollow->getID() ?>">
+                                                            <button type="submit" class="btn btn-primary mt-3">Follow</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

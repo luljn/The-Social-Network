@@ -28,6 +28,17 @@ class FollowManagment {
 
     private DatabaseConnection $databaseConnection;
 
+    public function followAnotherUser($idFollower, $idFollowing, $dateCreation){ // To make a follower between 2 users, the first one (the follower) and another one (the following).
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO follow (id_follower, id_following, date_creation)
+                      VALUES 
+                      (\"{$idFollower}\", \"{$idFollowing}\", \"{$dateCreation}\");";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
     public function getFollowingsOfUser($idUser){    // To retrieve all the persons that the user follows.
 
         $this->databaseConnection = new DatabaseConnection;
@@ -158,6 +169,20 @@ class FollowManagment {
             if(!in_array($user, $Users) && $user->getID() != $idUser){
 
                 $Users[] = $user;   // We add the user who is not followed to the list.
+            }
+        }
+
+        $follows = $_SESSION['userFollowings'];
+
+        foreach($follows as $follow){  // To sort and to delete the users who are already in the list of the followings
+
+            foreach($Users as $user){
+
+                if($follow->getUser()->getID() == $user->getID()){
+
+                    $indice = array_search($user, $Users);
+                    unset($Users[$indice]);
+                }
             }
         }
 

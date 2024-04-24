@@ -6,9 +6,27 @@ namespace TSN\src\controllers\follow;
 require_once("./src/models/follow.php");
 use TSN\src\models\follow\FollowManagment as ModelFollowManagment;
 
+require_once("./src/models/config/config.php");
+use TSN\src\models\config\Config as ModelConfig;
+
 class Follow {
 
     private ModelFollowManagment $followManagment;
+    private ModelConfig $config;
+
+    public function newFollow($idFollower, $idFollowing, $dateCreation){ // To follow another user.
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->followManagment = new ModelFollowManagment;
+        $this->followManagment->followAnotherUser($idFollower, $idFollowing, $dateCreation);
+
+        $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
+        $this->getPeopleToFollowForTheUser($idFollower);  // To get the list of the other people the user can follow up to date.
+
+        header("location: {$startingUrl}/index.php?action=home");
+    }
 
     public function getUserFollowings($idUser){  // To retrieve all the persons that the user follows.
 
