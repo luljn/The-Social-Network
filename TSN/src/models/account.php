@@ -8,6 +8,9 @@ use Exception;
 require_once("lib/database.php");
 use TSN\src\models\lib\DatabaseConnection;
 
+require_once("config/config.php");
+use TSN\src\models\config\Config;
+
 require_once("user.php");
 use TSN\src\models\user\User;
 
@@ -15,8 +18,12 @@ use TSN\src\models\user\User;
 class Account {
 
     private DatabaseConnection $databaseConnection;
+    private Config $config;
 
     public function getUser($userId){  // To get a specific user by his Id.
+
+        $this->config = new Config;
+        $startingUrl = $this->config->getStartingUrl();
 
         $this->databaseConnection = new DatabaseConnection;
 
@@ -51,7 +58,7 @@ class Account {
         catch(Exception $e) {
 
             $e->getMessage();
-            header("location: http://localhost:4000/index.php?action=accountNotFound");
+            header("location: {$startingUrl}/index.php?action=accountNotFound");
         }
     }
 }

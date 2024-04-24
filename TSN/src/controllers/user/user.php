@@ -6,43 +6,56 @@ namespace TSN\src\controllers\user;
 require_once("./src/models/user.php");
 use TSN\src\models\user\UserModification as ModelUserModification;
 
-require_once("src/controllers/profile/profile.php");
-use TSN\src\controllers\profile\Profile as Profile;
+require_once("./src/models/config/config.php");
+use TSN\src\models\config\Config as ModelConfig;
 
 
 class User {
 
     private ModelUserModification $userModification;
+    private ModelConfig $config;
 
     public function updateUserInformations($email, $name, $surname, $address){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
 
         $this->userModification = new ModelUserModification;
         $this->userModification->updatePersonnalInformations($email, $name, $surname, $address);
 
-        header("location: http://localhost:4000/index.php?action=myProfile");
+        header("location: {$startingUrl}/index.php?action=myProfile");
     }
 
     public function updateUserBirthday($birthday){
 
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
         $this->userModification = new ModelUserModification;
         $this->userModification->updateBirthday($birthday);
 
-        header("location: http://localhost:4000/index.php?action=myProfile");
+        header("location: {$startingUrl}/index.php?action=myProfile");
     }
 
     public function updateUserPassword($previousPassword, $password){
 
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
         $this->userModification = new ModelUserModification;
         $this->userModification->updatePassword($previousPassword, $password);
 
-        header("location: http://localhost:4000/index.php?action=myProfile");
+        header("location: {$startingUrl}/index.php?action=myProfile");
     }
 
     public function updateUserProfilePhoto($profile_photo){
 
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
         $this->userModification = new ModelUserModification;
         $this->userModification->updateProfilePhoto($profile_photo);
 
-        header("location: http://localhost:4000/index.php?action=myProfile");
+        header("location: {$startingUrl}/index.php?action=myProfile");
     }
 }

@@ -5,7 +5,7 @@ namespace TSN\src\models\config;
 class Config {
 
     private string $startingUrlWithPort = "http://localhost:4000";
-    private string $startingUrlWithoutPort = "http://localhost/";
+    private string $startingUrlWithoutPort = "http://localhost/TSN";
     private bool $usingPort = True;
 
     public function getStartingUrl(){

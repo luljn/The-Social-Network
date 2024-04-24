@@ -6,6 +6,9 @@ namespace TSN\src\controllers\signup;
 require_once("./src/models/signup.php");
 use TSN\src\models\signup\Signup as ModelSignup;
 
+require_once("./src/models/config/config.php");
+use TSN\src\models\config\Config as ModelConfig;
+
 require_once("src/controllers/login/login.php");
 use TSN\src\controllers\login\Login as Login;
 
@@ -13,6 +16,7 @@ use TSN\src\controllers\login\Login as Login;
 class Signup {
 
     private ModelSignup $signup;
+    private ModelConfig $config;
 
     public function getSignUpPage(){
 
@@ -20,6 +24,9 @@ class Signup {
     }
 
     public function executeSignup($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
 
         $this->signup = new ModelSignup();
         $wasAlreadyUser = $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement);
@@ -31,7 +38,7 @@ class Signup {
         
         else{
             
-            header("location: http://localhost:4000/index.php?action=signupError");
+            header("location: {$startingUrl}/index.php?action=signupError");
         }
     }
 }

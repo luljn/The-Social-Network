@@ -6,9 +6,13 @@ namespace TSN\src\controllers\login;
 require_once("./src/models/login.php");
 use TSN\src\models\login\Login as ModelLogin;
 
+require_once("./src/models/config/config.php");
+use TSN\src\models\config\Config as ModelConfig;
+
 class Login {
 
     private ModelLogin $login;
+    private ModelConfig $config;
 
     public function getLoginPage(){
 
@@ -23,8 +27,11 @@ class Login {
 
     public function disconnectUser(){
 
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
         session_unset();
         session_destroy();
-        header("location: http://localhost:4000/index.php");
+        header("location: {$startingUrl}/index.php");
     }
 }
