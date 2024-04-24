@@ -8,6 +8,12 @@
 
 <?php 
     ob_start();
+
+    require_once("./src/models/config/config.php");
+    use TSN\src\models\config\Config as ModelConfig;
+
+    $startingUrl = (new ModelConfig)->getStartingUrl();
+
     $followings = $_SESSION['userFollowings'];   // All the followings of the user.
     if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
 
@@ -250,7 +256,7 @@
                 <?php }
                     else{  // The case in which the user is not connected (he does not have access to this page).
 
-                        header("location: http://localhost:4000/index.php?action=loginRequired");
+                        header("location: {$startingUrl}/index.php?action=loginRequired");
                     }
                 ?>
             </div>                      
