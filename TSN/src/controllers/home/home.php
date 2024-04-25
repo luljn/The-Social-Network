@@ -14,8 +14,14 @@ class Home {
 
     public function getHomePage(){
 
-        $user = $_SESSION['user'];
-        (new Follow)->getPeopleToFollowForTheUser($user->getID());
+        $isConnected = $_SESSION['isConnected'];
+
+        if(isset($isConnected) && $isConnected){  // If the user is connected.
+
+            $user = $_SESSION['user'];
+            (new Follow)->getPeopleToFollowForTheUser($user->getID());
+        }
+        
         (new Post)->getPosts();
         require('./src/views/home.php');
     }
