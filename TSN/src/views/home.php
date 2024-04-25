@@ -14,15 +14,6 @@
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
         $usersNotFollowed = $_SESSION['usersNotFollowed'];
-        if(!empty($usersNotFollowed)){
-
-            $firstUserNotFollowed = $usersNotFollowed[0];           // The first user not followed in the list.
-        }
-
-        if(count($usersNotFollowed) != 1){
-
-            array_shift($usersNotFollowed);
-        }
     }
 ?>
 
@@ -97,64 +88,47 @@
                 <?php if(isset($isConnected) && $isConnected){ ?>
                     <div class="col-2 mt-5">
                         <?php if(!empty($usersNotFollowed)){ ?>
-                                <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Connaissez-vous ?</h5>
-                            <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active" data-bs-interval="5000">
-                                        <div class="card d-block w-100 border-2 border-secondary">
-                                            <?php if($firstUserNotFollowed->getPhoto() == ''){ ?>
-                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                            <?php } else { ?>
-                                                <img src="../../img/users/<?= $firstUserNotFollowed->getPhoto() ?>" class="card-img-top" alt="...">
-                                            <?php } ?>
-                                            <div class="card-body">
-                                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($firstUserNotFollowed->getID()) ?>">
-                                                    <h5 class="card-title fs-5 fw-bold text-center"><?= $firstUserNotFollowed->getSurname() . " " . $firstUserNotFollowed->getName(); ?></h5>
-                                                </a>
-                                                <p class="card-text fs-5 text-center mt-3"><?= $firstUserNotFollowed->getDescription() ?></p>
-                                                <div class="text-center">
-                                                    <form action="index.php?action=newFollow" method="POST">
-                                                        <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $firstUserNotFollowed->getID() ?>">
-                                                        <button class="btn btn-primary mt-3">Follow</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Découvrez d'autres utilisateurs 👨👩</h5>
+                            <!-- <div id="carousel" class="carousel slide position-sticky" data-bs-ride="carousel" style="top: 150px;"> -->
+                            <div class="position-sticky text-center" style="top: 150px;">
+                                <button type="button" class="btn btn-primary btn-block justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#usersNotFollowed">
+                                    <i class="bi bi-plus-circle"></i>
+                                    Découvrir 
+                                </button>
+                            </div>
+
+                        <div class="modal fade" id="usersNotFollowed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Connaissez-vous ?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <?php foreach($usersNotFollowed as $userToFollow){ ?>
-                                        <div class="carousel-item" data-bs-interval="5000">
-                                            <div class="card d-block w-100 border-2 border-secondary">
-                                                <?php if($userToFollow->getPhoto() == ''){ ?>
-                                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
-                                                <?php } else { ?>
-                                                    <img src="../../img/users/<?= $userToFollow->getPhoto() ?>" class="card-img-top" alt="...">
-                                                <?php } ?>
-                                                <div class="card-body">
-                                                    <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($userToFollow->getID()) ?>">
-                                                        <h5 class="card-title fs-5 fw-bold text-center"><?= $userToFollow->getSurname() . " " . $userToFollow->getName(); ?></h5>
-                                                    </a>
-                                                    <p class="card-text fs-5 text-center mt-3"><?= $userToFollow->getDescription() ?></p>
-                                                    <div class="text-center">
-                                                        <form action="index.php?action=newFollow" method="POST">
-                                                            <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $userToFollow->getID() ?>">
-                                                            <button type="submit" class="btn btn-primary mt-3">Follow</button>
-                                                        </form>
+                                    
+                                        <div class="modal-body">
+                                            <?php foreach($usersNotFollowed as $userToFollow){ ?>
+                                                <form action="" method="POST">
+                                                    <div class="mb-3 d-flex flex-row justify-content-between">
+                                                        <?php if($userToFollow->getPhoto() == ''){ ?>
+                                                            <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                        <?php } else {?>
+                                                            <img src="../../img/users/<?= $userToFollow->getPhoto()?>" width="50" height="50">
+                                                        <?php } ?>
+                                                        <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($userToFollow->getID()) ?>">
+                                                            <h5 class="mx-1 mt-2 fs-5 fw-bold"><?= $userToFollow->getSurname() .  " " . $userToFollow->getName() ?></h5>
+                                                        </a>
+                                                        <button type="submit" class="btn btn-primary">follow</button>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </form>
+                                            <?php } ?>
                                         </div>
-                                    <?php } ?>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
                                 </div>
                             </div>
+                        </div>        
                     <?php } else { ?>
                         <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
                                 <div class="card-body">
