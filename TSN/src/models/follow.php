@@ -39,6 +39,15 @@ class FollowManagment {
         $query->closeCursor();
     }
 
+    public function unFollowUser($idFollower, $idFollowing){  // To delete a follower between a follower user and a followed user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "DELETE FROM follow WHERE id_follower = \"{$idFollower}\" AND id_following = \"{$idFollowing}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
     public function getFollowingsOfUser($idUser){    // To retrieve all the persons that the user follows.
 
         $this->databaseConnection = new DatabaseConnection;

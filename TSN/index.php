@@ -189,6 +189,15 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'unFollow'){    // To delete a follow between two users.
+            
+            if(isset($_POST['idUserFollowed'])){
+            
+                $user = $_SESSION["user"];
+                (new Follow)->unFollow($user->getID(), $_POST['idUserFollowed']);
+            }
+        }
+
         else{
 
             throw new Exception("Oups, la page que vous cherchez n'existe pas.");

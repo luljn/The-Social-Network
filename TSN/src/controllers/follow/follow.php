@@ -23,9 +23,21 @@ class Follow {
         $this->followManagment->followAnotherUser($idFollower, $idFollowing, $dateCreation);
 
         $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
-        // $this->getPeopleToFollowForTheUser($idFollower);  // To get the list of the other people the user can follow up to date.
 
         header("location: {$startingUrl}/index.php?action=home");
+    }
+
+    public function unFollow($idFollower, $idFollowing){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->followManagment = new ModelFollowManagment;
+        $this->followManagment->unFollowUser($idFollower, $idFollowing);
+
+        $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
+
+        header("location: {$startingUrl}/index.php?action=myAccount&userId={$idFollower}");
     }
 
     public function getUserFollowings($idUser){  // To retrieve all the persons that the user follows.

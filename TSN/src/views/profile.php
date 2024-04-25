@@ -231,11 +231,12 @@
                                 <?php if(!empty($followings)){ ?>
                                     <div class="modal-body">
                                         <?php foreach($followings as $following){ ?>
-                                            <form action="" method="POST">
+                                            <form action="index.php?action=unFollow" method="POST">
                                                 <div class="mb-3 d-flex flex-row justify-content-between">
                                                     <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($following->getUser()->getID()) ?>">
                                                         <h5 class="fs-5 fw-bold"><?= $following->getUser()->getSurname() .  " " . $following->getUser()->getName() ?></h5>
                                                     </a>
+                                                    <input type="hidden" id="idUserFollowed" name="idUserFollowed" value="<?= $following->getUser()->getID() ?>">
                                                     <button type="submit" class="btn btn-primary">Unfollow</button>
                                                 </div>
                                             </form>
