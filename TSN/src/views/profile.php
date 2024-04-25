@@ -233,6 +233,13 @@
                                         <?php foreach($followings as $following){ ?>
                                             <form action="index.php?action=unFollow" method="POST">
                                                 <div class="mb-3 d-flex flex-row justify-content-between">
+
+                                                    <?php if($following->getUser()->getPhoto() == ''){ ?>
+                                                        <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                    <?php } else {?>
+                                                        <img src="../../img/users/<?= $following->getUser()->getPhoto()?>" width="50" height="50">
+                                                    <?php } ?>
+
                                                     <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($following->getUser()->getID()) ?>">
                                                         <h5 class="fs-5 fw-bold"><?= $following->getUser()->getSurname() .  " " . $following->getUser()->getName() ?></h5>
                                                     </a>
@@ -244,7 +251,7 @@
                                     </div>
                                 <?php } else { ?>
                                     <div class="modal-body fs-5">
-                                        Vous n'avez encore aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
+                                        Vous n'avez aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
                                     </div>
                                 <?php } ?>
                                 <div class="modal-footer">

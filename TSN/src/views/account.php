@@ -115,7 +115,7 @@
                         <div class="card mb-5 border-2 border-secondary">
                             <div class="card-body">
                                 <p class="card-text fs-5">
-                                    Vous n'avez encore fait aucun post 😓, mais vous pouvez en faire un grâce au bouton nouveau post 😉.
+                                    Vous n'avez fait aucun post 😓, mais vous pouvez en faire un grâce au bouton nouveau post 😉.
                                 </p>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                         <div class="card mb-5 border-2 border-secondary">
                             <div class="card-body">
                                 <p class="card-text fs-5">
-                                    Cet utilisateur(trice) n'a encore fait aucun post 😓, cette page est donc vide 😭. Y'a rien à voir pour le moment 😥.
+                                    Cet utilisateur(trice) n'a fait aucun post 😓, cette page est donc vide 😭. Y'a rien à voir pour le moment 😥.
                                 </p>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                             <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
                                 <div class="card-body">
                                     <p class="text-center text-dark fs-5 mt-5">
-                                        Vous n'avez encore aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
+                                        Vous n'avez aucun following 😓, mais vous pouvez follow un autre utilisateur à tout moment 😉.
                                     </p>
                                 </div>
                             </div>
