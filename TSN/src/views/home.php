@@ -107,7 +107,7 @@
                                     
                                         <div class="modal-body">
                                             <?php foreach($usersNotFollowed as $userToFollow){ ?>
-                                                <form action="" method="POST">
+                                                <form action="index.php?action=newFollow" method="POST">
                                                     <div class="mb-3 d-flex flex-row justify-content-between">
                                                         <?php if($userToFollow->getPhoto() == ''){ ?>
                                                             <img src="../../img/defaultUserPicture.png" width="50" height="50">
@@ -117,6 +117,7 @@
                                                         <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($userToFollow->getID()) ?>">
                                                             <h5 class="mx-1 mt-2 fs-5 fw-bold"><?= $userToFollow->getSurname() .  " " . $userToFollow->getName() ?></h5>
                                                         </a>
+                                                        <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $userToFollow->getID() ?>">
                                                         <button type="submit" class="btn btn-primary">follow</button>
                                                     </div>
                                                 </form>

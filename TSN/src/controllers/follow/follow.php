@@ -23,7 +23,7 @@ class Follow {
         $this->followManagment->followAnotherUser($idFollower, $idFollowing, $dateCreation);
 
         $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
-        $this->getPeopleToFollowForTheUser($idFollower);  // To get the list of the other people the user can follow up to date.
+        // $this->getPeopleToFollowForTheUser($idFollower);  // To get the list of the other people the user can follow up to date.
 
         header("location: {$startingUrl}/index.php?action=home");
     }
