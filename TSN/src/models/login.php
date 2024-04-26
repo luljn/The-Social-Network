@@ -18,7 +18,7 @@ class Login {
     private DatabaseConnection $databaseConnection;
     private Config $config;
 
-    public function connectUser($email, $password){
+    public function connectUser($email, $password){  // To verify the informations given by the user in the login form and make the connection these are good.
 
         $this->config = new Config;
         $startingUrl = $this->config->getStartingUrl();

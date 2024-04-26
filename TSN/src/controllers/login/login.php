@@ -19,13 +19,13 @@ class Login {
         require("./src/views/login.php");
     }
 
-    public function executeLogin($email, $password){
+    public function executeLogin($email, $password){  // To execute the login process.
 
         $this->login = new ModelLogin;
         $this->login->connectUser($email, $password);
     }
 
-    public function disconnectUser(){
+    public function disconnectUser(){  // To disconnect the connected user.
 
         $this->config = new ModelConfig;
         $startingUrl = $this->config->getStartingUrl();
