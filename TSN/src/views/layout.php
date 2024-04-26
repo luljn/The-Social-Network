@@ -19,7 +19,7 @@
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
-    <body>
+    <body class="d-flex flex-column min-vh-100">
 
         <header>
             <?= $header ?>
@@ -29,7 +29,7 @@
             <?= $content ?>
         </main>
 
-        <footer>
+        <footer class="footer mt-auto py-3 bg-light">
             <?= $footer ?>
         </footer>
 

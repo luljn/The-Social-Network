@@ -7,7 +7,7 @@
 ?>
 
 <div class="container">
-    <p class="text-center text-secondary fs-4 fw-bold">
+    <p class="text-center text-secondary fs-5 fw-bold">
         Copyright © THE SOCIAL NETWORK.
     </p>
 </div>
