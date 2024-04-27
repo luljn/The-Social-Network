@@ -37,7 +37,7 @@
                                             } 
                                             else {
                                         ?>
-                                            <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
+                                            <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top" alt="photo de profile" width="225" height="260">
                                         <?php } ?>
                                         <div class="card-body">
                                             <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">
@@ -244,7 +244,7 @@
                                                         <h5 class="fs-5 fw-bold"><?= $following->getUser()->getSurname() .  " " . $following->getUser()->getName() ?></h5>
                                                     </a>
                                                     <input type="hidden" id="idUserFollowed" name="idUserFollowed" value="<?= $following->getUser()->getID() ?>">
-                                                    <button type="submit" class="btn btn-primary">Unfollow</button>
+                                                    <button type="submit" class="btn btn-primary">UnFollow</button>
                                                 </div>
                                             </form>
                                         <?php } ?>

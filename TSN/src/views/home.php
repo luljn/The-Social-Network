@@ -25,12 +25,12 @@
                     <div class="col-2">
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if($user->getPhoto() == ''){ ?>
-                                    <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
+                                    <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
                             <?php 
                                   } 
                                   else {
                             ?>
-                                    <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
+                                    <img src="../../img/users/<?= $user->getPhoto()?>" class="card-img-top" alt="photo de profile" width="225" height="225">
                             <?php } ?>
                             <div class="card-body">
                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">
@@ -85,7 +85,7 @@
                             <?php } ?>
                         </div>
                     <?php      }
-                            } else { // If the user has no following(s) or his following(s) didn't make any post.
+                            } elseif(empty($userFollowingsPosts)){ // If the user has no following(s) or his following(s) didn't make any post.
                                 foreach($randomPosts as $post){
                     ?>
                         <div class="card mb-5 border border-2 border-primary">
@@ -187,7 +187,7 @@
                                                                 <h5 class="mx-1 mt-2 fs-5 fw-bold"><?= $userToFollow->getSurname() .  " " . $userToFollow->getName() ?></h5>
                                                             </a>
                                                             <input type="hidden" id="idUserToFollow" name="idUserToFollow" value="<?= $userToFollow->getID() ?>">
-                                                            <button type="submit" class="btn btn-primary">follow</button>
+                                                            <button type="submit" class="btn btn-primary">Follow</button>
                                                         </div>
                                                     </form>
                                                 <?php } ?>

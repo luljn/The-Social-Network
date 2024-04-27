@@ -33,16 +33,16 @@
         <div class="container d-flex flex-row">
             <div class="row">
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
-                         && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user ?>
+                         && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user. ?>
                     <div class="col-2">
                         <div class="card mt-5 border border-2 border-secondary position-sticky d-flex flex-column" style="top: 150px;">
                             <?php if($connectedUser->getPhoto() == ''){ ?>
-                                <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
+                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
                             <?php 
                                 } 
                                 else {
                             ?>
-                                <img src="../../img/users/<?= $connectedUser->getPhoto()?>" class="card-img-top img-fluid" alt="photo de profile">
+                                <img src="../../img/users/<?= $connectedUser->getPhoto()?>" class="card-img-top" alt="photo de profile" width="225" height="225">
                             <?php } ?>
                             <div class="card-body">
                                 <h5 class="card-title fs-5 fw-bold text-center"><?= $connectedUser->getSurname() . " " . $connectedUser->getName(); ?></h5>
@@ -88,23 +88,43 @@
                             </div>
                         </div>
                     </div>
-                <?php } else { ?>
-                <div class="col-2">
-                    <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
-                        <?php if(isset($user) && $user->getPhoto() == ''){ ?>
-                            <img src="../../img/defaultUserPicture.png" class="card-img-top img-fluid" alt="photo de profile">
-                        <?php 
-                              } 
-                              elseif(isset($user) && $user->getPhoto() != ''){
-                        ?>
-                            <img src="../../img/users/<?= $user->getPhoto() ?>" class="card-img-top img-fluid" alt="photo de profile">
-                        <?php } ?>
-                        <div class="card-body">
-                            <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
-                            <p class="card-text fs-5 text-center mt-3"><?= $user->getDescription(); ?></p>
+                <?php } elseif(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
+                         && $_GET['userId'] != $connectedUser->getID()){ // If the account it is not the one of the connected user. ?>
+
+                    <div class="col-2">
+                        <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
+                            <?php if(isset($user) && $user->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
+                            <?php 
+                                } 
+                                elseif(isset($user) && $user->getPhoto() != ''){
+                            ?>
+                                <img src="../../img/users/<?= $user->getPhoto() ?>" class="card-img-top" alt="photo de profile" width="225" height="225">
+                            <?php } ?>
+                            <div class="card-body">
+                                <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                <p class="card-text fs-5 text-center mt-3"><?= $user->getDescription(); ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                <?php } else { // If the user is not connected. ?>
+                    <div class="col-2">
+                        <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
+                            <?php if(isset($user) && $user->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
+                            <?php 
+                                } 
+                                elseif(isset($user) && $user->getPhoto() != ''){
+                            ?>
+                                <img src="../../img/users/<?= $user->getPhoto() ?>" class="card-img-top" alt="photo de profile" width="225" height="225">
+                            <?php } ?>
+                            <div class="card-body">
+                                <h5 class="card-title fs-5 fw-bold text-center"><?= $user->getSurname() . " " . $user->getName(); ?></h5>
+                                <p class="card-text fs-5 text-center mt-3"><?= $user->getDescription(); ?></p>
+                            </div>
+                        </div>
+                    </div>
                 <?php } ?>
 
                 <div class="col-8 mt-5">
@@ -182,9 +202,9 @@
                                     <div class="carousel-item active" data-bs-interval="5000">
                                         <div class="card d-block w-100 border-2 border-secondary">
                                             <?php if($firstFollowing->getUser()->getPhoto() == ''){ ?>
-                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="..." width="225" height="225">
                                             <?php } else { ?>
-                                                <img src="../../img/users/<?= $firstFollowing->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
+                                                <img src="../../img/users/<?= $firstFollowing->getUser()->getPhoto() ?>" class="card-img-top" alt="..." width="225" height="225">
                                             <?php } ?>
                                             <div class="card-body">
                                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($firstFollowing->getUser()->getID()) ?>">
@@ -203,9 +223,9 @@
                                         <div class="carousel-item" data-bs-interval="5000">
                                             <div class="card d-block w-100 border-2 border-secondary">
                                             <?php if($following->getUser()->getPhoto() == ''){ ?>
-                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="...">
+                                                <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="..." width="225" height="225">
                                             <?php } else { ?>
-                                                <img src="../../img/users/<?= $following->getUser()->getPhoto() ?>" class="card-img-top" alt="...">
+                                                <img src="../../img/users/<?= $following->getUser()->getPhoto() ?>" class="card-img-top" alt="..." width="225" height="225">
                                             <?php } ?>
                                                 <div class="card-body">
                                                     <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($following->getUser()->getID()) ?>">

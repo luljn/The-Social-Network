@@ -14,9 +14,7 @@ class Home {
 
     public function getHomePage(){
 
-        $isConnected = $_SESSION['isConnected'];
-
-        if(isset($isConnected) && $isConnected){  // If the user is connected.
+        if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == True){  // If the user is connected.
 
             $user = $_SESSION['user'];
             (new Follow)->getPeopleToFollowForTheUser($user->getID());
