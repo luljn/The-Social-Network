@@ -21,7 +21,7 @@ class User {
         $startingUrl = $this->config->getStartingUrl();
 
         $this->userModification = new ModelUserModification;
-        $this->userModification->updatePersonnalInformations($email, $name, $surname, $address);
+        $this->userModification->updatePersonnalInformations($email, strtoupper($name), $surname, $address);
 
         header("location: {$startingUrl}/index.php?action=myProfile");
     }

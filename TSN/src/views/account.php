@@ -56,7 +56,7 @@
                         </div>
                         <div class="mt-5 position-fixed text-center">
                             <button type="button" class="btn btn-primary btn-block justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
-                                <i class="bi bi-plus-circle"></i>
+                                <i class="bi bi-pen"></i>
                                 Nouveau post 
                             </button>
                         </div>

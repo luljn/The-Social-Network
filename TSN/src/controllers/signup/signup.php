@@ -29,7 +29,7 @@ class Signup {
         $startingUrl = $this->config->getStartingUrl();
 
         $this->signup = new ModelSignup();
-        $wasAlreadyUser = $this->signup->addUser($email, $password, $name, $surname, $birthday, $address, $admin, $statutBannissement);
+        $wasAlreadyUser = $this->signup->addUser($email, $password, strtoupper($name), $surname, $birthday, $address, $admin, $statutBannissement);
 
         if($wasAlreadyUser === 0){
 
