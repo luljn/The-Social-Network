@@ -47,4 +47,10 @@ class Post {
         $this->postManagment = new ModelPostManagment;
         $this->postManagment->getRandomPosts();
     }
+
+    public function getUserFollowingsPosts(){
+
+        $this->postManagment = new ModelPostManagment;
+        $this->postManagment->getFollowingsPosts();
+    }
 }

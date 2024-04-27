@@ -14,13 +14,14 @@
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
         $usersNotFollowed = $_SESSION['usersNotFollowed'];
+        $userFollowingsPosts = $_SESSION["followingsPosts"];
     }
 ?>
 
     <section class="mt-5">
         <div class="container d-flex flex-row">
             <div class="row">
-                <?php if(isset($isConnected) && $isConnected){ ?>
+                <?php if(isset($isConnected) && $isConnected){ // If the user is connected. ?>
                     <div class="col-2">
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if($user->getPhoto() == ''){ ?>
@@ -43,15 +44,83 @@
                         </div>
                     </div>
                 <?php } 
-                      else {
+                      else { // If the user is not connected.
                 ?>
                     <div class="col-1 offset-1">
                         <div class="card"></div>
                     </div>        
                 <?php } ?>
                 <div class="col-8 mt-5">
-                    <?php 
-                        foreach($randomPosts as $post){ 
+                    <?php if(isset($isConnected) && $isConnected){ // If the user is connected.
+                            if(!empty($userFollowingsPosts)){  // If the user has at least one following and this one has made at least one post.
+                                foreach($userFollowingsPosts as $post){
+                    ?>
+
+                        <div class="card mb-5 border border-2 border-primary">
+                            <div class="d-flex flex-row mx-2 mt-2">
+                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                            <?php } else {?>
+                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
+                            <?php } ?>
+                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
+                                    <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                </a>
+                            </div>
+                            <hr class="border border-2 border-secondary">
+                            <?php if($post->getImage() == ''){ ?>
+                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                            <?php } else {?>
+                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                            <?php } ?>
+                            <div class="card-body">
+                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
+                            </div>
+                            <?php if(isset($isConnected) && $isConnected){ ?>
+                                <hr class="border border-2 border-secondary">
+                                <div class="d-flex flex-row mx-2 mb-2">
+                                    <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
+                                    <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php      }
+                            } else { // If the user has no following(s) or his following(s) didn't make any post.
+                                foreach($randomPosts as $post){
+                    ?>
+                        <div class="card mb-5 border border-2 border-primary">
+                            <div class="d-flex flex-row mx-2 mt-2">
+                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                            <?php } else {?>
+                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
+                            <?php } ?>
+                                <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
+                                    <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                </a>
+                            </div>
+                            <hr class="border border-2 border-secondary">
+                            <?php if($post->getImage() == ''){ ?>
+                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                            <?php } else {?>
+                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                            <?php } ?>
+                            <div class="card-body">
+                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
+                            </div>
+                            <?php if(isset($isConnected) && $isConnected){ ?>
+                                <hr class="border border-2 border-secondary">
+                                <div class="d-flex flex-row mx-2 mb-2">
+                                    <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
+                                    <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php
+                                }
+                            }
+                        } else { // If the user is not connected.
+                                foreach($randomPosts as $post){ 
                     ?>
                         <div class="card mb-5 border border-2 border-primary">
                             <div class="d-flex flex-row mx-2 mt-2">
@@ -82,6 +151,7 @@
                             <?php } ?>
                         </div>
                     <?php   
+                            }
                         }
                     ?>
                 </div>

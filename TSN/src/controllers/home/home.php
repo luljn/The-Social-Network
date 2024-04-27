@@ -20,6 +20,7 @@ class Home {
 
             $user = $_SESSION['user'];
             (new Follow)->getPeopleToFollowForTheUser($user->getID());
+            (new Post)->getUserFollowingsPosts();
         }
         
         (new Post)->getPosts();

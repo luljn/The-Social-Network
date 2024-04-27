@@ -183,4 +183,46 @@ class PostManagment {
 
         $_SESSION['ramdomPosts'] = $RandomPosts;
     }
+
+    public function getFollowingsPosts(){  // The get all the post made by followings of a user.
+
+        $userFollowings = $_SESSION['userFollowings'];
+        $followingsPosts = [];  // The list of user followings posts.
+
+        $this->databaseConnection = new DatabaseConnection;
+
+        foreach($userFollowings as $following){
+
+            $id_following = $following->getUser()->getID();
+
+            $statement = "SELECT * from post WHERE id_utilisateur = \"{$id_following}\";";
+            $query = $this->databaseConnection->getConnection()->prepare($statement);
+            $query->execute();
+            $result = $query->fetchAll();
+            $query->closeCursor();
+
+            if($result != NULL){
+
+                for($i = 0; $i < count($result); $i++){
+
+                    if($result[$i]['image'] == NULL){
+
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '');
+                    }
+    
+                    else{
+    
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image']);
+                    }
+
+                    if(!in_array($followingPost, $followingsPosts)){
+
+                        $followingsPosts[] = $followingPost;
+                    }
+                }
+            }
+        }
+
+        $_SESSION["followingsPosts"] = $followingsPosts;
+    }
 }
