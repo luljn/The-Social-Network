@@ -16,7 +16,7 @@
 <?php ob_start(); ?>
 
     <div class="container-fluid">
-        <div class="row vh-100">
+        <div class="row">
             <div class="col-12 col-sm-6 col-md-8 p-0">
                 <img class="img-fluid h-100" src="https://picsum.photos/id/272/1920/1280" alt="Image page de connexion">
             </div>
