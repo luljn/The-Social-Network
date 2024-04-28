@@ -157,7 +157,7 @@ class PostManagment {
         }
         
 
-        for ($i = 0; $i < count($result); $i++){     // To associate a post tho his author.
+        for ($i = 0; $i < count($result); $i++){     // To associate a post to his author.
 
             foreach($Users as $ramdomUser){
 
