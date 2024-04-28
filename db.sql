@@ -99,6 +99,11 @@ VALUES
 (2, "Cet animé est juste fantastique", '2024-04-22', "hunter_x_hunter_v3__hisoka____icon_folder_by_ubagutobr_d80jtem.ico")
 ;
 
+INSERT INTO commentaire (id_utilisateur, id_post, contenu, date_creation, image)
+VALUES
+(2, 1, "Ceci est mon commentaire sur ton post", "2024-04-28", NULL)
+;
+
 INSERT INTO Follow (id_follower, id_following, date_creation)
 VALUES
 (1, 2, '2024-04-21'),
