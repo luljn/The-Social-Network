@@ -179,8 +179,62 @@
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i><p class="fs-3 me-4 text-secondary">1</p>
-                                    <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i><p class="fs-3 me-4 text-secondary">7</p>
+                                    <button class="btn btn-unstyled"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button><p class="fs-3 me-4 text-secondary">1</p>
+                                    <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                                        <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
+                                    </button><p class="fs-3 me-4 text-secondary">7</p>
+
+                                    <!-- Offcanvas to display the comments of a post -->
+                                    <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                                        <div class="offcanvas-header text-center">
+                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel">Commentaires</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body small">
+                                            <div class="container">
+                                                <div class="row gx-5">
+                                                    <div class="col-6">
+                                                        <form action="" method="POST" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                        <div class="mb-3">
+                                                            <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
+                                                            <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>
+                                                                <input type="file" class="form-control" id="imageComment" name="imageComment" accept="image/*">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Commenter</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="card mb-3">
+                                                            <img src="https://picsum.photos/1920/1080?random=4" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Card title</h5>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card mb-3">
+                                                            <img src="https://picsum.photos/1920/1080?random=5" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Card title</h5>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card mb-3">
+                                                            <img src="https://picsum.photos/1920/1080?random=6" class="card-img-top" alt="...">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Card title</h5>
+                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             <?php } ?>
                         </div>
