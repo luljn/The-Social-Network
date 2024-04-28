@@ -25,15 +25,13 @@
                         </a>
                     </li>
                     <li class="nav-item text-light mx-2">
-                        <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Notifications">
-                            <i class="bi bi-bell  text-light fs-3"></i>
+                        <a href="" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
+                            <div class="d-flex flex-row">
+                                <i class="bi bi-bell  text-light fs-3"></i>
+                                <span class="badge text-bg-secondary">4</span>
+                            </div>
                         </a>
                     </li>
-                    <!-- <li class="nav-item text-light mx-2">
-                        <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Messages">
-                            <i class="bi bi-chat-left  text-light fs-3"></i>
-                        </a>
-                    </li> -->
                     <li class="nav-item text-light mx-2">
                         <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Statistiques">
                             <i class="bi bi-bar-chart  text-light fs-3"></i>
