@@ -28,7 +28,7 @@
                         <a href="" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
                             <div class="d-flex flex-row">
                                 <i class="bi bi-bell  text-light fs-3"></i>
-                                <span class="badge text-bg-secondary">4</span>
+                                <span class="badge text-bg-secondary fs-5">4</span>
                             </div>
                         </a>
                     </li>

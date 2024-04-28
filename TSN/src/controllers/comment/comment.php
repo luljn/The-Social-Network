@@ -17,7 +17,11 @@ class Comment {
 
     public function getPostComments($idPost){
 
+        $postComments = [];
+
         $this->commentManagment = new ModelCommentManagment;
-        $this->commentManagment->getCommentsByPost($idPost);
+        $postComments = $this->commentManagment->getCommentsByPost($idPost);
+
+        return $postComments;
     }
 }

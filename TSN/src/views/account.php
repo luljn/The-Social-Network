@@ -156,6 +156,7 @@
 
                     <?php
                         foreach($posts as $post){ 
+                            $postComments = $post->getComments();   // The list of all the comments of the post.
                     ?>
                         <div class="card mb-5 border border-2 border-primary">
                             <div class="d-flex flex-row mx-2 mt-2">
@@ -174,18 +175,27 @@
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
-                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                             </div>
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <button class="btn btn-unstyled"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button><p class="fs-3 me-4 text-secondary">1</p>
-                                    <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                                    <button class="btn btn-unstyled"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button>
+                                    <p class="fs-3 me-4 text-secondary"><?= $post->getLikes(); ?></p>
+                                    <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $post->getID() ?>" aria-controls="offcanvasBottom">
                                         <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
-                                    </button><p class="fs-3 me-4 text-secondary">7</p>
+                                    </button>
+                                    <p class="fs-3 me-4 text-secondary">
+                                        <?php if(!empty($postComments)){ 
+                                                    echo count($post->getComments());
+                                              }
+                                              else{
+                                                echo "0";
+                                              }  
+                                        ?>
+                                    </p>
 
                                     <!-- Offcanvas to display the comments of a post -->
-                                    <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                                    <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom<?= $post->getID() ?>" aria-labelledby="offcanvasBottomLabel">
                                         <div class="offcanvas-header text-center">
                                             <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel">Commentaires</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -195,9 +205,9 @@
                                                 <div class="row gx-5">
                                                     <div class="col-6">
                                                         <form action="" method="POST" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
-                                                        <div class="mb-3">
-                                                            <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
-                                                            <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
+                                                            <div class="mb-3">
+                                                                <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
+                                                                <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>
@@ -207,27 +217,42 @@
                                                         </form>
                                                     </div>
                                                     <div class="col-6">
-                                                        <div class="card mb-3">
-                                                            <img src="https://picsum.photos/1920/1080?random=4" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">Card title</h5>
-                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                        <?php if(!empty($postComments)){ // If the post at least one comment 
+                                                                foreach($postComments as $postComment){
+                                                        
+                                                        ?>
+                                                            <div class="card mb-3 border border-2 border-primary">
+                                                                <div class="d-flex flex-row mx-2 mt-2">
+                                                                    <?php if($postComment->getUser()->getPhoto() == ''){ ?>
+                                                                        <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                                    <?php } else {?>
+                                                                        <img src="../../img/users/<?= $postComment->getUser()->getPhoto()?>" width="50" height="50">
+                                                                    <?php } ?>
+                                                                        <h5 class="mx-1 mt-2 fw-bold"><?= $postComment->getUser()->getSurname() . " " . $postComment->getUser()->getName(); ?></h5>
+                                                                </div>
+                                                                <hr class="border border-2 border-secondary">
+                                                                <?php if($postComment->getImage() == ''){ ?>
+                                                                    <!-- <img src="https://picsum.photos/1920/1080?random=<?= $postComment->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                                                                <?php } else {?>
+                                                                    <img src="../../img/posts/<?= $postComment->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                                                <?php } ?>
+                                                                <div class="card-body">
+                                                                    <p class="card-text fs-5"><?= $postComment->getContent(); ?></p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="card mb-3">
-                                                            <img src="https://picsum.photos/1920/1080?random=5" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">Card title</h5>
-                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                        <?php   }
+                                                              } 
+                                                              elseif(empty($postComments)){ 
+                                                        ?>
+                                                            <div class="card mb-3 border border-2 border-primary">
+                                                                <div class="card-body">
+                                                                    <p class="card-text fs-5">
+                                                                        Ce post n'a aucun commentaire. 
+                                                                        Soyez le(la) premier(e) à le commenter 😉.
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="card mb-3">
-                                                            <img src="https://picsum.photos/1920/1080?random=6" class="card-img-top" alt="...">
-                                                            <div class="card-body">
-                                                                <h5 class="card-title">Card title</h5>
-                                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                            </div>
-                                                        </div>
+                                                        <?php } ?>        
                                                     </div>
                                                 </div>
                                             </div>

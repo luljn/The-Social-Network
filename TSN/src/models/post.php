@@ -9,21 +9,31 @@ use TSN\src\models\lib\DatabaseConnection;
 require_once("user.php");
 use TSN\src\models\user\User as User;
 
+require_once("comment.php");
+use TSN\src\models\comment\Comment as Comment;
+
+require_once("./src/controllers/comment/comment.php");
+use TSN\src\controllers\comment\Comment as CommentController;
+
 class Post {
 
     private int $id;
     private string $content;
     private string $creationDate;
     private string $image;
-    private User $user;    // The user who made the post.
+    private User $user;               // The user who made the post.
+    private $comments = [];  // The list of all the comments of a post.
+    private int $likes;             // The number of likes of a comment.
 
-    public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image){
+    public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image, $_comments, int $_likes){
         
         $this->id = $_id;
         $this->content = $_content;
         $this->creationDate = $_creationDate;
         $this->user = $_user;
         $this->image = $_image;
+        $this->comments = $_comments;
+        $this->likes = $_likes;
     }
 
     public function getID(){ return $this->id; }
@@ -31,6 +41,8 @@ class Post {
     public function getCreationDate(){ return $this->creationDate; }
     public function getUser(){ return $this->user; }
     public function getImage(){ return $this->image; }
+    public function getComments(){ return $this->comments; }
+    public function getLikes(){ return $this->likes; }
 
     public function setID(int $_id){ $this->id = $_id; }
     public function setContent(string $_content){ $this->content = $_content; }
@@ -42,6 +54,7 @@ class Post {
 class PostManagment {
 
     private DatabaseConnection $databaseConnection;
+    private CommentController $commentController;
 
     public function addPost($idUser, $content, $date){            // To add a post without an image.
 
@@ -64,6 +77,8 @@ class PostManagment {
     }
 
     public function getPostsByUser(int $idUser){    // To retrieve all the posts made by a user.
+
+        $this->commentController = new CommentController;
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "SELECT * from post WHERE id_utilisateur = \"{$idUser}\";";
@@ -99,14 +114,18 @@ class PostManagment {
 
             for ($i = 0; $i < count($result); $i++) {
 
+                //
+                $postComments = $this->commentController->getPostComments($result[$i]['id']);
+                //
+
                 if($result[$i]['image'] == NULL){
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '');
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '', $postComments, 0);
                 }
 
                 else{
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image']);
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image'], $postComments, 0);
                 }
 
                 $Posts[] = $userPost;
@@ -118,6 +137,8 @@ class PostManagment {
 
 
     public function getRandomPosts(){   // To get random post, to display on the home screen.
+
+        $this->commentController = new CommentController;
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "SELECT * from post;";
@@ -163,14 +184,18 @@ class PostManagment {
 
                 if($result[$i]['id_utilisateur'] === $ramdomUser->getID()){
 
+                    //
+                    $postComments = $this->commentController->getPostComments($result[$i]['id']);
+                    //
+
                     if($result[$i]['image'] == NULL){
 
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '');
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '', $postComments, 0);
                     }
     
                     else{
     
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image']);
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image'], $postComments, 0);
                     }
                     
                     if(!in_array($userPost, $RandomPosts)){
@@ -185,6 +210,8 @@ class PostManagment {
     }
 
     public function getFollowingsPosts(){  // The get all the post made by followings of a user.
+
+        $this->commentController = new CommentController;
 
         $userFollowings = $_SESSION['userFollowings'];
         $followingsPosts = [];  // The list of user followings posts.
@@ -205,14 +232,18 @@ class PostManagment {
 
                 for($i = 0; $i < count($result); $i++){
 
+                    //
+                    $postComments = $this->commentController->getPostComments($result[$i]['id']);
+                    //
+
                     if($result[$i]['image'] == NULL){
 
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '');
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '', $postComments, 0);
                     }
     
                     else{
     
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image']);
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image'], $postComments, 0);
                     }
 
                     if(!in_array($followingPost, $followingsPosts)){
