@@ -104,3 +104,13 @@ VALUES
 (1, 2, '2024-04-21'),
 (1, 3, '2024-04-21')
 ;
+
+INSERT INTO notificationGenerique(contenu)
+VALUES
+("Vous avez un nouveau follower"),
+("Vous avez un nouveau following"),
+("Vous avez un nouveau like sur l'un de vos post"),
+("Vous avez un nouveau commentaire sur l'un de vos post"),
+("Un de vos post a été marqué comme 'sensible' par un administrateur"),
+("Un de vos post a été supprimé par un administrateur")
+;
