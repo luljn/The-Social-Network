@@ -15,7 +15,7 @@ class Comment {
     private ModelCommentManagment $commentManagment;
     private ModelConfig $config;
 
-    public function getPostComments($idPost){
+    public function getPostComments($idPost){  // To get all the comments of a post.
 
         $postComments = [];
 

@@ -9,9 +9,6 @@ use TSN\src\models\lib\DatabaseConnection;
 require_once("user.php");
 use TSN\src\models\user\User as User;
 
-require_once("comment.php");
-use TSN\src\models\comment\Comment as Comment;
-
 require_once("./src/controllers/comment/comment.php");
 use TSN\src\controllers\comment\Comment as CommentController;
 
@@ -22,7 +19,7 @@ class Post {
     private string $creationDate;
     private string $image;
     private User $user;               // The user who made the post.
-    private $comments = [];  // The list of all the comments of a post.
+    private $comments = [];          // The list of all the comments of a post.
     private int $likes;             // The number of likes of a comment.
 
     public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image, $_comments, int $_likes){
@@ -114,7 +111,7 @@ class PostManagment {
 
             for ($i = 0; $i < count($result); $i++) {
 
-                //
+                // List of comments of each post.
                 $postComments = $this->commentController->getPostComments($result[$i]['id']);
                 //
 
@@ -184,7 +181,7 @@ class PostManagment {
 
                 if($result[$i]['id_utilisateur'] === $ramdomUser->getID()){
 
-                    //
+                    // List of comments of each post.
                     $postComments = $this->commentController->getPostComments($result[$i]['id']);
                     //
 
@@ -232,7 +229,7 @@ class PostManagment {
 
                 for($i = 0; $i < count($result); $i++){
 
-                    //
+                    // List of comments of each post.
                     $postComments = $this->commentController->getPostComments($result[$i]['id']);
                     //
 
