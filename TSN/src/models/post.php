@@ -56,8 +56,8 @@ class PostManagment {
     public function addPost($idUser, $content, $date){            // To add a post without an image.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation) 
-                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\");";
+        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
+                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", NULL);";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
