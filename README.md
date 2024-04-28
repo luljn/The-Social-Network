@@ -21,5 +21,5 @@ A social network implemented with basics web languages and basic features.
 
 ## Authors.
 
-- MBECK MBOH Lula Jonathan (Luljn) : Full-stack devlopper and Database administrator.
-- SELATCHOM GOHUI O'neal Landry (OnealSel) : Back-End devlopper and Database administrator.
+- MBECK MBOH Lula Jonathan (Luljn) : Full-stack developer and Database administrator.
+- SELATCHOM GOHUI O'neal Landry (OnealSel) : Back-End developer and Database administrator.
