@@ -205,7 +205,7 @@
                                             <div class="container">
                                                 <div class="row gx-5">
                                                     <div class="col-6">
-                                                        <form action="index.php?action=addComment" method="POST" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
