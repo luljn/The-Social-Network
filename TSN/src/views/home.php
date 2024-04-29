@@ -24,6 +24,7 @@
             <div class="row">
                 <?php if(isset($isConnected) && $isConnected){ // If the user is connected. ?>
                     <div class="col-2">
+                        <h5 class="text-center fs-5 fw-bold text-secondary mb-4 position-sticky" style="top: 97px">Vous</h5>
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if($user->getPhoto() == ''){ ?>
                                     <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
@@ -100,14 +101,15 @@
                                     <!-- Offcanvas to display the comments of a post -->
                                     <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom<?= $post->getID() ?>" aria-labelledby="offcanvasBottomLabel">
                                         <div class="offcanvas-header text-center">
-                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel">Commentaires</h5>
+                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel"></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div class="offcanvas-body small">
                                             <div class="container">
                                                 <div class="row gx-5">
-                                                    <div class="col-6">
-                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                    <div class="col-6 border border-2 border-success px-5 py-5">
+                                                        <h5 class="fs-3 mb-3">Ecrivez votre commentaire sur ce post : </h5>    
+                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 mb-3">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
@@ -119,10 +121,32 @@
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Commenter</button>
                                                         </form>
+                                                        <div class="card mb-3 border border-2 border-secondary">
+                                                            <div class="d-flex flex-row mx-2 mt-2">
+                                                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                            <?php } else {?>
+                                                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
+                                                            <?php } ?>
+                                                                <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                                            </div>
+                                                            <hr class="border border-2 border-secondary">
+                                                            <?php if($post->getImage() == ''){ ?>
+                                                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                                                            <?php } else {?>
+                                                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                                                <hr class="border border-2 border-secondary">
+                                                            <?php } ?>
+                                                            <div class="card-body">
+                                                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-6 border border-2 border-info px-5 py-5">
                                                         <?php if(!empty($postComments)){ // If the post at least one comment 
-                                                                foreach($postComments as $postComment){
+                                                        ?>
+                                                        <h5 class="fs-3 mb-3">Commentaire(s) précédent(s)</h5>
+                                                        <?php        foreach($postComments as $postComment){
                                                         
                                                         ?>
                                                             <div class="card mb-3 border border-2 border-primary">
@@ -213,14 +237,15 @@
                                     <!-- Offcanvas to display the comments of a post -->
                                     <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom<?= $post->getID() ?>" aria-labelledby="offcanvasBottomLabel">
                                         <div class="offcanvas-header text-center">
-                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel">Commentaires</h5>
+                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel"></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div class="offcanvas-body small">
                                             <div class="container">
                                                 <div class="row gx-5">
-                                                    <div class="col-6">
-                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                    <div class="col-6 border border-2 border-success px-5 py-5">
+                                                        <h5 class="fs-3 mb-3">Ecrivez votre commentaire sur ce post : </h5>    
+                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 mb-3">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
@@ -232,10 +257,32 @@
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Commenter</button>
                                                         </form>
+                                                        <div class="card mb-3 border border-2 border-secondary">
+                                                            <div class="d-flex flex-row mx-2 mt-2">
+                                                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                            <?php } else {?>
+                                                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
+                                                            <?php } ?>
+                                                                <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                                            </div>
+                                                            <hr class="border border-2 border-secondary">
+                                                            <?php if($post->getImage() == ''){ ?>
+                                                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                                                            <?php } else {?>
+                                                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                                                <hr class="border border-2 border-secondary">
+                                                            <?php } ?>
+                                                            <div class="card-body">
+                                                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-6 border border-2 border-info px-5 py-5">
                                                         <?php if(!empty($postComments)){ // If the post at least one comment 
-                                                                foreach($postComments as $postComment){
+                                                        ?>
+                                                        <h5 class="fs-3 mb-3">Commentaire(s) précédent(s)</h5>
+                                                        <?php        foreach($postComments as $postComment){
                                                         
                                                         ?>
                                                             <div class="card mb-3 border border-2 border-primary">

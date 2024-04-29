@@ -35,6 +35,11 @@
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                          && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user. ?>
                     <div class="col-2">
+                        <?php if($connectedUser->getID() == $_GET["userId"]){ ?>
+                                <h5 class="text-center fs-5 fw-bold text-secondary mb-4 position-sticky" style="top: 97px;">Vous</h5>
+                            <?php } else { ?>
+                                <h5 class="text-center fs-5 fw-bold text-secondary mb-4 position-sticky" style="top: 97px;">Lui/Elle</h5>
+                        <?php } ?>
                         <div class="card mt-5 border border-2 border-secondary position-sticky d-flex flex-column" style="top: 150px;">
                             <?php if($connectedUser->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
@@ -51,15 +56,16 @@
                                     <div class="text-center">
                                         <a href="index.php?action=myProfile" class="btn btn-primary mt-3">Mon profil</a>
                                     </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary btn-block justify-content-center mt-2" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
+                                            <i class="bi bi-pen"></i>
+                                            Nouveau post 
+                                        </button>
+                                    </div>
                                 <?php } ?>
                             </div>
                         </div>
-                        <div class="mt-5 position-fixed text-center">
-                            <button type="button" class="btn btn-primary btn-block justify-content-center mt-3" data-bs-toggle="modal" data-bs-target="#userNewPostModal">
-                                <i class="bi bi-pen"></i>
-                                Nouveau post 
-                            </button>
-                        </div>
+
                         <!-- User new post form modal -->
                         <div class="modal fade" id="userNewPostModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -198,14 +204,15 @@
                                     <!-- Offcanvas to display the comments of a post -->
                                     <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasBottom<?= $post->getID() ?>" aria-labelledby="offcanvasBottomLabel">
                                         <div class="offcanvas-header text-center">
-                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel">Commentaires</h5>
+                                            <h5 class="offcanvas-title fs-3" id="offcanvasBottomLabel"></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                         <div class="offcanvas-body small">
                                             <div class="container">
                                                 <div class="row gx-5">
-                                                    <div class="col-6">
-                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                    <div class="col-6 border border-2 border-success px-5 py-5">
+                                                        <h5 class="fs-3 mb-3">Ecrivez votre commentaire sur ce post : </h5>    
+                                                        <form action="index.php?action=addComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 mb-3">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
@@ -217,10 +224,32 @@
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Commenter</button>
                                                         </form>
+                                                        <div class="card mb-3 border border-2 border-secondary">
+                                                            <div class="d-flex flex-row mx-2 mt-2">
+                                                            <?php if($post->getUser()->getPhoto() == ''){ ?>
+                                                                <img src="../../img/defaultUserPicture.png" width="50" height="50">
+                                                            <?php } else {?>
+                                                                <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
+                                                            <?php } ?>
+                                                                <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                                                            </div>
+                                                            <hr class="border border-2 border-secondary">
+                                                            <?php if($post->getImage() == ''){ ?>
+                                                                <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
+                                                            <?php } else {?>
+                                                                <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                                                <hr class="border border-2 border-secondary">
+                                                            <?php } ?>
+                                                            <div class="card-body">
+                                                                <p class="card-text fs-5"><?= $post->getContent(); ?></p>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-6 border border-2 border-info px-5 py-5">
                                                         <?php if(!empty($postComments)){ // If the post at least one comment 
-                                                                foreach($postComments as $postComment){
+                                                        ?>
+                                                        <h5 class="fs-3 mb-3">Commentaire(s) précédent(s)</h5>
+                                                        <?php        foreach($postComments as $postComment){
                                                         
                                                         ?>
                                                             <div class="card mb-3 border border-2 border-primary">
