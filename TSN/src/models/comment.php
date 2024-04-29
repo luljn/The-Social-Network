@@ -47,6 +47,28 @@ class CommentManagment {
 
     private DatabaseConnection $databaseConnection;
 
+    public function addCommentOnPost($idPost, $idUser, $content, $date){  // To add a comment on a post.
+        
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO commentaire (id_utilisateur, id_post, contenu, date_creation, image)
+                      VALUES
+                      (\"{$idUser}\", \"{$idPost}\", \"{$content}\", \"{$date}\", NULL);";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
+    public function addCommentOnPostWithImage($idPost, $idUser, $content, $date, $image){   // To add a comment with an image on a post.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO commentaire (id_utilisateur, id_post, contenu, date_creation, image)
+                      VALUES
+                      (\"{$idUser}\", \"{$idPost}\", \"{$content}\", \"{$date}\", \"{$image}\");";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
     public function getCommentsByPost(int $idPost){
 
         $Comments = [];  // The list of all the comments of a post.

@@ -27,6 +27,9 @@ use TSN\src\controllers\post\Post as Post;
 require_once("src/controllers/follow/follow.php");
 use TSN\src\controllers\follow\Follow as Follow;
 
+require_once("src/controllers/comment/comment.php");
+use TSN\src\controllers\comment\Comment as Comment;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -124,6 +127,29 @@ try {
             elseif(isset($_POST['newPost']) && (!isset($_FILES['image']))){       // To add a post without an image.
 
                 (new Post)->addPost($idUser, $_POST['newPost'], date('Y-m-d'));
+            }
+        }
+
+        elseif($_GET['action'] === 'addComment'){            // If the user wants to add a comment on a post.
+
+            $user = $_SESSION['user'];
+            $idUser = $user->getID();
+            
+            if(isset($_FILES['imageComment']) && isset($_POST['newComment'])){    // To add a comment with an image.
+
+                $file = $_FILES['imageComment'];
+                $tempName = $file["tmp_name"];
+                $fileName = basename($file['name']);            // We get the file name.
+                $uploadDir = "img/posts/";                // The images directory.
+
+                
+                move_uploaded_file($tempName, $uploadDir . $fileName);
+                (new Comment)->addCommentWithImage($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'), $fileName);
+            }
+
+            elseif(isset($_POST['newComment']) && (!isset($_FILES['imageComment']))){       // To add a comment without an image.
+
+                (new Comment)->addComment($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'));
             }
         }
 

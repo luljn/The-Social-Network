@@ -172,6 +172,7 @@
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                <hr class="border border-2 border-secondary">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
@@ -204,10 +205,11 @@
                                             <div class="container">
                                                 <div class="row gx-5">
                                                     <div class="col-6">
-                                                        <form action="" method="POST" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
+                                                        <form action="index.php?action=addComment" method="POST" class="border border-3 rounded-3 px-3 py-3 position-sticky" style="top: 1px;">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
+                                                                <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>
@@ -235,6 +237,7 @@
                                                                     <!-- <img src="https://picsum.photos/1920/1080?random=<?= $postComment->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                                                                 <?php } else {?>
                                                                     <img src="../../img/posts/<?= $postComment->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                                                    <hr class="border border-2 border-secondary">
                                                                 <?php } ?>
                                                                 <div class="card-body">
                                                                     <p class="card-text fs-5"><?= $postComment->getContent(); ?></p>
