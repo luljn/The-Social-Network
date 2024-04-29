@@ -54,6 +54,7 @@
                     <?php if(isset($isConnected) && $isConnected){ // If the user is connected.
                             if(!empty($userFollowingsPosts)){  // If the user has at least one following and this one has made at least one post.
                                 foreach($userFollowingsPosts as $post){
+                                    $postComments = $post->getComments();   // The list of all the comments of the post.
                     ?>
 
                         <div class="card mb-5 border border-2 border-primary">
@@ -72,6 +73,7 @@
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                <hr class="border border-2 border-secondary">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
@@ -101,6 +103,7 @@
                     <?php      }
                             } elseif(empty($userFollowingsPosts)){ // If the user has no following(s) or his following(s) didn't make any post.
                                 foreach($randomPosts as $post){
+                                    $postComments = $post->getComments();   // The list of all the comments of the post.
                     ?>
                         <div class="card mb-5 border border-2 border-primary">
                             <div class="d-flex flex-row mx-2 mt-2">
@@ -118,6 +121,7 @@
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                <hr class="border border-2 border-secondary">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
@@ -166,6 +170,7 @@
                                 <!-- <img src="https://picsum.photos/1920/1080?random=<?= $post->getUser()->getID(); ?>" class="card-img-top" alt="..."> -->
                             <?php } else {?>
                                 <img src="../../img/posts/<?= $post->getImage() ?>" class="card-img-top img-fluid" alt="...">
+                                <hr class="border border-2 border-secondary">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text fs-5"><?= $post->getContent(); ?></p>
