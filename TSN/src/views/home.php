@@ -14,7 +14,8 @@
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
         $usersNotFollowed = $_SESSION['usersNotFollowed'];
-        $userFollowingsPosts = $_SESSION["followingsPosts"];
+        // $userFollowingsPosts = $_SESSION["followingsPosts"];
+        $userFollowingsPosts = [];
     }
 ?>
 

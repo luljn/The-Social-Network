@@ -83,10 +83,6 @@
                                             <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="birthday" class="form-label">Date de naissance : </label>
-                                            <span><?= $user->getBirthday(); ?></span>
-                                        </div>
-                                        <div class="mb-3">
                                             <label for="email" class="form-label">Adresse Mail</label>
                                             <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
                                         </div>
@@ -117,6 +113,10 @@
                                         
                                         <div class="mb-3">
                                             <label for="birthday" class="form-label">Date de naissance : </label>
+                                            <span><?= $user->getBirthday(); ?></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="birthday" class="form-label">Nouvelle date de naissance : </label>
                                             <input type="date" class="form-control" name="birthday" id="birthday" required>
                                         </div>
                                         
