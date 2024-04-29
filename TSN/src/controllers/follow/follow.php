@@ -37,7 +37,7 @@ class Follow {
 
         $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
 
-        header("location: {$startingUrl}/index.php?action=myAccount&userId={$idFollower}");
+        header("location: {$startingUrl}/index.php?action=myProfile");
     }
 
     public function getUserFollowings($idUser){  // To retrieve all the persons that the user follows.
