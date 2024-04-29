@@ -180,8 +180,8 @@
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <button class="btn btn-unstyled"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button>
-                                    <p class="fs-3 me-4 text-secondary"><?= $post->getLikes(); ?></p>
+                                    <button class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button>
+                                    <p class="fs-3 me-4 text-secondary" id="likeValue<?= $post->getID() ?>"><?= $post->getLikes(); ?></p>
                                     <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $post->getID() ?>" aria-controls="offcanvasBottom">
                                         <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
                                     </button>
