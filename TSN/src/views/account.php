@@ -212,7 +212,7 @@
                                                 <div class="row gx-5">
                                                     <div class="col-6 border border-2 border-success px-5 py-5">
                                                         <h5 class="fs-3 mb-3">Ecrivez votre commentaire sur ce post : </h5>    
-                                                        <form action="index.php?action=addComment" id="formComment" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 mb-3">
+                                                        <form action="index.php?action=addComment" id="formComment<?= $post->getID() ?>" method="POST" enctype="multipart/form-data" class="border border-3 rounded-3 px-3 py-3 mb-3">
                                                             <div class="mb-3">
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
@@ -222,7 +222,7 @@
                                                                 <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>
                                                                 <input type="file" class="form-control" id="imageComment" name="imageComment" accept="image/*">
                                                             </div>
-                                                            <button type="button" id="submitComment" class="btn btn-primary">Commenter</button>
+                                                            <button type="button" id="submitComment<?= $post->getID() ?>" class="btn btn-primary">Commenter</button>
                                                         </form>
                                                         <div class="card mb-3 border border-2 border-secondary">
                                                             <div class="d-flex flex-row mx-2 mt-2">
