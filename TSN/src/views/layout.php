@@ -17,6 +17,9 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
                 integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+            <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <body class="d-flex flex-column min-vh-100">
@@ -41,9 +44,7 @@
         <script src="../../dynamic/togglePassword.js"></script>
         <script src="../../dynamic/newPasswordCheck.js"></script>
         <script src="../../dynamic/addOrRemoveLikeOnPost.js"></script>
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+        <script src="../../dynamic/addCommentOnPost.js"></script>
 
     </body>
 
