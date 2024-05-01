@@ -36,6 +36,9 @@ use TSN\src\controllers\notification\Notification as Notification;
 require_once("src/controllers/like/like.php");
 use TSN\src\controllers\like\Like as Like;
 
+require_once("src/controllers/stat/stat.php");
+use TSN\src\controllers\stat\Stat as Stat;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -255,6 +258,11 @@ try {
         elseif($_GET['action'] === 'notification'){
 
             (new Notification)->getNotificationsPage();         // We return the notifications page.
+        }
+
+        elseif($_GET['action'] === 'statistics'){
+
+            (new Stat)->getStatisticsPage();         // We return the statistics page.
         }
 
         else{

@@ -36,15 +36,20 @@
             <?= $footer ?>
         </footer>
 
-        <!-- JS -->
+        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
+
+        <!-- JS -->
         <script src="../../dynamic/tooltip.js"></script>
         <script src="../../dynamic/togglePassword.js"></script>
         <script src="../../dynamic/newPasswordCheck.js"></script>
         <script src="../../dynamic/addOrRemoveLikeOnPost.js"></script>
         <script src="../../dynamic/addCommentOnPost.js"></script>
+        
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </body>
 

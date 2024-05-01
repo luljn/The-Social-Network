@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item text-light mx-2">
-                        <a href="#" class="nav-link"  data-bs-toggle="tooltip" title="Statistiques">
+                        <a href="index.php?action=statistics" class="nav-link"  data-bs-toggle="tooltip" title="Statistiques">
                             <i class="bi bi-bar-chart  text-light fs-3"></i>
                         </a>
                     </li>
