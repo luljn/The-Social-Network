@@ -25,8 +25,11 @@
             <?php if(isset($isConnected) && $isConnected){ ?>
                 <div class="row justify-content-center mt-5">
                     
-                    <h5 class="fs-3 fw-bold text-center text-secondary mt-5">Vos statistiques</h5>
-
+                    <h5 class="fs-3 fw-bold text-center text-secondary my-5">Vos statistiques</h5>
+                    <div>
+                        <canvas id="followChart"></canvas>
+                    </div>
+                    
                 </div>
             <?php } 
                   else { // If the user it not connected (he does not have access to this page).

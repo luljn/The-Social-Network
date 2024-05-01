@@ -20,6 +20,9 @@
 
             <!-- jQuery -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <!-- Chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <body class="d-flex flex-column min-vh-100">
@@ -47,10 +50,8 @@
         <script src="../../dynamic/newPasswordCheck.js"></script>
         <script src="../../dynamic/addOrRemoveLikeOnPost.js"></script>
         <script src="../../dynamic/addCommentOnPost.js"></script>
+        <script src="../../dynamic/statistics.js"></script>
         
-        <!-- Chart.js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     </body>
 
 </html>
