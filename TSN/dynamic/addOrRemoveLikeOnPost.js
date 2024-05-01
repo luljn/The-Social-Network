@@ -1,26 +1,25 @@
 //To add or remove a like on a post.
-var buttons = document.querySelectorAll('[id^="buttonLike"]');
 
-buttons.forEach(function(button){
+$(document).ready(function(){
 
-    button.addEventListener('click', function(){
+    $('[id^="buttonLike"]').click(function(){
 
-        var nameButton = button.getAttribute('name')
-        var targetId = button.getAttribute('data-target');
-        var targetElement = document.getElementById(targetId);
-        var currentValue = parseInt(targetElement.innerHTML);
+        var nameButton = $(this).attr('name');
+        var targetId = $(this).data('target');
+        var targetElement = $('#' + targetId);
+        var currentValue = parseInt(targetElement.text());
 
-        if(nameButton == 'increment'){
+        if (nameButton == 'increment'){
 
-            targetElement.innerHTML = currentValue + 1;
-            nameButton = button.setAttribute('name', 'decrement');
-        }
-
-        else if(nameButton == 'decrement'){
-
-            targetElement.innerHTML = currentValue - 1;
-            nameButton = button.setAttribute('name', 'increment');
+            targetElement.text(currentValue + 1);
+            $(this).attr('name', 'decrement');
         } 
         
+        else if (nameButton == 'decrement'){
+            
+            targetElement.text(currentValue - 1);
+            $(this).attr('name', 'increment');
+        }
     });
 });
+

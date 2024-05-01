@@ -33,6 +33,9 @@ use TSN\src\controllers\comment\Comment as Comment;
 require_once("src/controllers/notification/notification.php");
 use TSN\src\controllers\notification\Notification as Notification;
 
+require_once("src/controllers/like/like.php");
+use TSN\src\controllers\like\Like as Like;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -153,6 +156,28 @@ try {
             elseif(isset($_POST['newComment']) && (!isset($_FILES['imageComment']))){       // To add a comment without an image.
 
                 (new Comment)->addComment($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'));
+            }
+        }
+
+        elseif($_GET['action'] === 'addLike'){   // To add a like on a post.
+
+            $user = $_SESSION['user'];
+            $idUser = $user->getID();
+
+            if(isset($_POST['idPost'])){
+
+                (new Like)->addLike($_POST['idPost'], $idUser, date('Y-m-d'));
+            }
+        }
+
+        elseif($_GET['action'] === 'removeLike'){  // To remove the like given on a post.
+
+            $user = $_SESSION['user'];
+            $idUser = $user->getID();
+
+            if(isset($_POST['idPost'])){
+                
+                (new Like)->removeLike($_POST['idPost'], $idUser);
             }
         }
 

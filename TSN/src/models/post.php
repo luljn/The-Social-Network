@@ -115,14 +115,23 @@ class PostManagment {
                 $postComments = $this->commentController->getPostComments($result[$i]['id']);
                 //
 
+                // To retrieve the number of likes of the post.
+                $idPost = $result[$i]['id'];
+                $statement_2 = "CALL CountLikesOfPost({$idPost});";
+                $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
+                $query_2->execute();
+                $result_2 = $query_2->fetch();
+                $query_2->closeCursor();
+
+
                 if($result[$i]['image'] == NULL){
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '', $postComments, 0);
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '', $postComments, $result_2['NumberOfLikes']);
                 }
 
                 else{
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image'], $postComments, 0);
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
                 }
 
                 $Posts[] = $userPost;
@@ -185,14 +194,22 @@ class PostManagment {
                     $postComments = $this->commentController->getPostComments($result[$i]['id']);
                     //
 
+                    // To retrieve the number of likes of the post.
+                    $idPost = $result[$i]['id'];
+                    $statement_2 = "CALL CountLikesOfPost({$idPost});";
+                    $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
+                    $query_2->execute();
+                    $result_2 = $query_2->fetch();
+                    $query_2->closeCursor();
+
                     if($result[$i]['image'] == NULL){
 
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '', $postComments, 0);
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '', $postComments, $result_2['NumberOfLikes']);
                     }
     
                     else{
     
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image'], $postComments, 0);
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
                     }
                     
                     if(!in_array($userPost, $RandomPosts)){
@@ -233,14 +250,22 @@ class PostManagment {
                     $postComments = $this->commentController->getPostComments($result[$i]['id']);
                     //
 
+                    // To retrieve the number of likes of the post.
+                    $idPost = $result[$i]['id'];
+                    $statement_2 = "CALL CountLikesOfPost({$idPost});";
+                    $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
+                    $query_2->execute();
+                    $result_2 = $query_2->fetch();
+                    $query_2->closeCursor();
+
                     if($result[$i]['image'] == NULL){
 
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '', $postComments, 0);
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '', $postComments, $result_2['NumberOfLikes']);
                     }
     
                     else{
     
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image'], $postComments, 0);
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
                     }
 
                     if(!in_array($followingPost, $followingsPosts)){
