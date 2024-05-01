@@ -39,6 +39,9 @@ use TSN\src\controllers\like\Like as Like;
 require_once("src/controllers/stat/stat.php");
 use TSN\src\controllers\stat\Stat as Stat;
 
+require_once("src/controllers/search/search.php");
+use TSN\src\controllers\search\Search as Search;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -263,6 +266,11 @@ try {
         elseif($_GET['action'] === 'statistics'){
 
             (new Stat)->getStatisticsPage();         // We return the statistics page.
+        }
+
+        elseif($_GET['action'] === 'search'){
+
+            (new Search)->getSearchPage();         // We return the search page.
         }
 
         else{
