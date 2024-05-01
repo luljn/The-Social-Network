@@ -377,7 +377,7 @@
                             <div class="card d-block w-100 border-2 border-secondary position-sticky" style="top: 150px;">
                                 <div class="card-body">
                                     <p class="text-center text-dark fs-5 mt-5">
-                                        Cet utilisateur(trice) n'a encore aucun following 😓.
+                                        Cet utilisateur(trice) n'a aucun following 😓.
                                     </p>
                                 </div>
                             </div>        

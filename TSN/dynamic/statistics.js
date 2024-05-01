@@ -1,20 +1,23 @@
 const ctx = document.getElementById('followChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    followings = parseInt("<?php count($_SESSION['userFollowings']); ?>");
+    followers = 0;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: ['Followers', 'Followings'],
+        datasets: [{
+            label: 'Nombres actuels de followers et de following',
+            data: [followers, followings],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
         }
-      }
-    }
-  });
+        }
+    });

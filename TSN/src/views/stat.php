@@ -27,7 +27,7 @@
                     
                     <h5 class="fs-3 fw-bold text-center text-secondary my-5">Vos statistiques</h5>
                     <div>
-                        <canvas id="followChart"></canvas>
+                        <canvas id="followChart" width="400" height="100"></canvas>
                     </div>
                     
                 </div>
