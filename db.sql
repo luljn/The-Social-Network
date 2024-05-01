@@ -120,81 +120,88 @@ VALUES
 ("Un de vos post a été supprimé par un administrateur")
 ;
 
-
--- ----- Procedures ----
-
--- ---Compter le nombre de likes d'un post 
-
--- DELIMITER //
-
--- CREATE PROCEDURE CountLikesOfPost(IN post_id INT)
--- BEGIN
---     SELECT COUNT(*) AS NumberOfLikes
---     FROM likes
---     WHERE id_post = post_id;
--- END //
-
--- DELIMITER ;
-
--- ----Récuperer toutes les dates des post d'un utilisateur
--- DELIMITER //
-
--- CREATE PROCEDURE GetPostDatesOfUser(IN user_id INT)
--- BEGIN
---     SELECT date_creation
---     FROM post
---     WHERE id_utilisateur = user_id;
--- END //
-
--- DELIMITER ;
+INSERT INTO likes(id_post, id_utilisateur, date_creation)
+VALUES
+(1, 2, '2024-05-01'),
+(1, 3, '2024-05-01'),
+(5, 1, '2024-05-01')
+;
 
 
--- ---Récuperer toutes les dates des like d'un utilisateur(donné et reçu)
--- ---Likes donnés par un utilisateur 
+-- Stored procedures --
 
--- DELIMITER //
--- CREATE PROCEDURE GetLikeDatesOfUser(IN user_id INT)
--- BEGIN
---     SELECT date_creation
---     FROM likes
---     WHERE id_utilisateur = user_id;
---     END //
+-- Count the number of likes on a post. 
 
--- DELIMITER ;
+DELIMITER //
 
--- ---Likes recus par un utilisateur 
--- DELIMITER //
+CREATE PROCEDURE CountLikesOfPost(IN post_id INT)
+BEGIN
+    SELECT COUNT(*) AS NumberOfLikes
+    FROM likes
+    WHERE id_post = post_id;
+END //
 
--- CREATE PROCEDURE GetLikeDatesOfUserReceivedt(IN user_id INT)
--- BEGIN    
---     SELECT p.date_creation
---     FROM likes AS l
---     INNER JOIN post AS p ON l.id_post = p.id
---     WHERE p.id_utilisateur = user_id;
--- END //
+DELIMITER ;
 
--- DELIMITER ;
+-- Retrieve all dates of a user's posts.
+DELIMITER //
 
--- ---Compter le nombre de followings d'un utilisateur
--- DELIMITER //
+CREATE PROCEDURE GetPostDatesOfUser(IN user_id INT)
+BEGIN
+    SELECT date_creation
+    FROM post
+    WHERE id_utilisateur = user_id;
+END //
 
--- CREATE PROCEDURE CountFollowingsOfUser(IN user_id INT)
--- BEGIN
---     SELECT COUNT(*) as NumberOfFollowings
---     FROM Follow
---     WHERE id_follower = user_id;
--- END //
+DELIMITER ;
 
--- DELIMITER ;
 
--- ---Compter le nombre de followers d'un utilisateur 
--- DELIMITER //
+-- Retrieve all dates of a user's likes (given and received).
+-- Likes given by a user.
 
--- CREATE PROCEDURE CountFollowersOfUser(IN user_id INT)
--- BEGIN
---     SELECT COUNT(*)  as NumberOfFollowers
---     FROM Follow
---     WHERE id_following = user_id;
--- END //
+DELIMITER //
+CREATE PROCEDURE GetLikeDatesOfUser(IN user_id INT)
+BEGIN
+    SELECT date_creation
+    FROM likes
+    WHERE id_utilisateur = user_id;
+    END //
 
--- DELIMITER ;
+DELIMITER ;
+
+-- Likes received by a user.
+DELIMITER //
+
+CREATE PROCEDURE GetLikeDatesOfUserReceivedt(IN user_id INT)
+BEGIN    
+    SELECT p.date_creation
+    FROM likes AS l
+    INNER JOIN post AS p ON l.id_post = p.id
+    WHERE p.id_utilisateur = user_id;
+END //
+
+DELIMITER ;
+
+-- Count the number of followings of a user.
+DELIMITER //
+
+CREATE PROCEDURE CountFollowingsOfUser(IN user_id INT)
+BEGIN
+    SELECT COUNT(*) as NumberOfFollowings
+    FROM Follow
+    WHERE id_follower = user_id;
+END //
+
+DELIMITER ;
+
+-- Count the number of followers of a user. 
+DELIMITER //
+
+CREATE PROCEDURE CountFollowersOfUser(IN user_id INT)
+BEGIN
+    SELECT COUNT(*)  as NumberOfFollowers
+    FROM Follow
+    WHERE id_following = user_id;
+END //
+
+DELIMITER ;
