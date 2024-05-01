@@ -30,6 +30,9 @@ use TSN\src\controllers\follow\Follow as Follow;
 require_once("src/controllers/comment/comment.php");
 use TSN\src\controllers\comment\Comment as Comment;
 
+require_once("src/controllers/notification/notification.php");
+use TSN\src\controllers\notification\Notification as Notification;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -222,6 +225,11 @@ try {
                 $user = $_SESSION["user"];
                 (new Follow)->unFollow($user->getID(), $_POST['idUserFollowed']);
             }
+        }
+
+        elseif($_GET['action'] === 'notification'){
+
+            (new Notification)->getNotificationsPage();         // We return the notifications page.
         }
 
         else{

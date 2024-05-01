@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li class="nav-item text-light mx-2">
-                        <a href="" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
+                        <a href="index.php?action=notification" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
                             <div class="d-flex flex-row">
                                 <i class="bi bi-bell  text-light fs-3"></i>
                                 <span class="badge text-bg-secondary fs-5">4</span>
