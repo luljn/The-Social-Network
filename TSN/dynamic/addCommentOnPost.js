@@ -15,6 +15,7 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response); // Afficher la réponse du serveur dans la console
                 // Faire quelque chose avec la réponse si nécessaire
+                $('#formComment' +  postId)[0].reset(); // Réinitialiser le formulaire
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText); // Afficher les erreurs dans la console
