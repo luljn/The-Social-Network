@@ -26,32 +26,19 @@
                 <div class="row justify-content-center mt-5">
                     
                     <table class="table table-primary mt-5">
-                        <caption align="top" class="text-center text-secondary fs-3 mb-3">Vos notifications</caption>
+                        <caption align="top" class="text-center text-secondary fs-3 fw-bold mb-3">Vos notifications</caption>
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                                <th scope="col" class="fs-4">#</th>
+                                <th scope="col" class="fs-4">Contenu</th>
+                                <th scope="col" class="fs-4">Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                                <th scope="row">1</th>
+                                <td>Vous avez une nouvelle notification</td>
+                                <td>01/05/2024</td>
                             </tr>
                         </tbody>
                     </table>
