@@ -186,9 +186,9 @@
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <form action="index.php?action=removeLike" id="formLike<?= $post->getID() ?>" method="POST">
+                                    <form action="index.php?action=addLike" id="formLike<?= $post->getID() ?>" method="POST">
                                         <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
-                                        <button type="submit" class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
+                                        <button type="button" class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
                                             <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i>
                                         </button>
                                     </form>
