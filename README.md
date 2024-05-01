@@ -15,9 +15,10 @@ A social network implemented with basics web languages and basic features.
 - PHP programming language.
 - JavaScript programming language.
 - jQuery.
-- MySql (with phpMyAdmin).
+- Chart.js
 - HTML.
 - Bootstrap.
+- MySql (with phpMyAdmin).
 
 
 ## Authors.
