@@ -200,7 +200,7 @@ class FollowManagment {
 
     public function getFollowersOfUser($idUser){   // To retrieve all the persons who followed the user.
 
-        $pricipalUser = $_SESSION['user'];
+        $pricipalUser = $_SESSION['otherUser'];
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "SELECT * from follow WHERE id_following = \"{$idUser}\";";
