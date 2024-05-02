@@ -23,6 +23,7 @@ class Account {
         $user = $this->account->getUser($userId);
         (new Post)->getUserPosts($userId);  // We retrieve all the posts associated to the user account.
         (new Follow)->getUserFollowings($userId);   // We retrieve all the followings of the user.
+        (new Follow)->getUserFollowers($userId);   // We retrieve all the followers of the user.
         $_SESSION['otherUser'] = $user;    // We define a new user, to make a difference with the current connected user.
         require('./src/views/account.php');
     }

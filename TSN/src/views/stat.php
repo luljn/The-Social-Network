@@ -14,6 +14,7 @@
         $user = $_SESSION["user"];
 
         $followings = $_SESSION['userFollowings'];   // All the followings of the user.
+        $followers = $_SESSION['userFollowers'];   // All the followers of the user.
         
         if(!empty($followings)){
 
@@ -23,6 +24,16 @@
         else{
 
             $numberOfFollowings = 0;
+        }
+
+        if(!empty($followers)){
+
+            $numberOfFollowers = count($followers);
+        }
+
+        else{
+
+            $numberOfFollowers = 0;
         }
     }
     
@@ -40,7 +51,7 @@
                     <h5 class="fs-3 fw-bold text-center text-secondary my-5">Vos statistiques</h5>
                     <!-- Followers and followings chart -->
                     <div>
-                        <canvas id="followChart" width="400" height="100"></canvas>
+                        <canvas id="followChart" width="400" height="150"></canvas>
                     </div>
 
                     <script>
@@ -49,7 +60,7 @@
                         const ctx = document.getElementById('followChart');
 
                         followings = parseInt("<?php echo $numberOfFollowings; ?>");
-                        followers = 0;
+                        followers = parseInt("<?php echo $numberOfFollowers; ?>");
 
                         new Chart(ctx, {
                             type: 'bar',
