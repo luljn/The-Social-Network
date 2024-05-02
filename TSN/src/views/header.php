@@ -40,7 +40,7 @@
                 <?php }?>
                 <div class="container-fluid fs-3">
                     <form action="index.php?action=search" method="POST" class="d-flex mt-2 ms-5 me-2">
-                        <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search" required>
                         <button class="btn text-light" type="submit"><i class="bi bi-search" data-bs-toggle="tooltip" title="Recherche"></i></button>
                     </form>
                 </div>
