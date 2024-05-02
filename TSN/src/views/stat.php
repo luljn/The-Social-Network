@@ -71,15 +71,18 @@
                         const ctx1 = document.getElementById('postChart');
 
                         posts = parseInt("<?php echo count($posts); ?>");
-                        average = posts / 52;
+                        postsWeekAverage = posts / 52;
+                        postsMonthAverage = posts / 12;
 
                         new Chart(ctx1, {
                             type: 'bar',
                             data: {
-                            labels: ['Total des posts', 'Moyenne de posts par semaine sur l\'année'],
+                            labels: ['Total des posts', 'Moyenne de posts par semaine', 'Moyenne de posts par mois'],
                             datasets: [{
                                 label: 'Nombres de posts',
-                                data: [posts, average],
+                                data: [posts, postsWeekAverage, postsMonthAverage],
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
                                 borderWidth: 1
                             }]
                             },
