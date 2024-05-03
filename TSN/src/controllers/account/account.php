@@ -12,6 +12,9 @@ use TSN\src\controllers\post\Post as Post;
 require_once("src/controllers/follow/follow.php");
 use TSN\src\controllers\follow\Follow as Follow;
 
+require_once("src/controllers/notification/notification.php");
+use TSN\src\controllers\notification\Notification as Notification;
+
 
 class Account {
 
@@ -26,7 +29,14 @@ class Account {
         (new Post)->getUserPosts($userId);  // We retrieve all the posts associated to the user account.
         (new Follow)->getUserFollowings($userId);   // We retrieve all the followings of the user.
         (new Follow)->getUserFollowers($userId);   // We retrieve all the followers of the user.
-        
+
+        if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == True){  // If the user is connected.
+
+            $connectedUser = $_SESSION['user'];
+            (new Post)->getUserFollowingsPosts();
+            (new Notification)->getUserNotifications($connectedUser->getID());  // We retrieve all the notifications of the user.
+        }
+
         require('./src/views/account.php');
     }
 }
