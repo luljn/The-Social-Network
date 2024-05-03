@@ -9,10 +9,14 @@ use TSN\src\models\follow\FollowManagment as ModelFollowManagment;
 require_once("./src/models/config/config.php");
 use TSN\src\models\config\Config as ModelConfig;
 
+require_once("src/controllers/notification/notification.php");
+use TSN\src\controllers\notification\Notification as Notification;
+
 class Follow {
 
     private ModelFollowManagment $followManagment;
     private ModelConfig $config;
+    private Notification $notification;
 
     public function newFollow($idFollower, $idFollowing, $dateCreation){ // To follow another user.
 
@@ -23,6 +27,13 @@ class Follow {
         $this->followManagment->followAnotherUser($idFollower, $idFollowing, $dateCreation);
 
         $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
+
+        $this->notification = new Notification;
+        $this->notification->sendNotification($idFollower, 2, date('Y-m-d')); // To send a notification to the follower.
+        $this->notification->getUnreadUserNotificationsNumber($idFollower);
+        $this->notification->getUserNotifications($idFollower);
+
+        $this->notification->sendNotification($idFollowing, 1, date('Y-m-d')); // To send a notification to the following.
 
         header("location: {$startingUrl}/index.php?action=home");
     }

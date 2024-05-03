@@ -94,4 +94,18 @@ class NotificationManagment {
 
         $this->getUnreadNotificationsNumber($idUser);
     }
+
+    public function sendNotificationToUser($idUser, $idNotif, $date){  // To send a notification to the user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "INSERT INTO notification (id_utilisateur, id_notificationGenerique, statut_lecture, date_creation)
+                      VALUES
+                      (\"{$idUser}\", \"{$idNotif}\", 0, \"{$date}\");";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+
+        // $this->getNotificationByUser($idUser);
+        // $this->getUnreadNotificationsNumber($idUser);
+    }
 }

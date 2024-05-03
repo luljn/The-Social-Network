@@ -37,4 +37,10 @@ class Notification {
 
         return $number;
     }
+
+    public function sendNotification($idUser, $idNotif, $date){
+
+        $this->notificationManagment = new ModelNotificationManagment;
+        $this->notificationManagment->sendNotificationToUser($idUser, $idNotif, $date);
+    }
 }
