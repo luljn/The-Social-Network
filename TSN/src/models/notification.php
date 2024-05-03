@@ -83,4 +83,15 @@ class NotificationManagment {
         $_SESSION['unreadNotificationsNumber'] = count($result);
         return count($result);
     }
+
+    public function setNotificationsAsRead($idUser){
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "UPDATE notification SET statut_lecture = 1 WHERE id_utilisateur = \"{$idUser}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+
+        $this->getUnreadNotificationsNumber($idUser);
+    }
 }

@@ -13,6 +13,10 @@ class Notification {
 
     public function getNotificationsPage(){
 
+        $user = $_SESSION['user'];
+
+        $this->notificationManagment = new ModelNotificationManagment;
+        $this->notificationManagment->setNotificationsAsRead($user->getID()); // To sert all the unread notifications as read.
         require('./src/views/notification.php');
     }
 
