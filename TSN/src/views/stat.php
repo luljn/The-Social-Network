@@ -67,7 +67,7 @@
                             }
                         });
 
-                        //Followers and followings chart.
+                        //Posts chart.
                         const ctx1 = document.getElementById('postChart');
 
                         posts = parseInt("<?php echo count($posts); ?>");
@@ -81,8 +81,8 @@
                             datasets: [{
                                 label: 'Nombres de posts',
                                 data: [posts, postsWeekAverage, postsMonthAverage],
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
+                                backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                                borderColor: 'rgba(0, 255, 0, 1)',
                                 borderWidth: 1
                             }]
                             },
