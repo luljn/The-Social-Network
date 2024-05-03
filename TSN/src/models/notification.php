@@ -105,4 +105,14 @@ class NotificationManagment {
         $query->execute();
         $query->closeCursor();
     }
+
+    public function deleteNotification($idNotif){
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "DELETE FROM notification
+                      WHERE id = \"{$idNotif}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
 }

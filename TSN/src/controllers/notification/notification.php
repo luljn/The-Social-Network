@@ -6,10 +6,14 @@ namespace TSN\src\controllers\notification;
 require_once("./src/models/notification.php");
 use TSN\src\models\notification\NotificationManagment as ModelNotificationManagment;
 
+require_once("./src/models/config/config.php");
+use TSN\src\models\config\Config as ModelConfig;
+
 
 class Notification {
 
     private ModelNotificationManagment $notificationManagment;
+    private ModelConfig $config;
 
     public function getNotificationsPage(){
 
@@ -47,5 +51,20 @@ class Notification {
 
         $this->notificationManagment = new ModelNotificationManagment;
         $this->notificationManagment->sendNotificationToUser($idUser, $idNotif, $date);
+    }
+
+    public function deleteNotification($idNotif){
+
+        $user = $_SESSION['user'];
+
+        $this->notificationManagment = new ModelNotificationManagment;
+        $this->notificationManagment->deleteNotification($idNotif);
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->getUserNotifications($user->getID());
+        
+        header("location: {$startingUrl}/index.php?action=notification");
     }
 }

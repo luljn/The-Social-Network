@@ -263,6 +263,14 @@ try {
             (new Notification)->getNotificationsPage();         // We return the notifications page.
         }
 
+        elseif($_GET['action'] === 'deleteNotification'){ // To delete a notification.
+
+            if(isset($_POST['idNotif'])){
+
+                (new Notification)->deleteNotification($_POST['idNotif']);  
+            }       
+        }
+
         elseif($_GET['action'] === 'statistics'){
 
             (new Stat)->getStatisticsPage();         // We return the statistics page.
