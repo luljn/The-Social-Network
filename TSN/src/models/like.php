@@ -27,4 +27,28 @@ class Like {
         $query->execute();
         $query->closeCursor();
     }
+
+    public function getNumberOfLikesGivenByUser($idUser){   // To retrieved to number of like given by the user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "CALL GetLikeDatesOfUser(\"{$idUser}\");";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetch();
+        $query->closeCursor();
+
+        $_SESSION['likesGiven'] = $result['numberLikesGiven'];
+    }
+
+    public function getNumberOfLikesReceivedByUser($idUser){   // To retrieved to number of like received by the user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "CALL GetLikeDatesOfUserReceivedt(\"{$idUser}\");";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetch();
+        $query->closeCursor();
+
+        $_SESSION['likesReceived'] = $result['numberLikesReceived'];
+    }
 }

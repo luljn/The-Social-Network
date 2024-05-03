@@ -20,4 +20,16 @@ class Like {
         $this->like = new ModelLike;
         $this->like->removeLikeOnPost($idPost, $idUser);
     }
+
+    public function getLikesGiven($idUser){
+     
+        $this->like = new ModelLike;
+        $this->like->getNumberOfLikesGivenByUser($idUser);
+    }
+
+    public function getLikesReceived($idUser){
+
+        $this->like = new ModelLike;
+        $this->like->getNumberOfLikesReceivedByUser($idUser);
+    }
 }

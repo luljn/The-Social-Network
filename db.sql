@@ -174,7 +174,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE GetLikeDatesOfUser(IN user_id INT)
 BEGIN
-    SELECT date_creation
+    SELECT COUNT(date_creation) AS numberLikesGiven
     FROM likes
     WHERE id_utilisateur = user_id;
     END //
@@ -186,7 +186,7 @@ DELIMITER //
 
 CREATE PROCEDURE GetLikeDatesOfUserReceivedt(IN user_id INT)
 BEGIN    
-    SELECT p.date_creation
+    SELECT COUNT(p.date_creation) AS numberLikesReceived
     FROM likes AS l
     INNER JOIN post AS p ON l.id_post = p.id
     WHERE p.id_utilisateur = user_id;
