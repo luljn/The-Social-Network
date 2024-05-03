@@ -55,6 +55,7 @@ CREATE TABLE notification(
     id_utilisateur INTEGER NOT NULL,
     id_notificationGenerique INTEGER NOT NULL,
     statut_lecture BOOLEAN NOT NULL,
+    date_creation DATE NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
     FOREIGN KEY (id_notificationGenerique) REFERENCES notificationGenerique(id)
 );
@@ -118,6 +119,14 @@ VALUES
 ("Vous avez un nouveau commentaire sur l'un de vos post"),
 ("Un de vos post a été marqué comme 'sensible' par un administrateur"),
 ("Un de vos post a été supprimé par un administrateur")
+;
+
+INSERT INTO notification(id_utilisateur, id_notificationGenerique, statut_lecture, date_creation)
+VALUES
+(1, 2, 0, '2024-04-21'),
+(1, 2, 0, '2024-04-21'),
+(2, 1, 0, '2024-04-21'),
+(3, 1, 0, '2024-04-21')
 ;
 
 INSERT INTO likes(id_post, id_utilisateur, date_creation)
