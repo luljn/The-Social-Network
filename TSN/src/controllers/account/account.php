@@ -35,6 +35,7 @@ class Account {
             $connectedUser = $_SESSION['user'];
             (new Post)->getUserFollowingsPosts();
             (new Notification)->getUserNotifications($connectedUser->getID());  // We retrieve all the notifications of the user.
+            (new Notification)->getUnreadUserNotificationsNumber($connectedUser->getID());
         }
 
         require('./src/views/account.php');

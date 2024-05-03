@@ -34,7 +34,7 @@ class NotificationManagment {
 
     private DatabaseConnection $databaseConnection;
 
-    public function getNotificationByUser($idUser){
+    public function getNotificationByUser($idUser){  // To retrieve all the notifications of the user.
 
         $this->databaseConnection = new DatabaseConnection;
         $statement = "SELECT * from notification WHERE id_utilisateur = \"{$idUser}\" ORDER BY date_creation DESC;";
@@ -69,5 +69,18 @@ class NotificationManagment {
         }
 
         $_SESSION['userNotifications'] = $UserNotifications;
+    }
+
+    public function getUnreadNotificationsNumber($idUser){  // To get the number of unread notifications of the user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "SELECT * from notification WHERE id_utilisateur = \"{$idUser}\" AND statut_lecture = 0 ORDER BY date_creation DESC;";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        $_SESSION['unreadNotificationsNumber'] = count($result);
+        return count($result);
     }
 }

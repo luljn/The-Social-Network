@@ -21,4 +21,12 @@ class Notification {
         $this->notificationManagment = new ModelNotificationManagment;
         $this->notificationManagment->getNotificationByUser($idUser);
     }
+
+    public function getUnreadUserNotificationsNumber($idUser){
+
+        $this->notificationManagment = new ModelNotificationManagment;
+        $number = $this->notificationManagment->getUnreadNotificationsNumber($idUser);
+
+        return $number;
+    }
 }

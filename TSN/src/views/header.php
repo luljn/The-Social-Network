@@ -4,6 +4,8 @@
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
         $followings = $_SESSION['userFollowings'];   // All the followings of the user.
+        $notifications =  $_SESSION['userNotifications']; // All the notifications of the user.
+        $unreadNotif = $_SESSION['unreadNotificationsNumber'];
     }
 ?>
 <nav class="navbar navbar-expand-md fixed-top navbar-primary bg-primary py-1">
@@ -28,7 +30,10 @@
                         <a href="index.php?action=notification" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
                             <div class="d-flex flex-row">
                                 <i class="bi bi-bell  text-light fs-3"></i>
-                                <span class="badge text-bg-secondary fs-5">4</span>
+                                <?php if(!empty($notifications) && $unreadNotif != 0){ ?>
+                                    <span class="badge text-bg-secondary fs-5">
+                                        <?= $unreadNotif; } ?>
+                                    </span>
                             </div>
                         </a>
                     </li>
