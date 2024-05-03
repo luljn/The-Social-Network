@@ -37,7 +37,7 @@ class NotificationManagment {
     public function getNotificationByUser($idUser){  // To retrieve all the notifications of the user.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from notification WHERE id_utilisateur = \"{$idUser}\" ORDER BY date_creation DESC;";
+        $statement = "SELECT * from notification WHERE id_utilisateur = \"{$idUser}\"  ORDER BY id DESC;";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $result = $query->fetchAll();
@@ -104,8 +104,5 @@ class NotificationManagment {
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
-
-        // $this->getNotificationByUser($idUser);
-        // $this->getUnreadNotificationsNumber($idUser);
     }
 }

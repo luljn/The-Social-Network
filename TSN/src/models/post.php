@@ -78,7 +78,7 @@ class PostManagment {
         $this->commentController = new CommentController;
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post WHERE id_utilisateur = \"{$idUser}\" ORDER BY date_creation DESC;";
+        $statement = "SELECT * from post WHERE id_utilisateur = \"{$idUser}\" ORDER BY date_creation DESC, id DESC;";
         $statement_1 = "SELECT * from utilisateur WHERE id = \"{$idUser}\";";
 
         $query = $this->databaseConnection->getConnection()->prepare($statement);
@@ -147,7 +147,7 @@ class PostManagment {
         $this->commentController = new CommentController;
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "SELECT * from post ORDER BY date_creation DESC;";
+        $statement = "SELECT * from post ORDER BY date_creation DESC, id DESC;";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $result = $query->fetchAll();
@@ -236,7 +236,7 @@ class PostManagment {
 
             $id_following = $following->getUser()->getID();
 
-            $statement = "SELECT * from post WHERE id_utilisateur = \"{$id_following}\" ORDER BY date_creation DESC;";
+            $statement = "SELECT * from post WHERE id_utilisateur = \"{$id_following}\" ORDER BY date_creation DESC, id DESC;";
             $query = $this->databaseConnection->getConnection()->prepare($statement);
             $query->execute();
             $result = $query->fetchAll();

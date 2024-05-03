@@ -9,10 +9,14 @@ use TSN\src\models\post\PostManagment as ModelPostManagment;
 require_once("./src/models/config/config.php");
 use TSN\src\models\config\Config as ModelConfig;
 
+require_once("src/controllers/notification/notification.php");
+use TSN\src\controllers\notification\Notification as Notification;
+
 class Post {
 
     private ModelPostManagment $postManagment;
     private ModelConfig $config;
+    private Notification $notification;
 
     public function addPost($idUser, $content, $date){
 
@@ -20,8 +24,8 @@ class Post {
         $startingUrl = $this->config->getStartingUrl();
 
         $this->postManagment = new ModelPostManagment;
-
         $this->postManagment->addPost($idUser, $content, $date);
+
         header("location: {$startingUrl}/index.php?action=myAccount&userId={$idUser}");
     }
 

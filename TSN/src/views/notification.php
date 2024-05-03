@@ -35,14 +35,20 @@
                                     <th scope="col" class="fs-4">#</th>
                                     <th scope="col" class="fs-4">Contenu</th>
                                     <th scope="col" class="fs-4">Date</th>
+                                    <th scope="col" class="fs-4">#</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($notifications as $notification){ ?>
-                                    <tr>
+                                    <?php if ($notification->getReadStatus() == 0){ ?>
+                                        <tr class="table-success">
+                                    <?php } else { ?>
+                                        <tr>
+                                    <?php } ?>
                                         <th scope="row"><?= $number ?></th>
                                         <td><?= $notification->getContent() ?></td>
                                         <td><?= $notification->getCreationDate() ?></td>
+                                        <td><button type="button" class="btn btn-primary">supprimer</button></td>
                                     </tr>
                                 <?php $number++; 
                                       } 

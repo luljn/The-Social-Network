@@ -31,7 +31,7 @@
                             <div class="d-flex flex-row">
                                 <i class="bi bi-bell  text-light fs-3"></i>
                                 <?php if(!empty($notifications) && $unreadNotif != 0){ ?>
-                                    <span class="badge text-bg-secondary fs-5">
+                                    <span class="badge text-bg-secondary fs-5 text-danger">
                                         <?= $unreadNotif; } ?>
                                     </span>
                             </div>

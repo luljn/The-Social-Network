@@ -18,10 +18,15 @@ class Notification {
             $user = $_SESSION['user'];
 
             $this->notificationManagment = new ModelNotificationManagment;
-            $this->notificationManagment->setNotificationsAsRead($user->getID()); // To sert all the unread notifications as read.
+            $this->notificationManagment->setNotificationsAsRead($user->getID()); // To set all the unread notifications as read.
         }
        
         require('./src/views/notification.php');
+
+        if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == True){ // To set the unread notifications as read, after the user read it. 
+
+            $this->getUserNotifications($user->getID());
+        }
     }
 
     public function getUserNotifications($idUser){
