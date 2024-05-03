@@ -48,6 +48,13 @@ class Follow {
 
         $this->getUserFollowings($idFollower);  // To get the list of the followings of the user up to date.
 
+        $this->notification = new Notification;
+        $this->notification->sendNotification($idFollower, 4, date('Y-m-d')); // To send a notification to the follower.
+        $this->notification->getUnreadUserNotificationsNumber($idFollower);
+        $this->notification->getUserNotifications($idFollower);
+
+        $this->notification->sendNotification($idFollowing, 3, date('Y-m-d')); // To send a notification to the following.
+
         header("location: {$startingUrl}/index.php?action=myProfile");
     }
 
