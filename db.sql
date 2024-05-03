@@ -117,6 +117,7 @@ VALUES
 ("Vous avez un nouveau following"),
 ("Un utilisateur a arrêté de vous follow"),
 ("Vous avez arrêté de follow un utilisateur"),
+("Un de vos following a ajouté un nouveau post"),
 ("Vous avez un nouveau like sur l'un de vos post"),
 ("Vous avez un nouveau commentaire sur l'un de vos post"),
 ("Un de vos post a été marqué comme 'sensible' par un administrateur"),
