@@ -36,7 +36,7 @@
                                     <th scope="col" class="fs-4">Nom</th>
                                     <th scope="col" class="fs-4">Prénom</th>
                                     <th scope="col" class="fs-4">Description</th>
-                                    <th scope="col" class="fs-4">#</th>
+                                    <th scope="col" class="fs-4 text-center">#</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                         <td><?= $user->getName() ?></td>
                                         <td><?= $user->getSurname() ?></td>
                                         <td><?= $user->getDescription() ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="index.php?action=myAccount&userId=<?= urlencode($user->getID()) ?>">
                                                 <button type="button" class="btn btn-primary">
                                                     voir le compte
@@ -73,7 +73,7 @@
                                     <th scope="col" class="fs-4">Contenu</th>
                                     <th scope="col" class="fs-4">Auteur</th>
                                     <th scope="col" class="fs-4">Nombre de likes</th>
-                                    <th scope="col" class="fs-4">#</th>
+                                    <th scope="col" class="fs-4 text-center">#</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,7 +82,7 @@
                                         <th scope="row"><?= $numberP ?></th>
                                         <td><?= $post->getContent() ?></td>
                                         <td><?= $post->getUser()->getSurname() . " " .  $post->getUser()->getName() ?></td>
-                                        <td><?= $post->getLikes() ?></td>
+                                        <td class="text-center"><?= $post->getLikes() ?></td>
                                         <td>
                                             <a href="index.php?action=myAccount&userId=<?= urlencode($post->getUser()->getID()) ?>">
                                                 <button type="button" class="btn btn-primary">
