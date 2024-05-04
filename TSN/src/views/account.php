@@ -227,7 +227,7 @@
                                                                 <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>
                                                                 <input type="file" class="form-control" id="imageComment" name="imageComment" accept="image/*">
                                                             </div>
-                                                            <button type="button" id="submitComment<?= $post->getID() ?>" class="btn btn-primary">Commenter</button>
+                                                            <button type="submit" id="submitComment<?= $post->getID() ?>" class="btn btn-primary">Commenter</button>
                                                         </form>
                                                         <div class="card mb-3 border border-2 border-secondary">
                                                             <div class="d-flex flex-row mx-2 mt-2">

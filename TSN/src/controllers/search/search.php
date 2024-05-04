@@ -12,11 +12,11 @@ class Search {
 
     public function getSearchPage($research){
 
-        $this->getSeacrhResult($research);
+        $this->getSearchResult($research);
         require('./src/views/search.php');
     }
 
-    public function getSeacrhResult($research){
+    public function getSearchResult($research){
 
         $this->search = new ModelSearch;
         $this->search->makeSearch($research);

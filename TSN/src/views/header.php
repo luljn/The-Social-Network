@@ -51,7 +51,13 @@
                 </div>
                 <li class="nav-item dropdown mx-2">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle text-light fs-3"></i>
+                        <?php if(isset($isConnected) && $isConnected && $user->getAdmin() == True){ ?>
+                            <i class="bi bi-person-check text-light fs-3"></i>
+                        <?php } elseif(isset($isConnected) && $isConnected && $user->getAdmin() == False) { ?>
+                            <i class="bi bi-person-circle text-light fs-3"></i>
+                        <?php }else{ ?>
+                            <i class="bi bi-person-circle text-light fs-3"></i>
+                        <?php } ?>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php if(isset($isConnected) && $isConnected) {?>
@@ -59,6 +65,9 @@
                             <li><a class="dropdown-item" href="index.php?action=myAccount&userId=<?= urldecode($user->getID()) ?>">Mon compte</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="index.php?action=myProfile"><?= $user->getSurname(); ?></a></li>
+                            <?php if($user->getAdmin() == True){ ?>
+                                <li><a class="dropdown-item" href="#">Espace admin</a></li>
+                            <?php }?>
                             <li><a class="dropdown-item" href="index.php?action=signout">Se Déconnecter</a></li>
                         <?php }
                               else {
