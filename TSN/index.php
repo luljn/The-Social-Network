@@ -278,7 +278,10 @@ try {
 
         elseif($_GET['action'] === 'search'){
 
-            (new Search)->getSearchPage();         // We return the search page.
+            if(isset($_POST['research'])){
+
+                (new Search)->getSearchPage($_POST['research']);         // We return the search page.
+            }
         }
 
         else{

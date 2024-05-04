@@ -59,7 +59,7 @@ class NotificationManagment {
                 $result_1 = $query_1->fetch();
                 $query_1->closeCursor();
 
-                $notification = new Notification($result[$i]['id'], $idUser, $result_1['content'], $result[$i]['statut_lecture'], $result[$i]['date_creation']);
+                $notification = new Notification($result[$i]['id'], $idUser, $result_1['content'], $result[$i]['statut_lecture'], date('d-m-Y', strtotime($result[$i]['date_creation'])));
 
                 if(!in_array($notification, $UserNotifications)){
 
