@@ -15,6 +15,9 @@ use TSN\src\controllers\follow\Follow as Follow;
 require_once("src/controllers/notification/notification.php");
 use TSN\src\controllers\notification\Notification as Notification;
 
+require_once("src/controllers/like/like.php");
+use TSN\src\controllers\like\Like as Like;
+
 
 class Account {
 
@@ -36,6 +39,7 @@ class Account {
             (new Post)->getUserFollowingsPosts();
             (new Notification)->getUserNotifications($connectedUser->getID());  // We retrieve all the notifications of the user.
             (new Notification)->getUnreadUserNotificationsNumber($connectedUser->getID());
+            (new Like)->getLikedPosts($connectedUser->getID());  // We retrieve all the posts liked by the user.
         }
 
         require('./src/views/account.php');

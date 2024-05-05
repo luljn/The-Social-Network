@@ -28,6 +28,25 @@ class Like {
         $query->closeCursor();
     }
 
+    public function getPostsLikedByTheUser($idUser){   // To get all the posts liked by the user.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "SELECT id_post FROM likes WHERE id_utilisateur = \"{$idUser}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $result = $query->fetchAll();
+        $query->closeCursor();
+
+        $LikedPosts = [];
+
+        for($i = 0; $i < count($result); $i++){
+
+            $LikedPosts[] = $result[$i]['id_post'];
+        }
+
+        $_SESSION['likedPosts'] = $LikedPosts;
+    }
+
     public function getNumberOfLikesGivenByUser($idUser){   // To retrieved to number of like given by the user.
 
         $this->databaseConnection = new DatabaseConnection;
