@@ -14,8 +14,9 @@
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];
         $usersNotFollowed = $_SESSION['usersNotFollowed'];
-        $userFollowingsPosts = $_SESSION["followingsPosts"];
-        // $userFollowingsPosts = [];
+        // $userFollowingsPosts = $_SESSION["followingsPosts"];
+        $userFollowingsPosts = [];
+        $likedPosts = $_SESSION['likedPosts'];
     }
 ?>
 
@@ -83,7 +84,21 @@
                             <?php if(isset($isConnected) && $isConnected){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <button class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button>
+                                    <?php if(!in_array($post->getID(), $likedPosts)){ ?>
+                                        <form action="index.php?action=addLike" id="formLike<?= $post->getID() ?>" method="POST">
+                                            <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                            <button type="submit" class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
+                                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i>
+                                            </button>
+                                        </form>
+                                    <?php  } elseif(in_array($post->getID(), $likedPosts)) {?>
+                                        <form action="index.php?action=removeLike" id="formLike<?= $post->getID() ?>" method="POST">
+                                            <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                            <button type="submit" class="btn btn-unstyled" name="decrement" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
+                                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="UnLike"></i>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
                                     <p class="fs-3 me-4 text-secondary" id="likeValue<?= $post->getID() ?>"><?= $post->getLikes(); ?></p>
                                     <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $post->getID() ?>" aria-controls="offcanvasBottom">
                                         <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
@@ -219,7 +234,21 @@
                             <?php if(isset($isConnected) && $isConnected){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-                                    <button class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>"><i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i></button>
+                                    <?php if(!in_array($post->getID(), $likedPosts)){ ?>
+                                        <form action="index.php?action=addLike" id="formLike<?= $post->getID() ?>" method="POST">
+                                            <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                            <button type="submit" class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
+                                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i>
+                                            </button>
+                                        </form>
+                                    <?php  } elseif(in_array($post->getID(), $likedPosts)) {?>
+                                        <form action="index.php?action=removeLike" id="formLike<?= $post->getID() ?>" method="POST">
+                                            <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                            <button type="submit" class="btn btn-unstyled" name="decrement" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
+                                                <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="UnLike"></i>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
                                     <p class="fs-3 me-4 text-secondary" id="likeValue<?= $post->getID() ?>"><?= $post->getLikes(); ?></p>
                                     <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $post->getID() ?>" aria-controls="offcanvasBottom">
                                         <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>

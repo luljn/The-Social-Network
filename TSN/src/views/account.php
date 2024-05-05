@@ -187,7 +187,6 @@
                             <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
                                 <hr class="border border-2 border-secondary">
                                 <div class="d-flex flex-row mx-2 mb-2">
-
                                     <?php if(!in_array($post->getID(), $likedPosts)){ ?>
                                         <form action="index.php?action=addLike" id="formLike<?= $post->getID() ?>" method="POST">
                                             <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
@@ -203,7 +202,6 @@
                                             </button>
                                         </form>
                                     <?php } ?>
-
                                     <p class="fs-3 me-4 text-secondary" id="likeValue<?= $post->getID() ?>"><?= $post->getLikes(); ?></p>
                                     <button type="button" class="btn btn-unstyled" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom<?= $post->getID() ?>" aria-controls="offcanvasBottom">
                                         <i class="bi bi-chat fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Commenter"></i>
