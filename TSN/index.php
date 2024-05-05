@@ -42,6 +42,9 @@ use TSN\src\controllers\stat\Stat as Stat;
 require_once("src/controllers/search/search.php");
 use TSN\src\controllers\search\Search as Search;
 
+require_once("src/controllers/admin/admin.php");
+use TSN\src\controllers\admin\Admin as Admin;
+
 try {
 
     session_start(); // We start a new session for the user.
@@ -282,6 +285,11 @@ try {
 
                 (new Search)->getSearchPage($_POST['research']);         // We return the search page.
             }
+        }
+
+        elseif($_GET['action'] === 'adminSpace'){
+
+            (new Admin)->getAdminPage();              // We return the admin page.
         }
 
         else{

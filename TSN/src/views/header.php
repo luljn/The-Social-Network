@@ -66,7 +66,7 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="index.php?action=myProfile"><?= $user->getSurname(); ?></a></li>
                             <?php if($user->getAdmin() == True){ ?>
-                                <li><a class="dropdown-item" href="#">Espace admin</a></li>
+                                <li><a class="dropdown-item" href="index.php?action=adminSpace">Espace admin</a></li>
                             <?php }?>
                             <li><a class="dropdown-item" href="index.php?action=signout">Se Déconnecter</a></li>
                         <?php }
