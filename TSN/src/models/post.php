@@ -21,8 +21,9 @@ class Post {
     private User $user;               // The user who made the post.
     private $comments = [];          // The list of all the comments of a post.
     private int $likes;             // The number of likes of a comment.
+    private bool $sensible;
 
-    public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image, $_comments, int $_likes){
+    public function __construct(int $_id, string $_content, string $_creationDate, User $_user, string $_image, $_comments, int $_likes, bool $_sensible){
         
         $this->id = $_id;
         $this->content = $_content;
@@ -31,6 +32,7 @@ class Post {
         $this->image = $_image;
         $this->comments = $_comments;
         $this->likes = $_likes;
+        $this->sensible = $_sensible;
     }
 
     public function getID(){ return $this->id; }
@@ -40,6 +42,7 @@ class Post {
     public function getImage(){ return $this->image; }
     public function getComments(){ return $this->comments; }
     public function getLikes(){ return $this->likes; }
+    public function getSensibility(){ return $this->sensible; }
 
     public function setID(int $_id){ $this->id = $_id; }
     public function setContent(string $_content){ $this->content = $_content; }
@@ -56,8 +59,8 @@ class PostManagment {
     public function addPost($idUser, $content, $date){            // To add a post without an image.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
-                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", NULL);";
+        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image, sensible) 
+                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", NULL, 0);";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -66,8 +69,17 @@ class PostManagment {
     public function addPostWithImage($idUser, $content, $date, $image){    // To add a post with an image.
 
         $this->databaseConnection = new DatabaseConnection;
-        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image) 
-                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", \"{$image}\");";
+        $statement = "INSERT INTO post (id_utilisateur, contenu, date_creation, image, sensible) 
+                      VALUES (\"{$idUser}\", \"{$content}\", \"{$date}\", \"{$image}\", 0);";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
+    public function deletePost($idPost){  // To delete a post.
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "DELETE FROM post WHERE id = \"{$idPost}\";";
         $query = $this->databaseConnection->getConnection()->prepare($statement);
         $query->execute();
         $query->closeCursor();
@@ -126,12 +138,12 @@ class PostManagment {
 
                 if($result[$i]['image'] == NULL){
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '', $postComments, $result_2['NumberOfLikes']);
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, '', $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                 }
 
                 else{
 
-                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
+                    $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $user, $result[$i]['image'], $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                 }
 
                 $Posts[] = $userPost;
@@ -204,12 +216,12 @@ class PostManagment {
 
                     if($result[$i]['image'] == NULL){
 
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '', $postComments, $result_2['NumberOfLikes']);
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, '', $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                     }
     
                     else{
     
-                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
+                        $userPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $ramdomUser, $result[$i]['image'], $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                     }
                     
                     if(!in_array($userPost, $RandomPosts)){
@@ -260,12 +272,12 @@ class PostManagment {
 
                     if($result[$i]['image'] == NULL){
 
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '', $postComments, $result_2['NumberOfLikes']);
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), '', $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                     }
     
                     else{
     
-                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image'], $postComments, $result_2['NumberOfLikes']);
+                        $followingPost = new Post($result[$i]['id'], $result[$i]['contenu'], $result[$i]['date_creation'], $following->getUser(), $result[$i]['image'], $postComments, $result_2['NumberOfLikes'], $result[$i]['sensible']);
                     }
 
                     if(!in_array($followingPost, $followingsPosts)){

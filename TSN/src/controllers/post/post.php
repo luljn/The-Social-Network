@@ -40,6 +40,17 @@ class Post {
         header("location: {$startingUrl}/index.php?action=myAccount&userId={$idUser}");
     }
 
+    public function deletePost($idPost){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->postManagment = new ModelPostManagment;
+        $this->postManagment->deletePost($idPost);  
+        
+        header("location: {$startingUrl}/index.php?action=home");
+    }
+
     public function getUserPosts(int $idUser){
 
         $this->postManagment = new ModelPostManagment;

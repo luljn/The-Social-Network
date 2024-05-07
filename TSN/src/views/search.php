@@ -82,6 +82,7 @@
                                                         <form action="" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Envoyer un avertissement à <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
+                                                                <input type="hidden" id="idUser" name="idPost" value="<?= $user->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Avertir</button>
                                                             </div>
                                                         </form>
@@ -89,6 +90,7 @@
                                                         <form action="" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Bannir <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
+                                                                <input type="hidden" id="idUser" name="idPost" value="<?= $user->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Bannir</button>
                                                             </div>
                                                         </form>
@@ -159,13 +161,15 @@
                                                         <form action="" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Marquer ce post comme sensible</h5>
+                                                                <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Marquer</button>
                                                             </div>
                                                         </form>
                                                         <br>
-                                                        <form action="" method="POST">
+                                                        <form action="index.php?action=deletePost" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Supprimer ce post</h5>
+                                                                <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Supprimer</button>
                                                             </div>
                                                         </form>
@@ -177,7 +181,6 @@
                                                 </div>
                                             </div>
 
-
                                         <?php } ?>  
                                     </tr>
                                 <?php $numberP++; 
@@ -186,7 +189,6 @@
                             </tbody>
                         </table>
                     <?php } ?>
-
 
                 <?php } else { ?>
                     <h5 class="fs-3 fw-bold text-center text-secondary my-5">Aucun résultat...</h5>

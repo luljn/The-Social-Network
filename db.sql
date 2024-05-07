@@ -28,6 +28,7 @@ CREATE TABLE post(
     contenu LONGTEXT NOT NULL,
     date_creation DATE NOT NULL,
     image VARCHAR(255) NULL,
+    sensible BOOLEAN NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id)
 );
 
@@ -41,6 +42,7 @@ CREATE TABLE commentaire(
     image VARCHAR(255) NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
     FOREIGN KEY (id_post) REFERENCES post(id)
+    ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS notificationGenerique;
@@ -68,6 +70,7 @@ CREATE TABLE likes(
     date_creation DATE NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
     FOREIGN KEY (id_post) REFERENCES post(id)
+    ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS Follow;
@@ -90,14 +93,14 @@ VALUES
 ('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0, NULL, "Salut je suis un(e) utilisateur(trice) de TSN")
 ;
 
-INSERT INTO post (id_utilisateur, contenu, date_creation, image)
+INSERT INTO post (id_utilisateur, contenu, date_creation, image, sensible)
 VALUES
-(1, 'Ceci est mon premier post', '2024-04-12', NULL),
-(2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16', NULL),
-(3, "Je suis un énorme fan de Hunter X Hunter, et j'espère que l'animé aura une suite très bientôt.", "2024-04-21", "hunter_x_hunter_v2__meruem_e_komugi____icon_folder_by_ubagutobr_d80func.ico"),
-(3, "Je suis un grand fan de mangas et d'animés.", '2024-04-21', NULL),
-(1, "Je suis un grand fan de cet animé, j'attends sa suite avec impatience.", '2024-04-22', "hunter_x_hunter_folder_icon_by_walad7ekaya_d7k1sz1(1).ico"),
-(2, "Cet animé est juste fantastique", '2024-04-22', "hunter_x_hunter_v3__hisoka____icon_folder_by_ubagutobr_d80jtem.ico")
+(1, 'Ceci est mon premier post', '2024-04-12', NULL, 0),
+(2, 'Ceci est mon post, le tout premier que je fait, merci de le lire', '2024-04-16', NULL, 0),
+(3, "Je suis un énorme fan de Hunter X Hunter, et j'espère que l'animé aura une suite très bientôt.", "2024-04-21", "hunter_x_hunter_v2__meruem_e_komugi____icon_folder_by_ubagutobr_d80func.ico", 0),
+(3, "Je suis un grand fan de mangas et d'animés.", '2024-04-21', NULL, 0),
+(1, "Je suis un grand fan de cet animé, j'attends sa suite avec impatience.", '2024-04-22', "hunter_x_hunter_folder_icon_by_walad7ekaya_d7k1sz1(1).ico", 0),
+(2, "Cet animé est juste fantastique", '2024-04-22', "hunter_x_hunter_v3__hisoka____icon_folder_by_ubagutobr_d80jtem.ico", 0)
 ;
 
 INSERT INTO commentaire (id_utilisateur, id_post, contenu, date_creation, image)

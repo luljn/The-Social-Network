@@ -127,12 +127,12 @@ class Search {
     
                         if($result_1[$i]['image'] == NULL){
     
-                            $userPost = new Post($result_1[$i]['id'], $result_1[$i]['contenu'], $result_1[$i]['date_creation'], $ramdomUser, '', $postComments, $result_3['NumberOfLikes']);
+                            $userPost = new Post($result_1[$i]['id'], $result_1[$i]['contenu'], $result_1[$i]['date_creation'], $ramdomUser, '', $postComments, $result_3['NumberOfLikes'], $result_1[$i]['sensible']);
                         }
         
                         else{
         
-                            $userPost = new Post($result_1[$i]['id'], $result_1[$i]['contenu'], $result_1[$i]['date_creation'], $ramdomUser, $result_1[$i]['image'], $postComments, $result_3['NumberOfLikes']);
+                            $userPost = new Post($result_1[$i]['id'], $result_1[$i]['contenu'], $result_1[$i]['date_creation'], $ramdomUser, $result_1[$i]['image'], $postComments, $result_3['NumberOfLikes'], $result_1[$i]['sensible']);
                         }
                         
                         if(!in_array($userPost, $ResultPosts)){

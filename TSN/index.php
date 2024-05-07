@@ -146,6 +146,14 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'deletePost'){
+
+            if(isset($_POST['idPost'])){
+
+                (new Post)->deletePost($_POST['idPost']);
+            }
+        }
+
         elseif($_GET['action'] === 'addComment'){            // If the user wants to add a comment on a post.
 
             $user = $_SESSION['user'];
