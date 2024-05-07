@@ -48,6 +48,18 @@ class Post {
         $this->postManagment = new ModelPostManagment;
         $this->postManagment->deletePost($idPost);  
         
+        // $_POST['research'] = " ";
+        header("location: {$startingUrl}/index.php?action=home");
+    }
+
+    public function setPostAsSensible($idPost){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->postManagment = new ModelPostManagment;
+        $this->postManagment->setPostAsSensible($idPost);  
+        
         header("location: {$startingUrl}/index.php?action=home");
     }
 

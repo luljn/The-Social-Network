@@ -85,6 +85,15 @@ class PostManagment {
         $query->closeCursor();
     }
 
+    public function setPostAsSensible($idPost){
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "UPDATE post SET sensible = 1 WHERE id = \"{$idPost}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
+
     public function getPostsByUser(int $idUser){    // To retrieve all the posts made by a user.
 
         $this->commentController = new CommentController;

@@ -70,6 +70,9 @@
                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
                                     <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                                 </a>
+                            <?php if($post->getSensibility()){ ?>
+                                <h5 class="fs-6 text-danger mx-5 mt-2">Post sensible ❌</h5>
+                            <?php } ?>
                             </div>
                             <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>
@@ -220,6 +223,9 @@
                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
                                     <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                                 </a>
+                            <?php if($post->getSensibility()){ ?>
+                                <h5 class="fs-6 text-danger mx-5 mt-2">Post sensible ❌</h5>
+                            <?php } ?>
                             </div>
                             <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>
@@ -371,6 +377,9 @@
                                 <a class="text-dark text-decoration-none" href="index.php?action=myAccount&userId=<?= urldecode($post->getUser()->getID()) ?>">
                                     <h5 class="mx-1 mt-2 card-title fs-5 fw-bold text-center"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
                                 </a>
+                            <?php if($post->getSensibility()){ ?>
+                                <h5 class="fs-6 text-danger mx-5 mt-2">Post sensible ❌</h5>
+                            <?php } ?>
                             </div>
                             <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>

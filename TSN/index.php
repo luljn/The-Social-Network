@@ -154,6 +154,14 @@ try {
             }
         }
 
+        elseif($_GET['action'] === 'setPostSensible'){
+
+            if(isset($_POST['idPost'])){
+
+                (new Post)->setPostAsSensible($_POST['idPost']);
+            }
+        }
+
         elseif($_GET['action'] === 'addComment'){            // If the user wants to add a comment on a post.
 
             $user = $_SESSION['user'];

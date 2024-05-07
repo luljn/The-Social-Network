@@ -173,6 +173,9 @@
                                 <img src="../../img/users/<?= $post->getUser()->getPhoto()?>" width="50" height="50">
                             <?php } ?>
                                 <h5 class="mx-1 mt-2 fw-bold"><?= $post->getUser()->getSurname() . " " . $post->getUser()->getName(); ?></h5>
+                            <?php if($post->getSensibility()){ ?>
+                                <h5 class="fs-6 text-danger mx-5 mt-2">Post sensible ❌</h5>
+                            <?php } ?>
                             </div>
                             <hr class="border border-2 border-secondary">
                             <?php if($post->getImage() == ''){ ?>

@@ -158,7 +158,7 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="" method="POST">
+                                                        <form action="index.php?action=setPostSensible" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Marquer ce post comme sensible</h5>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
