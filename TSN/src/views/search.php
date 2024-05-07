@@ -16,6 +16,12 @@
 
     $resultUsers = $_SESSION['resultUsers']; // All the users retrieved by the search.
     $resultPosts = $_SESSION['resultPosts']; // All the posts retrieved by the search.
+
+    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
+
+        $isConnected = $_SESSION['isConnected'];
+        $connectedUser = $_SESSION["user"];
+    }
 ?>
 
     <section>
@@ -37,6 +43,9 @@
                                     <th scope="col" class="fs-4">Prénom</th>
                                     <th scope="col" class="fs-4">Description</th>
                                     <th scope="col" class="fs-4 text-center">#</th>
+                                    <?php if(isset($isConnected) && $isConnected && $connectedUser->getAdmin()){ ?>
+                                        <th scope="col" class="fs-4 text-center">Action admin</th>
+                                    <?php } ?>    
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +63,44 @@
                                                 </button>
                                             </a>
                                         </td>
+                                        <?php if(isset($isConnected) && $isConnected && $connectedUser->getAdmin() && !$user->getAdmin()){ ?>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUser">
+                                                    actions
+                                                </button>
+                                            </td>
+
+                                            <!--Admin actions Modal on users-->
+                                            <div class="modal fade" id="modalUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Actions administrateur</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="" method="POST">
+                                                            <div class="mb-1 d-flex flex-row justify-content-between">
+                                                                <h5 class="text-secondary fs-5">Envoyer un avertissement à <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
+                                                                <button type="submit" class="btn btn-primary">Avertir</button>
+                                                            </div>
+                                                        </form>
+                                                        <br>
+                                                        <form action="" method="POST">
+                                                            <div class="mb-1 d-flex flex-row justify-content-between">
+                                                                <h5 class="text-secondary fs-5">Bannir <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
+                                                                <button type="submit" class="btn btn-primary">Bannir</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <?php } ?>    
                                     </tr>
                                 <?php $number++; 
                                     } 
@@ -70,10 +117,13 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="fs-4">#</th>
-                                    <th scope="col" class="fs-4">Contenu</th>
+                                    <th scope="col" class="fs-4 text-center">Contenu</th>
                                     <th scope="col" class="fs-4">Auteur</th>
-                                    <th scope="col" class="fs-4">Nombre de likes</th>
+                                    <th scope="col" class="fs-4">Likes</th>
                                     <th scope="col" class="fs-4 text-center">#</th>
+                                    <?php if(isset($isConnected) && $isConnected && $connectedUser->getAdmin()){ ?>
+                                        <th scope="col" class="fs-4 text-center">Action admin</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +140,45 @@
                                                 </button>
                                             </a>
                                         </td>
+                                        <?php if(isset($isConnected) && $isConnected && $connectedUser->getAdmin()){ ?>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPost">
+                                                    actions
+                                                </button>
+                                            </td>
+
+                                             <!--Admin actions Modal on posts-->
+                                            <div class="modal fade" id="modalPost" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Actions administrateur</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="" method="POST">
+                                                            <div class="mb-1 d-flex flex-row justify-content-between">
+                                                                <h5 class="text-secondary fs-5">Marquer ce post comme sensible</h5>
+                                                                <button type="submit" class="btn btn-primary">Marquer</button>
+                                                            </div>
+                                                        </form>
+                                                        <br>
+                                                        <form action="" method="POST">
+                                                            <div class="mb-1 d-flex flex-row justify-content-between">
+                                                                <h5 class="text-secondary fs-5">Supprimer ce post</h5>
+                                                                <button type="submit" class="btn btn-primary">Supprimer</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        <?php } ?>  
                                     </tr>
                                 <?php $numberP++; 
                                     } 

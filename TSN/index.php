@@ -1,5 +1,6 @@
 <?php
 
+
 require_once("src/controllers/home/home.php");
 use TSN\src\controllers\home\Home as Home;
 
@@ -284,6 +285,11 @@ try {
             if(isset($_POST['research'])){
 
                 (new Search)->getSearchPage($_POST['research']);         // We return the search page.
+            }
+
+            else{
+
+                (new Home)->getHomePage();
             }
         }
 
