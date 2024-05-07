@@ -178,4 +178,14 @@ class UserModification {  // This class is used to modify the user informations 
 
         return $user;
     }
+
+    public function banishUser($idUser){
+
+        $this->databaseConnection = new DatabaseConnection;
+        $statement = "UPDATE utilisateur SET statut_bannissement = 1
+                      WHERE id = \"{$idUser}\";";
+        $query = $this->databaseConnection->getConnection()->prepare($statement);
+        $query->execute();
+        $query->closeCursor();
+    }
 }

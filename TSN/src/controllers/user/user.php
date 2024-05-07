@@ -9,11 +9,15 @@ use TSN\src\models\user\UserModification as ModelUserModification;
 require_once("./src/models/config/config.php");
 use TSN\src\models\config\Config as ModelConfig;
 
+require_once("src/controllers/notification/notification.php");
+use TSN\src\controllers\notification\Notification as Notification;
+
 
 class User {
 
     private ModelUserModification $userModification;
     private ModelConfig $config;
+    private Notification $notification;
 
     public function updateUserInformations($email, $name, $surname, $address){
 
@@ -68,5 +72,27 @@ class User {
         $this->userModification->updateDescription($description);
 
         header("location: {$startingUrl}/index.php?action=myProfile");
+    }
+
+    public function SendWarningToUser($idUser){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->notification = new Notification;
+        $this->notification->sendNotification($idUser, 10, date('Y-m-d'));
+
+        header("location: {$startingUrl}/index.php?action=home");
+    }
+
+    public function banishUser($idUser){
+
+        $this->config = new ModelConfig;
+        $startingUrl = $this->config->getStartingUrl();
+
+        $this->userModification = new ModelUserModification;
+        $this->userModification->banishUser($idUser);
+
+        header("location: {$startingUrl}/index.php?action=home");
     }
 }

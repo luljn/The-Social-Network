@@ -79,18 +79,18 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="" method="POST">
+                                                        <form action="index.php?action=sendWarning" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Envoyer un avertissement à <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
-                                                                <input type="hidden" id="idUser" name="idPost" value="<?= $user->getID() ?>">
+                                                                <input type="hidden" id="idUser" name="idUser" value="<?= $user->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Avertir</button>
                                                             </div>
                                                         </form>
                                                         <br>
-                                                        <form action="" method="POST">
+                                                        <form action="index.php?action=banishUser" method="POST">
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Bannir <span class="fw-bold"><?= $user->getSurname() ?></span></h5>
-                                                                <input type="hidden" id="idUser" name="idPost" value="<?= $user->getID() ?>">
+                                                                <input type="hidden" id="idUser" name="idUser" value="<?= $user->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Bannir</button>
                                                             </div>
                                                         </form>

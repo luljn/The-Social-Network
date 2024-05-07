@@ -314,6 +314,22 @@ try {
             (new Admin)->getAdminPage();              // We return the admin page.
         }
 
+        elseif($_GET['action'] === 'sendWarning'){
+
+            if(isset($_POST['idUser'])){
+
+                (new User)->SendWarningToUser($_POST['idUser']);
+            }
+        }
+
+        elseif($_GET['action'] === 'banishUser'){
+
+            if(isset($_POST['idUser'])){
+
+                (new User)->banishUser($_POST['idUser']);
+            }
+        }
+
         else{
 
             throw new Exception("Oups, la page que vous cherchez n'existe pas.");

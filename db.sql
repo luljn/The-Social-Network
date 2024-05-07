@@ -124,7 +124,8 @@ VALUES
 ("Vous avez un nouveau like sur l'un de vos post"),
 ("Vous avez un nouveau commentaire sur l'un de vos post"),
 ("Un de vos post a été marqué comme 'sensible' par un administrateur"),
-("Un de vos post a été supprimé par un administrateur")
+("Un de vos post a été supprimé par un administrateur"),
+("Vous avez reçu un avertissement de la part d'un administrateur")
 ;
 
 INSERT INTO notification(id_utilisateur, id_notificationGenerique, statut_lecture, date_creation)

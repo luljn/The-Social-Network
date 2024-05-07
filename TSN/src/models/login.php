@@ -27,20 +27,25 @@ class Login {
 
         $statement_1 = "SELECT COUNT(email) AS email from utilisateur WHERE email = \"{$email}\";";
         $statement_2 = "SELECT mdp AS password from utilisateur WHERE email = \"{$email}\";";
+        $statement_3 = "SELECT statut_bannissement from utilisateur WHERE email = \"{$email}\";";
 
         $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
         $query_2 = $this->databaseConnection->getConnection()->prepare($statement_2);
+        $query_3 = $this->databaseConnection->getConnection()->prepare($statement_3);
 
         $query_1->execute();
         $query_2->execute();
+        $query_3->execute();
 
         $result_1 = $query_1->fetch();
         $result_2 = $query_2->fetch();
+        $result_3 = $query_3->fetch();
 
         $query_1->closeCursor();
         $query_2->closeCursor();
+        $query_3->closeCursor();
 
-        if($result_1['email'] === 1 and password_verify($password, $result_2['password'])){
+        if($result_1['email'] === 1 and password_verify($password, $result_2['password']) and $result_3['statut_bannissement'] !== 1){
 
             $statement = "SELECT * from utilisateur WHERE email = \"{$email}\";";
             $query = $this->databaseConnection->getConnection()->prepare($statement);
