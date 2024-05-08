@@ -49,7 +49,7 @@ class Post {
         $this->postManagment->deletePost($idPost);  
         
         // $_POST['research'] = " ";
-        header("location: {$startingUrl}/index.php?action=home");
+        header("location: {$startingUrl}/index.php?action=adminSpace");
     }
 
     public function setPostAsSensible($idPost){
@@ -60,7 +60,7 @@ class Post {
         $this->postManagment = new ModelPostManagment;
         $this->postManagment->setPostAsSensible($idPost);  
         
-        header("location: {$startingUrl}/index.php?action=home");
+        header("location: {$startingUrl}/index.php?action=adminSpace");
     }
 
     public function getUserPosts(int $idUser){

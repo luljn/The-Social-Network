@@ -177,9 +177,9 @@
                                                 </div>
                                             </div>
 
-                                        <?php } ?>  
+                                        <?php $numberP++; } ?>  
                                     </tr>
-                                <?php $numberP++; 
+                                <?php  
                                     } 
                                 ?>
                             </tbody>

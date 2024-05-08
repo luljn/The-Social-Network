@@ -82,7 +82,7 @@ class User {
         $this->notification = new Notification;
         $this->notification->sendNotification($idUser, 10, date('Y-m-d'));
 
-        header("location: {$startingUrl}/index.php?action=home");
+        header("location: {$startingUrl}/index.php?action=adminSpace");
     }
 
     public function banishUser($idUser){
@@ -93,6 +93,6 @@ class User {
         $this->userModification = new ModelUserModification;
         $this->userModification->banishUser($idUser);
 
-        header("location: {$startingUrl}/index.php?action=home");
+        header("location: {$startingUrl}/index.php?action=adminSpace");
     }
 }
