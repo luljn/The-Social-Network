@@ -20,12 +20,13 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <?php if(isset($isConnected) && $isConnected) {?>
+                
                     <li class="nav-item text-light mx-2">
                         <a href="index.php?action=home" class="nav-link"  data-bs-toggle="tooltip" title="Accueil">
                             <i class="bi bi-house text-light fs-3"></i>
                         </a>
                     </li>
+                <?php if(isset($isConnected) && $isConnected) {?>
                     <li class="nav-item text-light mx-2">
                         <a href="index.php?action=notification" class="nav-link btn btn-unstyled"  data-bs-toggle="tooltip" title="Notifications">
                             <div class="d-flex flex-row">

@@ -87,6 +87,7 @@
                 </div>
             <?php } 
                   else { // If the user it not connected (he does not have access to this page).
+                    
                     header("location: {$startingUrl}/index.php?action=loginRequired");
                   }
             ?>

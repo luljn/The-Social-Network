@@ -16,10 +16,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-sm-6 col-md-8 p-0">
-                <img class="img-fluid h-100" src="https://picsum.photos/id/384/5000/3333" alt="Image page de connexion">
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
+            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-center px-5 px-sm-5 py-5 py-sm-5">
                 <form action="index.php?action=createNewAccount" method="POST" class="row gy-3 pb-4 border border-3 rounded-3 my-5 my-sm-5">
                     <p class="text-primary text-center fs-1 fw-bold my-0">
                         Inscription
@@ -72,6 +69,9 @@
                         </a>
                     </p>
                 </form>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 p-0">
+                <img class="img-fluid h-100" src="https://picsum.photos/id/384/5000/3333" alt="Image page de connexion">
             </div>
         </div>
     </div>

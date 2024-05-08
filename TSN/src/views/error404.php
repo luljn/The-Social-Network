@@ -18,7 +18,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-8 mt-5">
-                <img src="././img/404.svg" alt="404" class="fs-5">
+                <img src="././img/404.svg" alt="404" class="fs-5 img-fluid">
             </div>
         </div>
     </div>

@@ -27,7 +27,6 @@
     <section>
         <div class="container mt-5">
             <div class="row justify-content-center mt-5">
-                    
                 
                 <?php if(!empty($resultUsers) || !empty($resultPosts)){ ?>
                     <h5 class="fs-3 fw-bold text-center text-secondary mt-5 mb-1">Résultats</h5>
