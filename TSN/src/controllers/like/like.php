@@ -29,7 +29,7 @@ class Like {
         $this->notification->sendNotification($idPostAuthor, 6, date('Y-m-d')); // We send a notification to the author of the post.
 
         $user = $_SESSION['user'];
-        if($user->getId() == $idPostAuthor){  // If the user likes ono of his post. We retrieve his recent notification.
+        if($user->getId() == $idPostAuthor){  // If the user likes one of his post. We retrieve his recent notification.
 
             $this->notification->getUserNotifications($idPostAuthor);
             $this->notification->getUnreadUserNotificationsNumber($idPostAuthor);

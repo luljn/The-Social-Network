@@ -40,25 +40,44 @@ class Post {
         header("location: {$startingUrl}/index.php?action=myAccount&userId={$idUser}");
     }
 
-    public function deletePost($idPost){
+    public function deletePost($idPost, $idPostAuthor){
 
         $this->config = new ModelConfig;
         $startingUrl = $this->config->getStartingUrl();
 
         $this->postManagment = new ModelPostManagment;
-        $this->postManagment->deletePost($idPost);  
+        $this->postManagment->deletePost($idPost);
         
-        // $_POST['research'] = " ";
+        $this->notification = new Notification;
+        $this->notification->sendNotification($idPostAuthor, 9, date('Y-m-d'));
+
+        $user = $_SESSION['user'];
+        if($user->getId() == $idPostAuthor){  // If the user deletes one of his post. We retrieve his recent notification.
+
+            $this->notification->getUserNotifications($idPostAuthor);
+            $this->notification->getUnreadUserNotificationsNumber($idPostAuthor);
+        }
+        
         header("location: {$startingUrl}/index.php?action=adminSpace");
     }
 
-    public function setPostAsSensible($idPost){
+    public function setPostAsSensible($idPost, $idPostAuthor){
 
         $this->config = new ModelConfig;
         $startingUrl = $this->config->getStartingUrl();
 
         $this->postManagment = new ModelPostManagment;
-        $this->postManagment->setPostAsSensible($idPost);  
+        $this->postManagment->setPostAsSensible($idPost);
+        
+        $this->notification = new Notification;
+        $this->notification->sendNotification($idPostAuthor, 8, date('Y-m-d'));
+
+        $user = $_SESSION['user'];
+        if($user->getId() == $idPostAuthor){  // If the user sets one of his post. We retrieve his recent notification.
+
+            $this->notification->getUserNotifications($idPostAuthor);
+            $this->notification->getUnreadUserNotificationsNumber($idPostAuthor);
+        }
         
         header("location: {$startingUrl}/index.php?action=adminSpace");
     }

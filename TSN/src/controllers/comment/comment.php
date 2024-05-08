@@ -31,7 +31,7 @@ class Comment {
         $this->notification->sendNotification($idPostAuthor, 7, date('Y-m-d'));
 
         $user = $_SESSION['user'];
-        if($user->getId() == $idPostAuthor){  // If the user likes ono of his post. We retrieve his recent notification.
+        if($user->getId() == $idPostAuthor){  // If the user comments one of his post. We retrieve his recent notification.
 
             $this->notification->getUserNotifications($idPostAuthor);
             $this->notification->getUnreadUserNotificationsNumber($idPostAuthor);

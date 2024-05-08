@@ -32,7 +32,7 @@
                 <?php if(!empty($resultUsers) || !empty($resultPosts)){ ?>
                     <h5 class="fs-3 fw-bold text-center text-secondary mt-5 mb-1">Résultats</h5>
                     <?php if(!empty($resultUsers)){ 
-                            $number = 1;    
+                            $number = 1;
                     ?>
                         <table class="table table-primary mt-5">
                             <caption align="top" class="text-center text-secondary fs-3 fw-bold mb-3">Utilisateurs</caption>
@@ -162,6 +162,7 @@
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Marquer ce post comme sensible</h5>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                                                <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Marquer</button>
                                                             </div>
                                                         </form>
@@ -170,6 +171,7 @@
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Supprimer ce post</h5>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                                                <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Supprimer</button>
                                                             </div>
                                                         </form>

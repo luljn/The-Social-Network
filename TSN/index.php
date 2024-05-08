@@ -148,17 +148,17 @@ try {
 
         elseif($_GET['action'] === 'deletePost'){
 
-            if(isset($_POST['idPost'])){
+            if(isset($_POST['idPost']) && isset($_POST['idPostAuthor'])){
 
-                (new Post)->deletePost($_POST['idPost']);
+                (new Post)->deletePost($_POST['idPost'], $_POST['idPostAuthor']);
             }
         }
 
         elseif($_GET['action'] === 'setPostSensible'){
 
-            if(isset($_POST['idPost'])){
+            if(isset($_POST['idPost']) && isset($_POST['idPostAuthor'])){
 
-                (new Post)->setPostAsSensible($_POST['idPost']);
+                (new Post)->setPostAsSensible($_POST['idPost'], $_POST['idPostAuthor']);
             }
         }
 

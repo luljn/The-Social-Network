@@ -158,6 +158,7 @@
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Marquer ce post comme sensible</h5>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                                                <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Marquer</button>
                                                             </div>
                                                         </form>
@@ -166,6 +167,7 @@
                                                             <div class="mb-1 d-flex flex-row justify-content-between">
                                                                 <h5 class="text-secondary fs-5">Supprimer ce post</h5>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                                                <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                                                 <button type="submit" class="btn btn-primary">Supprimer</button>
                                                             </div>
                                                         </form>
