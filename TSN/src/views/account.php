@@ -193,6 +193,7 @@
                                     <?php if(!in_array($post->getID(), $likedPosts)){ ?>
                                         <form action="index.php?action=addLike" id="formLike<?= $post->getID() ?>" method="POST">
                                             <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                            <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                             <button type="submit" class="btn btn-unstyled" name="increment" id="buttonLike<?= $post->getID() ?>" data-target="likeValue<?= $post->getID() ?>">
                                                 <i class="bi bi-hand-thumbs-up fs-3 text-primary mx-2" data-bs-toggle="tooltip" title="Liker"></i>
                                             </button>
@@ -235,6 +236,7 @@
                                                                 <label for="newComment" class="form-label fs-5">Contenu de votre commentaire</label>
                                                                 <textarea name="newComment" id="newComment" cols="50" rows="10" required></textarea>
                                                                 <input type="hidden" id="idPost" name="idPost" value="<?= $post->getID() ?>">
+                                                                <input type="hidden" id="idPostAuthor" name="idPostAuthor" value="<?= $post->getUser()->getID() ?>">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="imageComment" class="form-label fs-5">Voulez-vous ajouter une image ?</label>

@@ -12,12 +12,12 @@ A social network implemented with basics web languages and basic features.
 
 # Technologies and tools used.
 
+- HTML.
+- Bootstrap.
 - PHP programming language.
 - JavaScript programming language.
 - jQuery.
-- Chart.js
-- HTML.
-- Bootstrap.
+- Chart.js .
 - MySql (with phpMyAdmin).
 
 

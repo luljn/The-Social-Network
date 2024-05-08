@@ -167,7 +167,7 @@ try {
             $user = $_SESSION['user'];
             $idUser = $user->getID();
             
-            if(isset($_FILES['imageComment']) && isset($_POST['newComment'])){    // To add a comment with an image.
+            if(isset($_FILES['imageComment']) && isset($_POST['newComment']) && isset($_POST['idPostAuthor'])){    // To add a comment with an image.
 
                 $file = $_FILES['imageComment'];
                 $tempName = $file["tmp_name"];
@@ -176,12 +176,12 @@ try {
 
                 
                 move_uploaded_file($tempName, $uploadDir . $fileName);
-                (new Comment)->addCommentWithImage($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'), $fileName);
+                (new Comment)->addCommentWithImage($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'), $fileName, $_POST['idPostAuthor']);
             }
 
-            elseif(isset($_POST['newComment']) && (!isset($_FILES['imageComment']))){       // To add a comment without an image.
+            elseif(isset($_POST['newComment']) && (!isset($_FILES['imageComment'])) && isset($_POST['idPostAuthor'])){       // To add a comment without an image.
 
-                (new Comment)->addComment($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'));
+                (new Comment)->addComment($_POST['idPost'], $idUser, $_POST['newComment'], date('Y-m-d'), $_POST['idPostAuthor']);
             }
         }
 
@@ -190,9 +190,9 @@ try {
             $user = $_SESSION['user'];
             $idUser = $user->getID();
 
-            if(isset($_POST['idPost'])){
+            if(isset($_POST['idPost']) && isset($_POST['idPostAuthor'])){
 
-                (new Like)->addLike($_POST['idPost'], $idUser, date('Y-m-d'));
+                (new Like)->addLike($_POST['idPost'], $idUser, date('Y-m-d'), $_POST['idPostAuthor']);
             }
         }
 
