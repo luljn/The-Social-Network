@@ -1,5 +1,5 @@
 <?php
-    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"])){
+    if(isset($_SESSION['isConnected']) && isset($_SESSION["user"]) && $_SESSION['isConnected'] == true){
 
         $isConnected = $_SESSION['isConnected'];
         $user = $_SESSION["user"];

@@ -73,8 +73,8 @@ CREATE TABLE likes(
     ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS Follow;
-CREATE TABLE Follow(
+DROP TABLE IF EXISTS follow;
+CREATE TABLE follow(
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_follower INTEGER NOT NULL,     -- l'identifiant de l'utilsateur qui follow.
     id_following INTEGER NOT NULL,    -- l'identifiant de l'utilsateur qui est followé.
@@ -88,7 +88,7 @@ CREATE TABLE Follow(
 
 INSERT INTO utilisateur (email, mdp, nom, prenom, date_de_naissance, adresse, admin, statut_bannissement, profile_photo, description)
 VALUES 
-('mbohlulajonathan4@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0, "Luljn_User_Picture.jpg", "Je suis un développeur logiciel passionné"),
+('mbohlula@gmail.com', '$2y$10$9I2vH3YsIUXBmV/riX5K/.DtwV8njr30lJ9TC6R/jbWMZ6ovdvf3O', 'MBECK MBOH', 'Lula', '2003-01-12', '123 Rue de la Poste', 1, 0, "Luljn_User_Picture.jpg", "Je suis un développeur logiciel passionné"),
 ('jamesross97@gmail.com', '$2y$10$qkPhmJegGX2Zk82b0EE9re8ZlZ8GuGSwhXFlP2/ZSiUFkkS4KXKj2', 'ROSS', 'James', '1997-03-13', '17 Avenue GENDARME', 0, 0, "8-bit City_1920x1080.jpg", "Salut je suis un(e) utilisateur(trice) de TSN"),
 ('marctaylor@gmail.com', '$2y$10$NB/5iXABuRkfx9Kn0Yd13eW..nC/xDBqZS.jTTHQGEZpPdSuxb/HG', 'TAYLOR', 'Marc', '2002-11-12', '14 Boulevard Pierront', 1, 0, NULL, "Salut je suis un(e) utilisateur(trice) de TSN")
 ;
@@ -108,7 +108,7 @@ VALUES
 (2, 1, "Ceci est mon commentaire sur ton post", "2024-04-28", NULL)
 ;
 
-INSERT INTO Follow (id_follower, id_following, date_creation)
+INSERT INTO follow (id_follower, id_following, date_creation)
 VALUES
 (1, 2, '2024-04-21'),
 (1, 3, '2024-04-21')
@@ -204,7 +204,7 @@ DELIMITER //
 CREATE PROCEDURE CountFollowingsOfUser(IN user_id INT)
 BEGIN
     SELECT COUNT(*) as NumberOfFollowings
-    FROM Follow
+    FROM follow
     WHERE id_follower = user_id;
 END //
 
@@ -216,7 +216,7 @@ DELIMITER //
 CREATE PROCEDURE CountFollowersOfUser(IN user_id INT)
 BEGIN
     SELECT COUNT(*)  as NumberOfFollowers
-    FROM Follow
+    FROM follow
     WHERE id_following = user_id;
 END //
 

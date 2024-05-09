@@ -52,7 +52,7 @@ class NotificationManagment {
                 // To get the content of the notification.
                 $idNotif = $result[$i]['id_notificationGenerique'];
                 $statement_1 = "SELECT contenu as content from notificationGenerique 
-                                JOIN notification ON notification.id_notificationGenerique = notificationgenerique.id
+                                JOIN notification ON notification.id_notificationGenerique = notificationGenerique.id
                                 WHERE id_notificationGenerique = \"{$idNotif}\" AND notification.id_utilisateur = \"{$idUser}\";";
                 $query_1 = $this->databaseConnection->getConnection()->prepare($statement_1);
                 $query_1->execute();
