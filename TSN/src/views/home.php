@@ -24,7 +24,7 @@
         <div class="container d-flex flex-row">
             <div class="row">
                 <?php if(isset($isConnected) && $isConnected){ // If the user is connected. ?>
-                    <div class="col-4 col-sm-4 col-md-2">
+                    <div class="col-12 col-sm-12 col-md-2">
                         <h5 class="text-center fs-5 fw-bold text-secondary mb-4 position-sticky" style="top: 97px">Vous</h5>
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if($user->getPhoto() == ''){ ?>
@@ -53,7 +53,7 @@
                         <div class="card"></div>
                     </div>        
                 <?php } ?>
-                <div class="col-4 col-sm-4 col-md-8 mt-5">
+                <div class="col-12 col-sm-12 col-md-8 mt-5">
                     <?php if(isset($isConnected) && $isConnected){ // If the user is connected.
                             if(!empty($userFollowingsPosts)){  // If the user has at least one following and this one has made at least one post.
                                 foreach($userFollowingsPosts as $post){
@@ -402,7 +402,7 @@
                     ?>
                 </div>
                 <?php if(isset($isConnected) && $isConnected){ ?>
-                    <div class="col-4 col-sm-4 col-md-2 mt-5">
+                    <div class="col-12 col-sm-12 col-md-2 mt-5">
                         <?php if(!empty($usersNotFollowed)){ ?>
                             <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px;">Découvrez d'autres utilisateurs 👨👩</h5>
                             <div class="position-fixed text-center mx-5">

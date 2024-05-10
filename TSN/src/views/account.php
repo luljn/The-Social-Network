@@ -35,7 +35,7 @@
             <div class="row">
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                          && $_GET['userId'] == $connectedUser->getID()){ // If the account it is the one of the connected user. ?>
-                    <div class="col-4 col-sm-4 col-md-2">
+                    <div class="col-12 col-sm-12 col-md-2">
                         <?php if($connectedUser->getID() == $_GET["userId"]){ ?>
                                 <h5 class="text-center fs-5 fw-bold text-secondary mb-4 position-sticky" style="top: 97px;">Vous</h5>
                             <?php } else { ?>
@@ -98,7 +98,7 @@
                 <?php } elseif(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                          && $_GET['userId'] != $connectedUser->getID()){ // If the account it is not the one of the connected user. ?>
 
-                    <div class="col-4 col-sm-4 col-md-2">
+                    <div class="col-12 col-sm-12 col-md-2">
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if(isset($user) && $user->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
@@ -116,7 +116,7 @@
                     </div>
 
                 <?php } else { // If the user is not connected. ?>
-                    <div class="col-4 col-sm-4 col-md-2">
+                    <div class="col-12 col-sm-12 col-md-2">
                         <div class="card mt-5 border border-2 border-secondary position-sticky" style="top: 150px;">
                             <?php if(isset($user) && $user->getPhoto() == ''){ ?>
                                 <img src="../../img/defaultUserPicture.png" class="card-img-top" alt="photo de profile" width="225" height="225">
@@ -134,7 +134,7 @@
                     </div>
                 <?php } ?>
 
-                <div class="col-4 mt-5 col-sm-4 col-md-8">
+                <div class="col-12 mt-5 col-sm-12 col-md-8">
 
                     <?php if(empty($posts) && isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true 
                             && $_GET['userId'] == $connectedUser->getID()){ 
@@ -319,7 +319,7 @@
                 </div>
 
                 <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] === true){ ?>
-                    <div class="col-4 mt-5 col-sm-4 col-md-2">
+                    <div class="col-12 mt-5 col-sm-12 col-md-2">
                         <?php if(!empty($followings)){ // If the user has at least one following. ?>
                             <?php if($connectedUser->getID() == $_GET["userId"]){ ?>
                                 <h5 class="text-center fs-5 fw-bold text-primary mb-4 position-sticky" style="top: 97px">Vos followings</h5>

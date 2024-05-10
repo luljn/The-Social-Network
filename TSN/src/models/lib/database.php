@@ -13,7 +13,7 @@ class DatabaseConnection {
     // The online database connection informations (for production).
     private $onlineDatabaseAccess = ["mysql:host=localhost;dbname=id22070392_tsndb;charset=utf8", "id22070392_luljn", "Azertyuiop_1234!#"];
 
-    private $useLocalDatabase = True;    // This variable is used to specify which database we use(the local one or the online one).
+    private $useLocalDatabase = False;    // This variable is used to specify which database we use(the local one or the online one).
 
     public function getConnection(): \PDO {
 
