@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  php:
+    image: php:8.2-apache
+    container_name: The-Social-Network
+    ports:
+      - 4000:80
+    volumes:
+      - ./TSN:/var/www/html
+    build:
+      context: .
+      dockerfile: DockerFile
+  db:
+    image: mysql:8.0
+    container_name: The-Social-Network-Database
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: mbeck_selatchom_database
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: The-Social-Network-phpMyAdmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST : db
+      PMA_USER: root
+      PMA_PASSWORD: pass
+    ports:
+      - 80:80
