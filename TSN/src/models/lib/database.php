@@ -8,7 +8,7 @@ class DatabaseConnection {
     public ?\PDO $database = null;
 
     // The local database connection informations.
-    private $localDatabaseAccess = ["mysql:host=db;dbname=mbeck_selatchom_database;charset=utf8", "root", "pass"];
+    private $localDatabaseAccess = ["mysql:host=localhost;dbname=mbeck_selatchom_database;charset=utf8", "root", ""];
 
     // The online database connection informations (for production).
     private $onlineDatabaseAccess = ["mysql:host=localhost;dbname=;charset=utf8", "", ""];

@@ -23,6 +23,8 @@ A social network implemented with basics web languages and basic features.
 
 # Getting start with the web application.
 
+- Install all the tools by yourself.
+
 The project was developed using XAMPP's all-in-one web package, so you will need to install it to be able to launch the application.
 Once XAMMP is installed, you have two choices: use a virtual host or not.
 
@@ -33,6 +35,11 @@ If you choose not to use a virtual host, you will need to clone the repository i
 Concerning the database, an initialization sql file (db.sql) is available. You just have to import it into XAMPP to create and initialize the database.
 
 You may need to change the second and third elements of the localDatabaseAccess array in the database.php file in the lib subfolder of the models directory. This information corresponds to the username and password to connect to the database.
+
+- Use Docker.
+
+To make things easier, you can use Docker to install all the necessary tools. You will need to edit the database.php file, replacing line 11 with : private $localDatabaseAccess = ["mysql:host=db;dbname=mbeck_selatchom_database;charset=utf8", "root", "pass"];
+Then you just have to execute the commands: docker-compose build then docker-compose up from the root of the project.
 
 
 # Deployment.
