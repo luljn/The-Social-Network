@@ -83,6 +83,7 @@
                                             <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $user->getSurname(); ?>" required>
                                         </div>
                                         <div class="mb-3">
+                                            <div class="mb-3 fs-5 fw-bold text-danger" id="email-error"></div>
                                             <label for="email" class="form-label">Adresse Mail</label>
                                             <input type="text" class="form-control" name="email" id="email" value="<?= $user->getEmail(); ?>" required>
                                         </div>
@@ -94,7 +95,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        <button type="submit" id="btn-save" class="btn btn-primary">Enregistrer</button>
                                     </div>
                                 </div>
                             </form>

@@ -43,6 +43,7 @@
                         <input type="date" class="form-control" name="birthday" id="birthday" required>
                     </div>
                     <div class="col-12">
+                        <div class="mb-3 fs-5 fw-bold text-danger" id="email-error"></div>
                         <label for="email" class="form-label">Adresse Mail</label>
                         <input type="text" class="form-control" name="email" id="email" required>
                     </div>
@@ -60,7 +61,7 @@
                         </button>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+                        <button type="submit" id="btn-signup" class="btn btn-primary w-100">S'inscrire</button>
                     </div>
                     <p>
                         Vous avez déjà un compte ?

@@ -50,6 +50,8 @@
         <script src="../../dynamic/newPasswordCheck.js"></script>
         <!-- <script src="../../dynamic/addOrRemoveLikeOnPost.js"></script> -->
         <script src="../../dynamic/addCommentOnPost.js"></script>
+        <script src="../../dynamic/checkEmail.js"></script>
+        <script src="../../dynamic/checkNewEmail.js"></script>
         
     </body>
 
