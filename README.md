@@ -13,6 +13,7 @@ A social network implemented with basics web languages and basic features.
 # Technologies and tools used.
 
 - HTML.
+- CSS.
 - Bootstrap.
 - PHP programming language.
 - JavaScript programming language.
@@ -45,7 +46,6 @@ Then you just have to execute the commands: docker-compose build then docker-com
 # Deployment.
 
 The site is available here : https://tsn-thesocialnetwork.000webhostapp.com/
-copy this link into your web browser.
 
 
 ## Authors.
