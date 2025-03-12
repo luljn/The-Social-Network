@@ -12,14 +12,14 @@ A social network implemented with basics web languages and basic features.
 
 # Technologies and tools used.
 
-- HTML.
-- CSS.
-- Bootstrap.
-- PHP programming language.
-- JavaScript programming language.
-- jQuery.
-- Chart.js .
-- MySql (with phpMyAdmin).
+- HTML. <img src="https://skillicons.dev/icons?i=html" width="30" height="30"/>
+- CSS. <img src="https://skillicons.dev/icons?i=css" width="30" height="30"/>
+- Bootstrap. <img src="https://skillicons.dev/icons?i=bootstrap" width="30" height="30"/>
+- PHP programming language. <img src="https://skillicons.dev/icons?i=php" width="30" height="30"/>
+- JavaScript programming language. <img src="https://skillicons.dev/icons?i=js" width="30" height="30"/>
+- jQuery. <img src="https://skillicons.dev/icons?i=jquery" width="30" height="30"/>
+- Chart.js . <img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="30" height="30"/>
+- MySql (with phpMyAdmin). <img src="https://skillicons.dev/icons?i=mysql" width="30" height="30"/>
 
 
 # Getting start with the web application.
