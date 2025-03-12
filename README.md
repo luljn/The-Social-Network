@@ -12,14 +12,14 @@ A social network implemented with basics web languages and basic features.
 
 # Technologies and tools used.
 
-- HTML. <img src="https://skillicons.dev/icons?i=html" width="30" height="30"/>
-- CSS. <img src="https://skillicons.dev/icons?i=css" width="30" height="30"/>
-- Bootstrap. <img src="https://skillicons.dev/icons?i=bootstrap" width="30" height="30"/>
-- PHP programming language. <img src="https://skillicons.dev/icons?i=php" width="30" height="30"/>
-- JavaScript programming language. <img src="https://skillicons.dev/icons?i=js" width="30" height="30"/>
-- jQuery. <img src="https://skillicons.dev/icons?i=jquery" width="30" height="30"/>
-- Chart.js . <img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="30" height="30"/>
-- MySql (with phpMyAdmin). <img src="https://skillicons.dev/icons?i=mysql" width="30" height="30"/>
+- HTML. <a href="https://developer.mozilla.org/fr/docs/Web/HTML"><img src="https://skillicons.dev/icons?i=html" width="30" height="30"/></a>
+- CSS. <a href="https://developer.mozilla.org/fr/docs/Web/CSS"><img src="https://skillicons.dev/icons?i=css" width="30" height="30"/></a>
+- Bootstrap. <a href="https://getbootstrap.com/"><img src="https://skillicons.dev/icons?i=bootstrap" width="30" height="30"/></a>
+- PHP programming language. <a href="https://www.php.net/"><img src="https://skillicons.dev/icons?i=php" width="30" height="30"/></a>
+- JavaScript programming language. <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js" width="30" height="30"/></a>
+- jQuery. <a href="https://jquery.com/"><img src="https://skillicons.dev/icons?i=jquery" width="30" height="30"/></a>
+- Chart.js . <a href="https://www.chartjs.org/"><img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="30" height="30"/></a>
+- MySql (with phpMyAdmin). <a href="https://www.mysql.com/"><img src="https://skillicons.dev/icons?i=mysql" width="30" height="30"/></a>
 
 
 # Getting start with the web application.
@@ -43,12 +43,7 @@ To make things easier, you can use Docker to install all the necessary tools. Yo
 Then you just have to execute the commands: docker-compose build then docker-compose up from the root of the project.
 
 
-# Deployment.
-
-The site is available here : https://tsn-thesocialnetwork.000webhostapp.com/
-
-
 ## Authors.
 
 - MBECK MBOH Lula Jonathan (Luljn) : Full-stack developer and Database administrator.
-- SELATCHOM GOHUI O'neal Landry (OnealSel) : Back-End developer and Database administrator.
+- SELATCHOM GOHUI O'neal Landry (OnealSel) : Database administrator.
